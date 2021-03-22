@@ -1,0 +1,14 @@
+{
+  "name": "hong-pages-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts":{
+    "clean": "hong-pages clean",
+    "build": "hong-pages build",
+    "develop": "hong-pages develop"
+  },
+  "devDependencies": {
+    "hong-pages": "^0.2.0"
+  }
+}

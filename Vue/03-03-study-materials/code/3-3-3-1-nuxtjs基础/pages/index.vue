@@ -20,6 +20,8 @@ export default {
   },
 
   // 当你想要动态页面内容有利于 SEO 或者是提升首屏渲染速度的时候，就在 asyncData 中发请求拿数据
+  // 非页面组件无法使用，在pages的里才可以，子组件想使用只能使用父组件传值
+  // 没有this，因为他是在组件初始化前被调用的
   async asyncData () {
     console.log('asyncData')
     console.log(this)

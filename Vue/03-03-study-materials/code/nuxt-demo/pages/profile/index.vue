@@ -82,6 +82,8 @@
 </template>
 <script>
 export default {
+  middleware:'authenticated',
+  name:"profileIndex",
   data() {
     return {};
   },

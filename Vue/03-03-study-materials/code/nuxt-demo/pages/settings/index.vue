@@ -54,6 +54,8 @@
 </template>
 <script>
 export default {
+  middleware:'authenticated',
+  name:"settingIndex",
   data() {
     return {};
   },

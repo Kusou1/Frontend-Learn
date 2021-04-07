@@ -12,11 +12,51 @@
         <div class="col-md-9">
           <div class="feed-toggle">
             <ul class="nav nav-pills outline-active">
-              <li class="nav-item">
-                <a class="nav-link disabled" href="">Your Feed</a>
+              <li v-if="user" class="nav-item">
+                <nuxt-link
+                  class="nav-link"
+                  :class="{
+                    active: tab === 'your_feed',
+                  }"
+                  exact
+                  :to="{
+                    name: 'home',
+                    query: {
+                      tab: 'your_feed',
+                    },
+                  }"
+                  >Your Feed</nuxt-link
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="">Global Feed</a>
+                <nuxt-link
+                  class="nav-link"
+                  :class="{
+                    active: tab === 'global_feed',
+                  }"
+                  exact
+                  :to="{
+                    name: 'home',
+                  }"
+                  >Global Feed</nuxt-link
+                >
+              </li>
+              <li v-if="tag" class="nav-item">
+                <nuxt-link
+                  class="nav-link"
+                  :class="{
+                    active: tab === 'tag',
+                  }"
+                  exact
+                  :to="{
+                    name: 'home',
+                    query: {
+                      tab: 'tag',
+                      tag: tag,
+                    },
+                  }"
+                  ># {{ tag }}</nuxt-link
+                >
               </li>
             </ul>
           </div>
@@ -49,13 +89,17 @@
                 >
                   {{ article.author.username }}
                 </nuxt-link>
-                <span class="date">{{ article.createdAt }}</span>
+                <span class="date">{{
+                  article.createdAt | date("MMM DD, YYYY")
+                }}</span>
               </div>
               <button
                 class="btn btn-outline-primary btn-sm pull-xs-right"
                 :class="{
                   active: article.favorited,
                 }"
+                @click="onFavorite(article)"
+                :disabled="article.favoriteDisable"
               >
                 <i class="ion-heart"></i> {{ article.favoritesCount }}
               </button>
@@ -114,6 +158,8 @@
                   name: 'home',
                   query: {
                     page: item,
+                    tag: $route.query.tag,
+                    tab: tab,
                   },
                 }"
                 >{{ item }}</nuxt-link
@@ -127,33 +173,73 @@
   </div>
 </template>
 <script>
-import { getArticles } from "@/api/article";
+import {
+  getArticles,
+  getYourFeedArticles,
+  addFavorite,
+  deleteFavorite,
+} from "@/api/article";
 import { getTags } from "@/api/tag";
-
+import { mapState } from "vuex";
 export default {
   name: "HomeIndex",
   async asyncData({ query }) {
     const page = Number.parseInt(query.page || 1);
     const limit = 20;
-    const { data } = await getArticles({
-      limit,
-      offset: (page - 1) * limit,
+    const tab = query.tab || "global_feed";
+    const tag = query.tag;
+    const loadArticles =
+      tab === "global_feed" ? getArticles : getYourFeedArticles;
+
+    const [articleRes, tagRes] = await Promise.all([
+      loadArticles({
+        limit,
+        offset: (page - 1) * limit,
+        tag,
+      }),
+      getTags(),
+    ]);
+
+    const { articles, articlesCount } = articleRes.data;
+    const { tags } = tagRes.data;
+
+    articles.forEach((article) => {
+      article.favoriteDisable = false;
     });
-    const { data: tagData } = await getTags();
+
     return {
-      articles: data.articles,
-      articlesCount: data.articlesCount,
-      limit,
-      page,
-      tags: tagData.tags,
+      articles, // 文章列表
+      articlesCount, // 文章总数
+      tags, // 标签列表
+      limit, // 每页大小
+      page, // 页码
+      tab, // 选项卡
+      tag, // 数据标签
     };
   },
   data() {
     return {};
   },
-  watchQuery: ["page"],
-  methods: {},
+  watchQuery: ["page", "tag", "tab"],
+  methods: {
+    async onFavorite(article) {
+      article.favoriteDisable=true
+      if (article.favorited) {
+        //取消点赞
+        await deleteFavorite(article.slug);
+        article.favorited = false;
+        article.favoritesCount -= 1;
+      } else {
+        //添加点赞
+        await addFavorite(article.slug);
+        article.favorited = true;
+        article.favoritesCount += 1;
+      }
+      article.favoriteDisable=false
+    },
+  },
   computed: {
+    ...mapState(["user"]),
     totalPage() {
       return Math.ceil(this.articlesCount / this.limit);
     },

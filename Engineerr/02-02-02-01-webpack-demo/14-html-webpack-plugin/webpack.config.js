@@ -42,7 +42,8 @@ module.exports = {
     }),
     // 用于生成 about.html
     new HtmlWebpackPlugin({
-      filename: 'about.html'
+      filename: 'about.html',
+      template: './src/index.html'
     })
   ]
 }

@@ -24,7 +24,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           // 'style-loader', // 将样式通过 style 标签注入
-          MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,// 通过link标签的方式注入
           'css-loader'
         ]
       }

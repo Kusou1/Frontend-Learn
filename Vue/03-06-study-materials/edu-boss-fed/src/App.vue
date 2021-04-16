@@ -8,9 +8,10 @@
 
 
 <script lang="ts">
+import Vue from "vue";
 // 1. 编辑器给的类型提示
 // 2. TypeScript 编译期间的类型验证
-import Vue from "vue";
+
 export default Vue.extend({});
 </script>
 

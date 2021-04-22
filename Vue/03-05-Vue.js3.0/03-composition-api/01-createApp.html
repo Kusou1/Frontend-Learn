@@ -35,6 +35,8 @@
         window.removeEventListener('mousemove', update)
       })
 
+      // toRef将对象里面的所有数据都转换成响应式数据
+      
       return toRefs(position)
     }
     //createApp函数用来创建vue对象
@@ -45,6 +47,7 @@
         //第二个参数 context,attrs、emit、slots
         //在 props 解析完毕 组件实例被创建前执行，所以在setup中访问不到组件实例，setup里面的this此时指向undefind
         // const position = useMousePosition()
+        // 解构toRef返回的对象，解构的结果也是响应式的
         const { x, y } = useMousePosition()
         return {
           x,

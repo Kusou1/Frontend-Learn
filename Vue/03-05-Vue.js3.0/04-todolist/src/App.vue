@@ -119,6 +119,8 @@ const useEdit = (remove) => {
   const editTodo = (todo) => {
     beforeEditingText = todo.text;
     editingTodo.value = todo;
+    console.log(todo, editingTodo.value);
+    
   };
   const doneEdit = (todo) => {
     if (!editingTodo.value) return;

@@ -1,0 +1,16 @@
+{
+  "name": "blog-with-gridsome",
+  "private": true,
+  "scripts": {
+    "develop": "gridsome develop",
+    "explore": "gridsome explore",
+    "build": "gridsome build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "@gridsome/source-filesystem": "^0.6.2",
+    "@gridsome/transformer-remark": "^0.6.4",
+    "bootstrap": "^4.6.0",
+    "gridsome": "^0.7.0"
+  }
+}

@@ -102,6 +102,7 @@ const useRemove = (todos) => {
     const index = todos.value.indexOf(todo);
     todos.value.splice(index, 1);
   };
+  //将已完成的待办项删除
   const removeCompleted = () => {
     todos.value = todos.value.filter((todo) => !todo.completed);
   };
@@ -142,6 +143,7 @@ const useEdit = (remove) => {
 
 // 4. 切换待办项完成状态
 const useFilter = (todos) => {
+  
   const allDone = computed({
     get() {
       return !todos.value.filter((todo) => !todo.completed).length;
@@ -194,6 +196,7 @@ const useFilter = (todos) => {
 const useStorage = () => {
   const KEY = "TODOKEYS";
   const todos = ref(storage.getItem(KEY) || []);
+  //当数据改变，调用函数
   watchEffect(() => {
     storage.setItem(KEY, todos.value);
   });

@@ -18,6 +18,8 @@ const routes: Array<RouteConfig> = [
       {
         path: '', // 默认子路由
         name: 'home',
+        //路由懒加载,只有去看他的时候才去加载,不然就会全都打包到同一个chunk里
+        //给这个块一个别名
         component: () => import(/* webpackChunkName: 'home' */ '@/views/home/index.vue')
       },
       {

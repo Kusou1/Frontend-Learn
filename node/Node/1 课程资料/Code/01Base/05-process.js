@@ -1,5 +1,6 @@
-// 1 资源： cpu 内存
-// console.log(process.memoryUsage())
+// 1 资源：内存
+console.log(process.memoryUsage())
+// cpu
 // console.log(process.cpuUsage())
 
 // 2 运行环境：运行目录、node环境、cpu架构、用户环境、系统平台
@@ -17,6 +18,6 @@ console.log(process.platform) */
 console.log(process.argv0)  // execArgv
 console.log(process.pid) */  // ppid 
 
-setTimeout(() => {
-  console.log(process.uptime())
-}, 3000)
+// setTimeout(() => {
+//   console.log(process.uptime())
+// }, 3000)

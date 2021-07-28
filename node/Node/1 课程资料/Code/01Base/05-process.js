@@ -1,5 +1,5 @@
 // 1 资源：内存
-console.log(process.memoryUsage())
+// console.log(process.memoryUsage())
 // cpu
 // console.log(process.cpuUsage())
 
@@ -11,6 +11,7 @@ console.log(process.arch)
 console.log(process.env.NODE_ENV)
 // console.log(process.env.PATH)
 console.log(process.env.USERPROFILE)  // HOME
+/系统平台
 console.log(process.platform) */
 
 // 3 运行状态： 启动参数、PID、运行时间
@@ -18,6 +19,36 @@ console.log(process.platform) */
 console.log(process.argv0)  // execArgv
 console.log(process.pid) */  // ppid 
 
+//运行开始到结束的时间
 // setTimeout(() => {
 //   console.log(process.uptime())
 // }, 3000)
+
+// 4 事件监听
+// process.on('exit', (code) => {
+//     console.log('exit ' + code);
+// })
+// process.on('beforeExit', (code) => {
+//     console.log('beforeExit' + code);
+//     //在里面只能执行同步代码，异步是不支持的
+// })
+// console.log('代码执行完了');
+
+// process.exit()
+
+// // 5 标准输出 输入 错误
+// console.log = function (params) {
+//     process.stdout.write('---' + data + '\n')
+// }
+
+// console.log(11);
+
+// console.log(22);
+
+// const fs = require('fs')
+
+// fs.createReadStream('test.txt')
+//     //输出
+//     .pipe(process.stdout)
+
+process.stdin.pipe(process.stdout)

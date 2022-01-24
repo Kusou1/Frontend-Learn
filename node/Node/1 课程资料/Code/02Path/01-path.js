@@ -42,38 +42,50 @@ console.log(path.extname('/a/b/index.html.js.'))  */
 // const obj = path.parse('/a/b/c/')
 /* const obj = path.parse('./a/b/c/')
 console.log(obj.name) */
+/* 
+{
+    root:'',
+    dir:'',
+    base:'',
+    ext:'',
+    name:''
+}
+*/
 
 // 5 序列化路径
 /* const obj = path.parse('./a/b/c/')
+// 把解析后的路径对象从新组合为路径
 console.log(path.format(obj)) */
 
 // 6 判断当前路径是否为绝对
-/* console.log(path.isAbsolute('foo'))
-console.log(path.isAbsolute('/foo'))
-console.log(path.isAbsolute('///foo'))
-console.log(path.isAbsolute(''))
-console.log(path.isAbsolute('.'))
-console.log(path.isAbsolute('../bar')) */
+/* 
+console.log(path.isAbsolute('foo')) false
+console.log(path.isAbsolute('/foo')) true
+console.log(path.isAbsolute('///foo')) true
+console.log(path.isAbsolute('')) false
+console.log(path.isAbsolute('.')) false
+console.log(path.isAbsolute('../bar')) false */
 
 // 7 拼接路径
-/* console.log(path.join('a/b', 'c', 'index.html'))
-console.log(path.join('/a/b', 'c', 'index.html'))
-console.log(path.join('/a/b', 'c', '../', 'index.html'))
-console.log(path.join('/a/b', 'c', './', 'index.html'))
-console.log(path.join('/a/b', 'c', '', 'index.html'))
-console.log(path.join('')) */
+/* console.log(path.join('a/b', 'c', 'index.html')) a\b\c\index.html
+console.log(path.join('/a/b', 'c', 'index.html')) \a\b\c\index.html
+console.log(path.join('/a/b', 'c', '../', 'index.html')) a\b\index.html
+console.log(path.join('/a/b', 'c', './', 'index.html')) a\b\c\index.html
+console.log(path.join('/a/b', 'c', '', 'index.html'))  a\b\c\index.html
+console.log(path.join('')) . */
 
 // 8 规范化路径
 /* console.log(path.normalize(''))
 console.log(path.normalize('a/b/c/d'))
-console.log(path.normalize('a///b/c../d'))
-console.log(path.normalize('a//\\/b/c\\/d'))
-console.log(path.normalize('a//\b/c\\/d')) */
+console.log(path.normalize('a///b/c../d')) a\b\c..\d
+console.log(path.normalize('a//\\/b/c\\/d')) a\b\c\d
+console.log(path.normalize('a//\b/c\\/d')) a\c\d */
 
 // 9 绝对路径
 // console.log(path.resolve())
 /**
  * resolve([from], to)
  */
+// console.log(path.resolve('/a','/b'))
 // console.log(path.resolve('/a', '../b'))
 console.log(path.resolve('index.html'))

@@ -51,4 +51,15 @@ console.log(process.pid) */  // ppid
 //     //输出
 //     .pipe(process.stdout)
 
+// console.log(process.platform);
+
 process.stdin.pipe(process.stdout)
+
+process.stdin.setEncoding('utf-8')
+
+process.stdin.on('readable',()=>{
+    let chunk = process.stdin.read()
+    if (chunk !== null){
+        process.stdin.write('data ' + chunk)
+    }
+})

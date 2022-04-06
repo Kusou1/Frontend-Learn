@@ -1,4 +1,4 @@
-
+// Buffer的拆分操作
 ArrayBuffer.prototype.split = function (sep) {
   let len = Buffer.from(sep).length
   let ret = []

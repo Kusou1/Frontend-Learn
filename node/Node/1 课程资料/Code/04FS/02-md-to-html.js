@@ -7,7 +7,7 @@ const browserSync = require('browser-sync')
  * 01 读取 md 和 css 内容
  * 02 将上述读取出来的内容替换占位符，生成一个最终需要展的 Html 字符串 
  * 03 将上述的 Html 字符写入到指定的 Html 文件中
- * 04 监听 md 文档内容的变经，然后更新 html 内容 
+ * 04 监听 md 文档内容的变化，然后更新 html 内容 
  * 05 使用 browser-sync 来实时显示 Html 内容
  */
 

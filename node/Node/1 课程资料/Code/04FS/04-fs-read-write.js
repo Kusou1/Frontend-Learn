@@ -1,6 +1,8 @@
 const fs = require('fs')
 
 // read ： 所谓的读操作就是将数据从磁盘文件中写入到 buffer 中
+
+// 缓冲区
 let buf = Buffer.alloc(10)
 
 /**

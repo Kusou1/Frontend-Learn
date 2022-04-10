@@ -8,9 +8,9 @@ let buf = Buffer.alloc(10)
 
 // 01 打开指定的文件
 /* fs.open('a.txt', 'r', (err, rfd) => {
-  // 03 打开 b 文件，用于执行数据写入操作
+  // 02 打开 b 文件，用于执行数据写入操作
   fs.open('b.txt', 'w', (err, wfd) => {
-    // 02 从打开的文件中读取数据
+    // 03 从打开的文件中读取数据
     fs.read(rfd, buf, 0, 10, 0, (err, readBytes) => {
       // 04 将 buffer 中的数据写入到 b.txt 当中
       fs.write(wfd, buf, 0, 10, 0, (err, written) => {
@@ -38,6 +38,8 @@ let buf = Buffer.alloc(10)
 const BUFFER_SIZE = buf.length
 let readOffset = 0
 
+
+// buffer作为缓冲区边读边写
 fs.open('a.txt', 'r', (err, rfd) => {
   fs.open('b.txt', 'w', (err, wfd) => {
     function next () {

@@ -20,7 +20,7 @@ console.log(module) */
   age: 18
 } */
 
-// 四、同步加载
+// 四、同步加载  浏览器平台并不合适，只适用于node
 /* let name = 'lg'
 let iTime = new Date()
 

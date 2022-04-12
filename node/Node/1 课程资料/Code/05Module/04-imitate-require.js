@@ -1,3 +1,5 @@
+//* node模块加载模拟实现 *//
+
 const { dir } = require('console')
 const fs = require('fs')
 const path = require('path')

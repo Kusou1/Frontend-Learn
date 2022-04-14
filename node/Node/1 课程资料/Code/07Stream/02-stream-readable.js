@@ -9,7 +9,9 @@ class MyReadable extends Readable{
     super()
     this.source = source
   }
+  // 只负责定义，并没有去实现
   _read() {
+    // null表示底层数据被读取完
     let data = this.source.shift() || null 
     this.push(data)
   }

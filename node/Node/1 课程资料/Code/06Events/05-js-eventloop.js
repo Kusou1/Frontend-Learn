@@ -18,6 +18,8 @@
 //   })
 // })
 
+// s1 p1 p2 s2 p3 p4
+
 setTimeout(() => {
   console.log('s1')
   Promise.resolve().then(() => {

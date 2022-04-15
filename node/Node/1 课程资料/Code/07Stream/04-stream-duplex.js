@@ -3,6 +3,7 @@ let {Duplex} = require('stream')
 class MyDuplex extends Duplex{
   constructor(source) {
     super()
+    // 给数据源
     this.source = source
   }
   _read() {

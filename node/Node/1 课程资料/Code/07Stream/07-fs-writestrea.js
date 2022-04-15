@@ -4,9 +4,9 @@ const ws = fs.createWriteStream('test.txt', {
   flags: 'w', 
   mode: 438,
   fd: null,
-  encoding: "utf-8",
+  encoding: "utf-8", // 写操作用utf-8的格式
   start: 0,
-  highWaterMark: 3
+  highWaterMark: 3 // 水位线，默认16
 })
 
 let buf = Buffer.from('abc')
@@ -31,7 +31,7 @@ ws.write("2")
   console.log('文件关闭了')
 }) */
 
-// end 执行之后就意味着数据写入操作完成
+// end 执行之后就意味着数据写入操作完成，并在最后执行一次写入
 ws.end('拉勾教育')
 
 

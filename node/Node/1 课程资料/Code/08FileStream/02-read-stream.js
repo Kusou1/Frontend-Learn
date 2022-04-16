@@ -33,6 +33,7 @@ class MyFileReadStream extends EventEmitter{
   }
   read() {
     if (typeof this.fd !== 'number') {
+      // 事件监听，this.read这个方法要执行，就要等到open事件触发后
       return this.once('open', this.read)
     }
 

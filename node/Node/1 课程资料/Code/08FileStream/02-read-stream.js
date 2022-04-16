@@ -27,11 +27,12 @@ class MyFileReadStream extends EventEmitter{
       if (err) {
         this.emit('error', err)
       }
-      this.fd = fd
+      this.fd = fd 
       this.emit('open', fd)
     })
   }
   read() {
+    // 代表数据存储文件的唯一标识
     if (typeof this.fd !== 'number') {
       // 事件监听，this.read这个方法要执行，就要等到open事件触发后
       return this.once('open', this.read)

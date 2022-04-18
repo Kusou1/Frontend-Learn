@@ -1,30 +1,30 @@
 //Proxy代理对象，监视对象读写
-// const person={
-//     name:'zce',
-//     age:20
-// }
+const person={
+    name:'zce',
+    age:20
+}
 
-// const personProxy= new Proxy(person,{
-//     //监视属性的访问
-//     get(target,property){
-//         return property in target ? target[property]:'default'
-//         // console.log(target,property)
-//         // return 100
-//     },
-//     //监视对象设置属性的过程
-//     set(target,property,value){
-//         if (property===age){
-//             if(!Number.isInteger(value)){
-//                 throw new TypeError(`${value} is not an int`)
-//             }
-//         }
-//         // console.log(target, property, value)
-//     }
+const personProxy= new Proxy(person,{
+    //监视属性的访问
+    get(target,property){
+        return property in target ? target[property]:'default'
+        // console.log(target,property)
+        // return 100
+    },
+    //监视对象设置属性的过程
+    set(target,property,value){
+        if (property==='age'){
+            if(!Number.isInteger(value)){
+                throw new TypeError(`${value} is not an int`)
+            }
+        }
+        // console.log(target, property, value)
+    }
 
-// })
+})
 
-// console.log(personProxy.name)
-// personProxy.gender=true
+console.log(personProxy.name)
+personProxy.gender=true
 
 
 //Proxy对比defineProperty()
@@ -44,7 +44,7 @@
 // console.log(person)
 
 //监视数组
-const list=[]
+// const list=[]
 
 const listProxy=new Proxy(list,{
     set(target,property,value){
@@ -54,4 +54,4 @@ const listProxy=new Proxy(list,{
     }
 })
 
-listProxy.push(100)
+// listProxy.push(100)

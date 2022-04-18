@@ -14,6 +14,7 @@ let options = {
   path: '/?a=1', 
   method: 'POST', 
   headers:{
+    // json格式
     // 'Content-type': 'application/json'
     'Content-type': 'application/x-www-form-urlencoded'
   }

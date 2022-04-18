@@ -8,10 +8,10 @@ const server = http.createServer((req, res) => {
   let {pathname, query} = url.parse(req.url, true)
   console.log(pathname, '----', query)
 
-  // 请求方式
+  // 请求方式 get/post
   console.log(req.method)
 
-  // 版本号
+  // http版本号
   // console.log(req.httpVersion)
 
   // 请求头

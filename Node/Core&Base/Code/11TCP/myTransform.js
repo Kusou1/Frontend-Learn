@@ -1,3 +1,4 @@
+// 粘包最终解决方法
 class MyTransformCode{
   constructor() {
     this.packageHeaderLen = 4

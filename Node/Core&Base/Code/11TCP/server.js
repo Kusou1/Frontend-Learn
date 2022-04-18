@@ -1,3 +1,4 @@
+// 粘包最终解决方法
 const net = require('net')
 const MyTransform = require('./myTransform.js')
 

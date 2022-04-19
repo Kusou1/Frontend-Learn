@@ -128,6 +128,8 @@ app.delete('/articles/:id', async (req, res, next) => {
   }
 })
 
+// 统一报错处理
+// 在所有路由的最后面添加
 // 它之前的所有路由中调用 next(err) 就会进入这里
 // 注意：4个参数，缺一不可
 app.use((err, req, res, next) => {

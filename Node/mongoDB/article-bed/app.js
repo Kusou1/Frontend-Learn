@@ -3,7 +3,9 @@ const { MongoClient, ObjectID } = require('mongodb')
 
 const connectUri = 'mongodb://localhost:27017'
 
-const dbClient = new MongoClient(connectUri)
+const dbClient = new MongoClient(connectUri, {
+  useUnifiedTopology: true
+})
 
 const app = express()
 
@@ -16,10 +18,12 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+// 新建文章
 app.post('/articles', async (req, res, next) => {
   try {
     // 1. 获取客户端表单数据
     const { article } = req.body
+    console.log(article)
 
     // 2. 数据验证
     if (!article || !article.title || !article.description || !article.body) {
@@ -53,6 +57,7 @@ app.post('/articles', async (req, res, next) => {
   }
 })
 
+// 获取文章列表
 app.get('/articles', async (req, res, next) => {
   try {
     let { _page = 1, _size = 10 } = req.query
@@ -65,6 +70,7 @@ app.get('/articles', async (req, res, next) => {
       .skip((_page - 1) * _size) // 跳过多少条 10 1 0 2 10 3 20 n
       .limit(_size) // 拿多少条
     const articles = await ret.toArray()
+    // 获取文档中所有的数据条数
     const articlesCount = await collection.countDocuments()
     res.status(200).json({
       articles,
@@ -75,6 +81,7 @@ app.get('/articles', async (req, res, next) => {
   }
 })
 
+// 获取单个文章
 app.get('/articles/:id', async (req, res, next) => {
   try {
     await dbClient.connect()
@@ -92,6 +99,7 @@ app.get('/articles/:id', async (req, res, next) => {
   }
 })
 
+// 更新文章
 app.patch('/articles/:id', async (req, res, next) => {
   try {
     await dbClient.connect()
@@ -104,6 +112,7 @@ app.patch('/articles/:id', async (req, res, next) => {
     })
 
     const article = await await collection.findOne({
+      // 拿到路径中的参数要用params
       _id: ObjectID(req.params.id)
     })
 

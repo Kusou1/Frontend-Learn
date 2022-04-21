@@ -23,15 +23,16 @@ const todos = [
 
 // Express 单独提供了一个内置中间件：托管静态资源
 
-// 访问的时候不要加前缀
+// 访问的时候不要加前缀 直接挂载，public目录里面的文件可以直接去访问，不过访问路径不能带public，因为是直接在public中去找
 // app.use(express.static('./public'))
 
-// 加上访问前缀
+// 加上访问前缀 ，必须以public开头
 // app.use('/public', express.static('./public'))
 // app.use('/foo', express.static('./public'))
 
 // 路径最好是绝对路径
 // app.use('/foo', express.static(
+     // 用path模块拿到当前文件路径
 //   path.join(__dirname, './public'),
 //   {
 //     index: ['index.html']
@@ -48,7 +49,7 @@ const todos = [
 // ))
 
 // 托管多个静态资源目录
-// 资源托管顺序问题
+// 资源托管顺序问题 优先匹配前面的
 // app.use('/node_modules', express.static('./node_modules'))
 // app.use('/public', express.static('./public'))
 

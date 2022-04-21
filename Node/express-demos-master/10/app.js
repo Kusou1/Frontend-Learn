@@ -4,6 +4,7 @@
 
 const express = require('express')
 const fs = require('fs')
+// 模版引擎
 const template = require('art-template')
 const path = require('path')
 
@@ -12,9 +13,9 @@ const app = express()
 // view engine setup
 app.engine('html', require('express-art-template')) // 当渲染以 .art 结尾的资源文件的时候使用 express-art-template
 app.set('view options', { // art-template 模板引擎配置
-  debug: process.env.NODE_ENV !== 'production'
+  debug: process.env.NODE_ENV !== 'production' // 开发模式开启
 })
-app.set('views', path.join(__dirname, 'views')) // 模板文件的存储目录
+app.set('views', path.join(__dirname, 'views')) // 模板文件的存储目录 默认查找目录
 app.set('view engine', 'html') // 可以省略的模板文件后缀名
 
 const todos = [

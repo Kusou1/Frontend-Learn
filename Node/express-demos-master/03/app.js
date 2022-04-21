@@ -3,11 +3,14 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
+  // req请求对象
   console.log(req.url) // 请求地址
   console.log(req.method) // 请求方法
   console.log(req.headers) // 请求头
   console.log('请求参数', req.query)
 
+
+  // 响应对象
   // 设置响应状态码
   // res.statusCode = 201
 

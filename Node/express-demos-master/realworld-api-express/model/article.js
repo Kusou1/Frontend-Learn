@@ -26,6 +26,7 @@ const articleSchema = new mongoose.Schema({
   },
   author: {
     type: Schema.Types.ObjectId,
+    // 属于User
     ref: 'User',
     required: true
   }

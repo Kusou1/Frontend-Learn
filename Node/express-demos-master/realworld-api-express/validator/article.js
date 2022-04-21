@@ -38,6 +38,7 @@ exports.updateArticle = [
     next()
   },
   async (req, res, next) => {
+    // 判断当前登陆用户是否是作者
     if (req.user._id.toString() !== req.article.author.toString()) {
       return res.status(403).end()
     }
@@ -45,4 +46,5 @@ exports.updateArticle = [
   }
 ]
 
+// 和更新文章的验证一样
 exports.deleteArticle = exports.updateArticle

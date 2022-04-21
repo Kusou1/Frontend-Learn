@@ -19,7 +19,7 @@ app.get('/user/:id', logStuff, function (req, res, next) {
 })
 
 // app.get('/user/:id', function (req, res, next) {
-//   // if the user ID is 0, skip to the next route
+//   // if the user ID is 0, skip to the next route   next('route')
 //   if (req.params.id === '0') next('route')
 //   // otherwise pass the control to the next middleware function in this stack
 //   else next()
@@ -65,7 +65,7 @@ app.get('/user/:id', logStuff, function (req, res, next) {
 //   res.send('get /user/:id')
 // })
 
-// 限定请求路径
+// 限定请求路径 只有/user/:id才会匹配到
 // app.use('/user/:id', function (req, res, next) {
 //   console.log('Request Type:', req.method)
 //   next()

@@ -11,7 +11,7 @@ router.post('/users/login', userValidator.login, userCtrl.login)
 // 用户注册
 router.post('/users', userValidator.register, userCtrl.register)
 
-// 获取当前登录用户
+// 获取当前登录用户 auth中间件验证token
 router.get('/user', auth, userCtrl.getCurrentUser)
 
 // 更新当前登录用户

@@ -23,12 +23,14 @@ exports.getArticles = async (req, res, next) => {
       filter.author = user ? user._id : null
     }
 
+    // 将filter传入find，通过条件查询
     const artilces = await Article.find(filter)
+      // populate 联表查询，填充数据，通过author的id拿到完整的author信息
       .populate('author')
       .skip(Number.parseInt(offset)) // 跳过多少条
       .limit(Number.parseInt(limit)) // 取多少条
       .sort({
-        // -1 倒叙，1 升序
+        // -1 倒叙，1 升序  按创建时间倒序排，最新的放最前面
         createdAt: -1
       })
 
@@ -74,6 +76,7 @@ exports.createArticle = async (req, res, next) => {
     // 处理请求
     const article = new Article(req.body.article)
     article.author = req.user._id
+    // 通过mongoose的populate方法，将user._id传给User拿到完整的user返回出去，存到数据库里的还是id
     article.populate('author').execPopulate()
     await article.save()
     res.status(201).json({
@@ -105,6 +108,7 @@ exports.updateArticle = async (req, res, next) => {
 exports.deleteArticle = async (req, res, next) => {
   try {
     const article = req.article
+    // mongoose 中 remove删除文档
     await article.remove()
     res.status(204).end()
   } catch (err) {

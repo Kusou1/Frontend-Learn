@@ -7,6 +7,7 @@ const myLogger = (req) => {
 }
 
 app.use((req, res, next) => {
+  // use中写的，每个请求进来都会进去，任何请求都会被匹配到
   console.log('hello')
   // res.send('hello')
   next()
@@ -34,7 +35,7 @@ app.use((req, res, next) => {
 //   }
 
 //   console.log(req.method, req.url, Date.now())
-//   // 交出执行权，往后继续匹配执行
+//   // 交出执行权，往后继续匹配执行,调用next
 //   next()
 // })
 

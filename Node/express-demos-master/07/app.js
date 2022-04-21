@@ -12,10 +12,10 @@ app.use(express.urlencoded())
 // 挂载路由
 // app.use(router)
 
-// 给路由限定访问前缀
+// 给路由限定访问前缀 /todos
 app.use('/todos', router)
 
-// 在所有的中间件之后挂载错误处理中间件
+// 在所有的中间件之后挂载错误处理中间件,作为错误处理中间件， 四个参数缺一不可
 app.use((err, req, res, next) => {
   console.log('错误', err)
   res.status(500).json({

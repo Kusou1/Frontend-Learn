@@ -16,6 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     set: value => md5(value),
+    // 去数据库查询就不会显示password了
     select: false
   },
   bio: {

@@ -22,7 +22,8 @@ router.get('/', async (req, res, next) => {
     
     // next('route') 往后匹配当前中间件堆栈中的下一个
     
-    next(err) // 跳过所有剩余的无错误处理路由和中间件函数。
+    // 一定要把err传入
+    next(err) // 跳过所有剩余的无错误处理路由和中间件函数，然后被错误处理匹配到。
 
     // res.status(500).json({
     //   error: err.message

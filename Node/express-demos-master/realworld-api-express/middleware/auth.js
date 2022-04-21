@@ -14,6 +14,7 @@ module.exports = async (req, res, next) => {
   }
 
   try {
+    // 验证token是否有效，如果有过期时间，也会认证是否超过过期时间，如果超过，也无效
     const decodedToken = await verify(token, jwtSecret)
     req.user = await User.findById(decodedToken.userId)
     next()

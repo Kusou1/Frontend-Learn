@@ -34,6 +34,7 @@ exports.login = [
   ]),
   validate([
     body('user.email').custom(async (email, { req }) => {
+      // select手动再将password返回
       const user = await User.findOne({ email })
         .select(['email', 'username', 'bio', 'image', 'password'])
       if (!user) {

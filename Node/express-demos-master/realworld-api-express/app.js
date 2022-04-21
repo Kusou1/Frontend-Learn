@@ -5,12 +5,15 @@ const router = require('./router')
 const errorHandler = require('./middleware/error-handler')
 require('./model')
 
+// 解析请求体
 const app = express()
 
+// 日志输出
 app.use(morgan('dev'))
 
 app.use(express.json())
 
+// 为客户端提供跨域资源请求
 app.use(cors())
 
 const PORT = process.env.PORT || 3000

@@ -4,7 +4,7 @@ const { getDb, saveDb } = require('./db')
 
 const app = express()
 
-// 配置解析表单请求体：application/json
+// 配置解析表单请求体json格式：application/json,不然就拿不到请求体
 app.use(express.json())
 
 // 解析表单请求体：application/x-www-form-urlencoded
@@ -24,7 +24,7 @@ app.get('/todos', async (req, res) => {
 app.get('/todos/:id', async (req, res) => {
   try {
     const db = await getDb()
-  
+    
     const todo = db.todos.find(todo => todo.id === Number.parseInt(req.params.id))
 
     if (!todo) {
@@ -80,6 +80,7 @@ app.patch('/todos/:id', async (req, res) => {
       return res.status(404).end()
     }
 
+    // 把todo里的数据合并ret，没有就新增，有就覆盖
     Object.assign(ret, todo)
 
     await saveDb(db)

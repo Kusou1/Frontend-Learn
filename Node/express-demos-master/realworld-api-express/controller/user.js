@@ -11,6 +11,7 @@ exports.login = async (req, res, next) => {
     const token = await jwt.sign({
       userId: user._id
     }, jwtSecret, {
+      // 过期时间
       expiresIn: 60 * 60 * 24
     })
 
@@ -29,10 +30,17 @@ exports.login = async (req, res, next) => {
 exports.register = async (req, res, next) => {
   try {
     let user = new User(req.body.user)
+    // 2.数据验证
+    // 2.1 基本数据验证
+    // 2.2 业务数据验证
+
+    // 3. 验证通过，将数据保存到数据库
+    // 不过mongose的验证只有触发数据库交互时才会触发，有些时候就不好用
     await user.save()
 
     user = user.toJSON()
-
+    
+    // 保存后不让返回中有user.password
     delete user.password
 
     res.status(201).json({

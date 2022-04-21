@@ -1,0 +1,98 @@
+{{extend './layout/layout.html'}}
+
+{{block 'body'}}
+<div class="auth-page" id="login">
+  <div class="container page">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <h1 class="text-xs-center">{{ isLogin ? 'Sign in' : 'Sign up' }}</h1>
+        <p class="text-xs-center">
+          {{ if isLogin }}
+          <a href="/register">Need an account?</a>
+          {{ else }}
+          <a href="/login">Have an account?</a>
+          {{ /if }}
+        </p>
+
+        <ul class="error-messages">
+          <li v-for="(error, index) in errors" :key="index">
+            {% error.msg %}
+          </li>
+        </ul>
+
+        <!-- 
+          传统的 Web 应用中表单提交有两种方式：
+            同步提交（早期的 Web 常用的方式）
+              Content-Type: application/x-www-form-urlencoded
+            异步提交（随着 Ajax 的诞生大量使用）
+              jQuery + 客户端模板引擎
+              Vue.js 当做一个库来使用
+         -->
+        <!-- <form action="/register" method="POST"> -->
+        <form @submit.prevent="handleSubmit">
+          {{if !isLogin }}
+          <fieldset class="form-group">
+            <input v-model="user.username" class="form-control form-control-lg" type="text" placeholder="Your Name" name="username">
+          </fieldset>
+          {{/if}}
+          <fieldset class="form-group">
+            <input v-model="user.email" class="form-control form-control-lg" type="text" placeholder="Email" name="email">
+          </fieldset>
+          <fieldset class="form-group">
+            <input v-model="user.password" class="form-control form-control-lg" type="password" placeholder="Password" name="password">
+          </fieldset>
+          <button class="btn btn-lg btn-primary pull-xs-right">
+            {{ isLogin ? 'Sign in' : 'Sign up' }}
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+{{/block}}
+
+{{block 'script'}}
+<script>
+;(() => {
+  const app = new Vue({
+    el: '#login',
+    data: {
+      user: {
+        username: '',
+        email: '',
+        password: ''
+      },
+      errors: []
+    },
+    methods: {
+      async handleSubmit () {
+        // 1. 客户端表单验证
+        // 2. 验证通过，提交表单
+        try {
+          // axios 默认提交的数据格式 application/json
+          const url = window.location.pathname === '/login'
+            ? '/login'
+            : '/register'
+          
+          const { data } = await axios.post(url, {
+            user: this.user
+          })
+
+          // 清除错误信息
+          this.errors = []
+          
+          // 跳转到首页
+          window.location.href = '/'
+        } catch (err) {
+          if (err.response.status === 400) {
+            this.errors = err.response.data.errors
+          }
+        }
+      }
+    }
+  })
+})()
+</script>
+{{/block}}

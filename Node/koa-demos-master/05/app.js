@@ -23,6 +23,8 @@ app.use(async (ctx, next) => {
   }
 })
 
+
+// 在最外层添加异常捕获中间件   由于如果后续的操作是异步的话，同步的就没法捕获到异常，建议所有捕获异常中间件都用async await
 app.use(async (ctx, next) => {
   JSON.parse('{}')
   // ctx.body = 'Hello Koa'

@@ -31,8 +31,10 @@ const resolvers = {
   }
 }
 
+// 创建apollo实例
 const server = new ApolloServer({ typeDefs, resolvers })
 
+// 默认localhost:4000
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`)
 })

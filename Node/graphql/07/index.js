@@ -69,7 +69,7 @@ const resolvers = {
     }
   },
   Library: {
-    // 这些解析器按上述顺序执行，并将其返回值通过父参数传递给链中的下一个解析器。
+    // 这些解析器按上述顺序执行，并将其返回值通过父参数parent传递给链中的下一个解析器。
     books(parent, args, context) {
       console.log(context)
       // Filter the hardcoded array of books to only include

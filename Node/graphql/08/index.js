@@ -6,6 +6,7 @@ const Users = require('./data-sources/user')
 // 1. 定义 schema
 const typeDefs = gql`
   type User {
+    # mongoose中的id默认命名为_id，所以这里统一
     _id: ID!,
     name: String!,
     age: Int

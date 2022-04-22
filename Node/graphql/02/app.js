@@ -1,5 +1,6 @@
 const { buildSchema } = require('graphql')
 const express = require('express')
+// 和express结合使用
 const { graphqlHTTP } = require('express-graphql')
 const cors = require('cors')
 
@@ -26,11 +27,11 @@ const rootValue = {
   }
 }
 
-// 3. 挂载 GraphQL 中间件
+// 3. 挂载 GraphQL 中间件 
 app.use('/graphql', graphqlHTTP({
   schema,
   rootValue,
-  graphiql: true // 开启浏览器 GraphQL IDE 调试工具
+  graphiql: true // 开启浏览器 GraphQL IDE 调试工具 http://localhost:4000/graphql/
 }))
 
 // 4. 启动 Web 服务

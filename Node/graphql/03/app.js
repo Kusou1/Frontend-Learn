@@ -20,10 +20,12 @@ const schema = buildSchema(`
     FEMALE
   }
 
+  # 对象类型，普通对象，和Query不一样，不是查询入口点
   type User {
     name: String
     age: Int
-    hobbies: [String!]!
+    # 数组类型   
+    hobbies: [String!]!  
     scores: [Score]
     gender: Gender
   }
@@ -36,16 +38,19 @@ const schema = buildSchema(`
 
   # Query 严格来说是一种对象类型
   # Query 是所有查询的入口点
-  # Query 必须有，并且不能重复
+  # Query 必须有，并且不能重复，没有就会报错
   type Query {
-    # 默认情况，每个类型都是可以为空的
+    # 默认情况，每个类型都是可以为空的   !可以代表非空类型，里面返回的不能为空
     # 在类型后面加 ! 表示该字段不能为 null
-    # foo: String
+    # foo: String 标量类型
     foo: String!
-    count: Int
-    salary: Float
+    # 整数
+    count: Int 
+    # 既可以是小数也可以是整数
+    salary: Float 
     isGood: Boolean
-    userId: ID
+    # 也是类型，唯一标识符，必须是唯一的
+    userId: ID 
     user: User
     article: Article
   }

@@ -55,7 +55,8 @@ const resolvers = {
     numberSeven() {
       return 7
     },
-    // args: 客户端的查询参数
+    // args: 客户端的查询参数，   
+    // 一共有四个参数
     user(parent, args, context, info) {
       console.log(args)
       return users.find(user => user.id === args.id);
@@ -63,8 +64,10 @@ const resolvers = {
   }
 }
 
+// 创建express实例
 const app = express()
 
+// 创建apolloServer实例
 const server = new ApolloServer({ typeDefs, resolvers })
 
 // 将 Apollo-server 和 express 集合到一起

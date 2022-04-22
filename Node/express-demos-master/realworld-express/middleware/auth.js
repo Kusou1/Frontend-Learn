@@ -5,7 +5,7 @@ module.exports = async (req, res, next) => {
     return next()
   }
 
-  // 重定向到登录页
+  // 未登陆的时候，重定向到登录页
   // 302 Location /login
   res.redirect('/login')
 }

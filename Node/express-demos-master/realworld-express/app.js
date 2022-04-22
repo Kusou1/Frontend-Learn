@@ -7,6 +7,7 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const { sessionSecret } = require('./config/config.default')
 const mongoose = require('mongoose')
+// 配置中间件
 require('./model')
 
 const app = express()
@@ -32,7 +33,7 @@ app.use(session({
 
 // 确保挂载到 Session 初始化配置后
 app.use((req, res, next) => {
-  // 统一给模板添加数据
+  // 统一给模板添加数据 app.locals 这样所有的模板都有sessionUser了
   app.locals.sessionUser = req.session.user
   next()
 })

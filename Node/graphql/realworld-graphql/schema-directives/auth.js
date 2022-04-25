@@ -1,9 +1,11 @@
 const { SchemaDirectiveVisitor, AuthenticationError } = require('apollo-server-express')
+// 如果这个字段有自己的resolve就拿出来
 const { defaultFieldResolver } = require('graphql')
 const { jwtSecret } = require('../config/config.default')
 const jwt = require('../util/jwt')
 
 class AuthDirective extends SchemaDirectiveVisitor {
+  // field自定义字段
   visitFieldDefinition(field) {
     // 把字段本身的 resolve 函数备份一下
     const { resolve = defaultFieldResolver } = field

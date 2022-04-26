@@ -13,6 +13,8 @@ const resolvers = {
     currentUser (parent, args, context, info) {
       // 校验当前登录状态
       // 具体的操作
+      // 获取当前登陆用户的信息
+      // context在新建apolloServer时传入
       return context.user
     }
   },
@@ -21,11 +23,14 @@ const resolvers = {
     async createUser (parent, { user }, { dataSources }) {
       // 判断用户是否存在
       const users = dataSources.users
+      // 判断邮箱是否被注册
       const user1 = await users.findByEmail(user.email)
       if (user1) {
+        // UserInputError  apollo自带方法，返回一个用户输入错误
         throw new UserInputError('邮箱已存在')
       }
 
+      // 判断用户名是否被注册
       const user2 = await users.findByUsername(user.username)
       if (user2) {
         throw new UserInputError('用户已存在')
@@ -51,6 +56,9 @@ const resolvers = {
     },
 
     async login (parent, { user }, { dataSources }) {
+      // 密码是否正确
+      // 生成用户 token
+      // 发送成功响应
       const userData = await dataSources.users.findByEmail(user.email)
       if (!userData) {
         throw new UserInputError('邮箱不存在')
@@ -72,10 +80,6 @@ const resolvers = {
           token
         }
       }
-
-      // 密码是否正确
-      // 生成用户 token
-      // 发送成功响应
     },
 
     async updateUser (parent, { user: userInput }, { user, dataSources }) {

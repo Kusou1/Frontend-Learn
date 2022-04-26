@@ -5,6 +5,7 @@ const AuthCaseDirective = require('./schema-directives/auth')
 const userResolvers = require('./resolvers/user')
 const articleResolvers = require('./resolvers/article')
 
+// 合并
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers: [userResolvers, articleResolvers],

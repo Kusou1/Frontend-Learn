@@ -10,6 +10,7 @@ const server = new ApolloServer({
   dataSources,
   // 所有的 GraphQL 查询都会经过这里
   context ({ req }) {
+    // 将req请求头中的当前用户token传入GraphQL的全局对象
     const token = req.headers['authorization']
     return {
       token

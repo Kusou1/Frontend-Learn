@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title>用户测试用例</title>
+  <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.3/skins/default/aliplayer-min.css" />
+  <script charset="utf-8" type="text/javascript"
+    src="https://g.alicdn.com/de/prismplayer/2.9.3/aliplayer-min.js"></script>
+</head>
+
+<body>
+  <div class="prism-player" id="J_prismPlayer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
+  <script>
+    function GetVideoPlayAuth(videoId) {
+      return axios.get('http://localhost:7001/api/v1/vod/GetVideoPlayAuth', {
+        params: {
+          VideoId: videoId
+        }
+      })
+    }
+
+    function initPlayer(authInfo) {
+      var player = new Aliplayer({
+        id: 'J_prismPlayer',
+        width: '800px',
+        autoplay: false,
+        //支持播放地址播放,此播放优先级最高
+        // source: '播放url',
+
+        //播放方式二：点播用户推荐
+        vid: authInfo.VideoMeta.VideoId,
+        playauth: authInfo.PlayAuth,
+        cover: authInfo.VideoMeta.CoverURL,
+        encryptType: 1, //当播放私有加密流时需要设置。
+
+        //播放方式三：仅MPS用户使用
+        // vid: '1e067a2831b641db90d570b6480fbc40',
+        // accId: 'dd',
+        // accSecret: 'dd',
+        // stsToken: 'dd',
+        // domainRegion: 'dd',
+        // authInfo: 'dd',
+
+        //播放方式四：使用STS方式播放
+        // vid: '1e067a2831b641db90d570b6480fbc40',
+        // accessKeyId: 'dd',
+        // securityToken: 'dd',
+        // accessKeySecret: 'dd',
+        // region: 'cn-shanghai',//eu-central-1,ap-southeast-1
+      }, function (player) {
+        console.log('播放器创建好了。')
+      });
+    }
+
+    async function main() {
+      const { data } = await GetVideoPlayAuth('342a1e9494cc4937936810eaef7c0a91')
+      initPlayer(data)
+    }
+
+    main()
+  </script>
+</body>
+
+</html>

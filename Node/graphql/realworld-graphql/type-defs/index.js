@@ -1,6 +1,7 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
+  # 导入自定义指令
   directive @upper on FIELD_DEFINITION
   directive @auth on FIELD_DEFINITION
 
@@ -24,7 +25,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    # foo: String @upper
+    # foo: String @upper @自定义指令
     foo: String @auth @upper
     currentUser: User @auth
     articles(offset: Int = 0, limit: Int = 2): ArticlesPayload

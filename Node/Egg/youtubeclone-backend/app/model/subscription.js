@@ -3,12 +3,12 @@ module.exports = app => {
   const Schema = mongoose.Schema
 
   const subscriptionSchema = new Schema({
-    user: { // 订阅用户
+    user: { // 订阅用户的id
       type: mongoose.ObjectId,
       ref: 'User',
       required: true
     },
-    channel: { // 订阅频道
+    channel: { // 订阅频道的id
       type: mongoose.ObjectId,
       ref: 'User',
       required: true

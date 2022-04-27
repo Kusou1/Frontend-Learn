@@ -12,7 +12,7 @@ module.exports = app => {
       ref: 'User',
       required: true
     },
-    video: { // 评论视频
+    video: { // 评论所属视频的id
       type: mongoose.ObjectId,
       ref: 'Video',
       required: true

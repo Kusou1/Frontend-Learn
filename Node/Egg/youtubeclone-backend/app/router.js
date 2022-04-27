@@ -2,7 +2,7 @@ module.exports = app => {
   const { router, controller } = app
   const auth = app.middleware.auth()
 
-  router.prefix('/api/v1') // 设置基础路径
+  router.prefix('/api/v1') // 设置基础路径，这样每个路由都以/api/v1开头
 
   router.get('/', controller.home.index)
 
@@ -11,7 +11,7 @@ module.exports = app => {
     .post('/users/login', controller.user.login) // 用户登录
     .get('/user', auth, controller.user.getCurrentUser) // 获取当前登录用户
     .patch('/user', auth, controller.user.update) // 更新当前登录用户
-    .get('/users/:userId', app.middleware.auth({ required: false }), controller.user.getUser) // 获取用户资料
+    .get('/users/:userId', app.middleware.auth({ required: false }), controller.user.getUser) // 获取用户资料 auth required false，没有token也没事
     .post('/users/:userId/subscribe', auth, controller.user.subscribe) // 添加用户订阅
     .delete('/users/:userId/subscribe', auth, controller.user.unsubscribe) // 取消用户订阅
     .get('/users/:userId/subscriptions', controller.user.getSubscriptions) // 获取用户订阅列表

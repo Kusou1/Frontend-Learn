@@ -16,6 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1611716016238_6422'
 
   // add your middleware config here
+  // 所有的请求都会经过这个中间件
   config.middleware = ['errorHandler']
 
   // add your user config here
@@ -34,6 +35,7 @@ module.exports = appInfo => {
     }
   }
 
+  // 关闭csrf
   config.security = {
     csrf: {
       enable: false

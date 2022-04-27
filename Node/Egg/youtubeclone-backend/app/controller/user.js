@@ -3,15 +3,20 @@ const Controller = require('egg').Controller
 class UserController extends Controller {
   async create () {
     // 1. 数据校验
+
+    // 获取请求体
     const body = this.ctx.request.body
     this.ctx.validate({
+      // egg自带的校验， 校验参数类型，默认必填项
       username: { type: 'string' },
       email: { type: 'email' },
       password: { type: 'string' }
     })
 
     const userService = this.service.user
+    
 
+    // 异常处理 如果查到的已存在，则报错
     if (await userService.findByUsername(body.username)) {
       this.ctx.throw(422, 'Validation Failed', {
         errors: [
@@ -68,6 +73,7 @@ class UserController extends Controller {
     const userService = this.service.user
     const user = await userService.findByEmail(body.email)
 
+    // 用户不存在
     if (!user) {
       this.ctx.throw(422, 'Validation Failed', {
         errors: [
@@ -114,6 +120,8 @@ class UserController extends Controller {
     // 1. 验证 token
     // 2. 获取用户
     // 3. 发送响应
+
+    // ctx.user从auth中间件返回的数据中获取
     const user = this.ctx.user
     this.ctx.body = {
       user: {
@@ -130,6 +138,7 @@ class UserController extends Controller {
     // 1. 基本数据验证
     const body = this.ctx.request.body
     this.ctx.validate({
+      // 非必填参数
       email: { type: 'email', required: false },
       password: { type: 'string', required: false },
       username: { type: 'string', required: false },
@@ -171,6 +180,7 @@ class UserController extends Controller {
     const userId = this.ctx.user._id
     const channelId = this.ctx.params.userId
     // 1. 用户不能订阅自己
+    // mongoose objeatId对象方法equals判断是否相等，专门比对objeatId
     if (userId.equals(channelId)) {
       this.ctx.throw(422, '用户不能订阅自己')
     }
@@ -181,6 +191,7 @@ class UserController extends Controller {
     // 3. 发送响应
     this.ctx.body = {
       user: {
+        // loadsh的pick方法，选择要的对象字段
         ...this.ctx.helper._.pick(user, [
           'username',
           'email',
@@ -221,6 +232,7 @@ class UserController extends Controller {
     }
   }
 
+  // 获取用户
   async getUser () {
     // 1. 获取订阅状态
     let isSubscribed = false
@@ -230,13 +242,14 @@ class UserController extends Controller {
         user: this.ctx.user._id,
         channel: this.ctx.params.userId
       })
+      // 如果有记录，则订阅了
       if (record) {
         isSubscribed = true
       }
     }
     // 2. 获取用户信息
     const user = await this.app.model.User.findById(this.ctx.params.userId)
-    // 3. 发送响应
+    // 3. 发送响应 发送给客户端
     this.ctx.body = {
       user: {
         ...this.ctx.helper._.pick(user, [
@@ -252,11 +265,12 @@ class UserController extends Controller {
     }
   }
 
+  // 获取订阅的频道列表
   async getSubscriptions () {
     const Subscription = this.app.model.Subscription
     let subscriptions = await Subscription.find({
       user: this.ctx.params.userId
-    }).populate('channel')
+    }).populate('channel') //映射channel
     subscriptions = subscriptions.map(item => {
       return this.ctx.helper._.pick(item.channel, [
         '_id',

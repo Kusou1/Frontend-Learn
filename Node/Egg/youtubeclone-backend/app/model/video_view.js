@@ -3,12 +3,12 @@ module.exports = app => {
   const Schema = mongoose.Schema
 
   const viewSchema = new Schema({
-    user: { // 用户
+    user: { // 观看视频的用户id
       type: mongoose.ObjectId,
       ref: 'User',
       required: true
     },
-    video: { // 视频
+    video: { // 观看视频的id
       type: mongoose.ObjectId,
       ref: 'Video',
       required: true

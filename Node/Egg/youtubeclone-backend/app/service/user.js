@@ -1,21 +1,25 @@
 const Serive = require('egg').Service
 const jwt = require('jsonwebtoken')
 
+// 继承自egg的service
 class UserService extends Serive {
+  // 属性访问器
   get User () {
     return this.app.model.User
   }
 
+  // 通过 username查询
   findByUsername (username) {
     return this.User.findOne({
       username
     })
   }
 
+  // 通过 email查询
   findByEmail (email) {
     return this.User.findOne({
       email
-    }).select('+password')
+    }).select('+password') //把password也返回
   }
 
   async createUser (data) {
@@ -27,6 +31,7 @@ class UserService extends Serive {
 
   createToken (data) {
     const token = jwt.sign(data, this.app.config.jwt.secret, {
+      // 过期时间
       expiresIn: this.app.config.jwt.expiresIn
     })
     return token

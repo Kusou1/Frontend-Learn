@@ -1,7 +1,9 @@
+// 错误处理中间件
 module.exports = () => { // 外层函数负责接收参数
   // 返回一个中间件处理函数
   return async function errorHandler (ctx, next) {
     try {
+      // 没有异常则next，有异常则进入catch
       await next()
     } catch (err) {
       // 所有的异常都在 app 上触发一个 error 事件，框架会记录一条错误日志

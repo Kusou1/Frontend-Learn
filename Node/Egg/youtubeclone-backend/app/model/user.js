@@ -13,7 +13,7 @@ module.exports = app => {
     },
     password: { // 密码
       type: String,
-      select: false, // 查询中不包含该字段
+      select: false, // 默认查询中不包含该字段
       required: true
     },
     avatar: { // 头像
@@ -28,7 +28,7 @@ module.exports = app => {
       type: String,
       default: null
     },
-    subscribersCount: {
+    subscribersCount: { // 订阅用户数
       type: Number,
       default: 0
     },

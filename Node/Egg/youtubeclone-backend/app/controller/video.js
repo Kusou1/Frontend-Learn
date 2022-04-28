@@ -14,6 +14,7 @@ class VideoController extends Controller {
     // 默认视频封面
     body.cover = 'http://vod.lipengzhou.com/image/default/A806D6D6B0FD4D118F1C824748826104-6-2.png'
 
+    // 视频所属用户的id
     body.user = this.ctx.user._id
     const video = await new Video(body).save()
     this.ctx.status = 201
@@ -45,6 +46,7 @@ class VideoController extends Controller {
     setVideoCover(video)
   }
 
+  // 获取单个视频
   async getVideo () {
     const { Video, VideoLike, Subscription } = this.app.model
     const { videoId } = this.ctx.params
@@ -78,7 +80,9 @@ class VideoController extends Controller {
     }
   }
 
+  // 获取视频列表
   async getVideos () {
+    // video的model
     const { Video } = this.app.model
     let { pageNum = 1, pageSize = 10 } = this.ctx.query
     pageNum = Number.parseInt(pageNum)
@@ -102,6 +106,7 @@ class VideoController extends Controller {
     }
   }
 
+  // 获得用户上传的视频列表
   async getUserVideos () {
     const { Video } = this.app.model
     let { pageNum = 1, pageSize = 10 } = this.ctx.query
@@ -110,7 +115,7 @@ class VideoController extends Controller {
     pageSize = Number.parseInt(pageSize)
     const getVideos = Video
       .find({
-        user: userId
+        user: userId // 通过id查找
       })
       .populate('user')
       .sort({
@@ -131,6 +136,7 @@ class VideoController extends Controller {
     }
   }
 
+  // 获取用户订阅的视频列表
   async getUserFeedVideos () {
     const { Video, Subscription } = this.app.model
     let { pageNum = 1, pageSize = 10 } = this.ctx.query
@@ -138,11 +144,13 @@ class VideoController extends Controller {
     pageNum = Number.parseInt(pageNum)
     pageSize = Number.parseInt(pageSize)
 
+     // 用户订阅的channel
     const channels = await Subscription.find({ user: userId }).populate('channel')
+    // 通过channel id列表拿到视频列表
     const getVideos = Video
       .find({
         user: {
-          $in: channels.map(item => item.channel._id)
+          $in: channels.map(item => item.channel._id) // channel id列表
         }
       })
       .populate('user')
@@ -203,6 +211,7 @@ class VideoController extends Controller {
     }
   }
 
+  // 删除视频
   async deleteVideo () {
     const { Video } = this.app.model
     const { videoId } = this.ctx.params
@@ -260,6 +269,7 @@ class VideoController extends Controller {
     }
   }
 
+  // 获取视频评论
   async getVideoComments () {
     const { videoId } = this.ctx.params
     const { VideoComment } = this.app.model
@@ -291,6 +301,7 @@ class VideoController extends Controller {
     }
   }
 
+  // 删除视频评论
   async deleteVideoComment () {
     const { Video, VideoComment } = this.app.model
     const { videoId, commentId } = this.ctx.params
@@ -325,6 +336,7 @@ class VideoController extends Controller {
     this.ctx.status = 204
   }
 
+  // 操作视频喜欢状态
   async likeVideo () {
     const { Video, VideoLike } = this.app.model
     const { videoId } = this.ctx.params

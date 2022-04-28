@@ -1,6 +1,7 @@
 const Controller = require('egg').Controller
 
 class VodController extends Controller {
+  // 获得视频上传凭证
   async createUploadVideo () {
     const query = this.ctx.query
     console.log(query)

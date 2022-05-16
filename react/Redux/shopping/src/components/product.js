@@ -5,6 +5,7 @@ import * as productActions from "../store/actions/product.actions";
 import * as cartActions from '../store/actions/cart.actions';
 
 class Product extends Component {
+  // 组间被挂载的生命周期函数
   componentDidMount() {
     const { loadProducts } = this.props;
     // 向服务器端发送请求 获取商品列表数据
@@ -39,10 +40,12 @@ class Product extends Component {
   }
 }
 
+// 将State放入Prop
 const mapStateToProps = (state) => ({
   products: state.products,
 });
 
+// 将Dispatch放入Prop
 const mapDispatchToProps = (dispatch) => ({
   ...bindActionCreators(productActions, dispatch),
   ...bindActionCreators(cartActions, dispatch)

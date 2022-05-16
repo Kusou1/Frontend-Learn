@@ -10,9 +10,9 @@ function createStore (reducer, preloadedState, enhancer) {
   }
   // 状态
   var currentState = preloadedState;
-  // 订阅者
+  // 存放 订阅者
   var currentListeners = [];
-  // 获取状态
+  // 获取状态  闭包的形式，拿到当前function中的状态，这个状态就不会被释放掉了 
   function getState () {
     return currentState;
   }

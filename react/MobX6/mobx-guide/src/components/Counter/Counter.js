@@ -6,6 +6,7 @@ import { useEffect } from "react"
 function Counter() {
   const { counterStore } = useRootStore()
   useEffect(() => {
+    // 数据监测 
     // const person = counterStore.person
     // autorun(() => {
     //   console.log(person.name)
@@ -45,5 +46,9 @@ function Counter() {
     </div>
   )
 }
+
+// 将Counter组件传入observer函数中，监控变化
+// 可以使用 `observer` 方法监控当前组件使用到的由 MobX 跟踪的 `observable state`，
+// 当状态发生变化时通知 React 更新视图
 
 export default observer(Counter)

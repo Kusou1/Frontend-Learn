@@ -54,6 +54,7 @@ class TodoListStore {
     let todos = await axios
       .get("http://localhost:3005/todos")
       .then(response => response.data)
+    // 在action中做事
     runInAction(() => {
       todos.forEach(todo => {
         this.todos.push(new TodoStore(todo.title))

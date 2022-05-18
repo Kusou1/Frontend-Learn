@@ -1,4 +1,5 @@
 import faker from "faker"
+// 实现虚拟列表的包
 import { List } from "react-virtualized"
 
 const records = createRecord(100000)

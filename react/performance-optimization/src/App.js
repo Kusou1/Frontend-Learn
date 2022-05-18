@@ -17,6 +17,7 @@ function App() {
 
 export default App
 
+// 虚拟列表
 function createRecord(count) {
   let records = []
   for (let i = 0; i < count; i++) {

@@ -877,7 +877,7 @@ export default class App extends React.Component {
 
 react-virtualized 可以实现虚拟列表. 它会在页面中生成一块滚动区域, 在区域内进行列表内容的显示. 它会根据可视区域大小生成数据, 比如可视区域内正好可以放置10条数据, 它就会渲染10条数据, 然后再根据用户的滚动位置, 不断的渲染数据并替换区域内数据. 再通过定位的方式设置列表项的位置, 形成滚动的视觉效果.
 
-<img src="./images/4.gif" align="left" width="30%"/>
+<img src="./images/4.gif" width="50%"/>
 
 1. 使用 faker 生成假数据 `npm i faker`
 

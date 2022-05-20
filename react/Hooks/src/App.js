@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// useState useEffect useReducer 实现原理
 let state = [];
 let setters = [];
 let stateIndex = 0;

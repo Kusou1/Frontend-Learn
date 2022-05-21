@@ -4,6 +4,8 @@ import createStore from './createStore';
 import routes from '../share/routes';
 import { matchRoutes } from 'react-router-config';
 
+
+// 接收所有GET请求，服务端React路由通过请求路径匹配要进行渲染的组件
 app.get('*', (req, res) => {
   const store = createStore();
   // 1. 请求地址 req.path

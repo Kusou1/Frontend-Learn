@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm-run-all --parallel dev:*",
+    "dev": "npm-run-all --parallel dev:*", 
     "dev:server-run": "nodemon --watch build --exec \"node build/bundle.js\"",
     "dev:server-build": "webpack --config webpack.server.js --watch",
     "dev:client-build": "webpack --config webpack.client.js --watch"

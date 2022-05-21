@@ -1,0 +1,28 @@
+1. 创建项目
+  npm init next-app movie
+2. 下载 chakra-ui 框架
+  npm install @chakra-ui/core@next
+3. 克隆主题
+  npx chakra-cli init --theme
+4. 配置主题
+  在 pages 文件夹下建立 _app.js 加入如下代码
+    import { ChakraProvider, CSSReset } from "@chakra-ui/core";
+    import theme from "../chakra";
+    export default function App({ Component, pageProps }) {
+      return (
+        <ChakraProvider theme={theme}>
+          <CSSReset />
+          <Component {...pageProps} />
+        </ChakraProvider>
+      );
+    }
+5. 下载字体图标
+  npm install react-icons --save
+6. 下载 emotion
+  npm install @emotion/core @emotion/styled
+  npm install @emotion/babel-preset-css-prop --save-dev
+7. 添加 babel 配置
+  在根目录下创建 .babelrc 文件并添加如下代码
+    {"presets": ["next/babel","@emotion/babel-preset-css-prop"]}
+
+  

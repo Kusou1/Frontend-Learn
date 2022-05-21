@@ -26,7 +26,7 @@ export default function SignUp() {
             <InputLeftAddon children={<FaUserAlt />} />
             <Input placeholder="请输入用户名" />
           </InputGroup>
-          <FormHelperText>用户名是填项</FormHelperText>
+          <FormHelperText>用户名是必填项</FormHelperText>
         </FormControl>
         <InputGroup>
           <InputLeftAddon children={<FaLock />} />

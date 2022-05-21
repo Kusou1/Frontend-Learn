@@ -4,6 +4,7 @@ import chakraUI from "../assets/images/chakra-ui.png";
 import { AiFillStar } from "react-icons/ai";
 
 export default function Card() {
+  // 兼容暗色模式
   const bgColor = useColorModeValue('gray.200', 'gray.700');
   const textColor = useColorModeValue('gray.700', 'gray.100');
   return (

@@ -5,6 +5,7 @@ import routes from "../share/routes";
 // 把数组形式的路由规则转化成组件
 import { renderRoutes } from "react-router-config";
 import { Provider } from "react-redux";
+// 防止xss攻击 防止恶意代码的执行
 import serialize from 'serialize-javascript';
 
 export default (req, store) => {

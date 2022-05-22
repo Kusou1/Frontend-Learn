@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+// 基于动态路由参数的静态生成
 
 export default function Post ({data}) {
   const router = useRouter();
@@ -12,7 +13,9 @@ export default function Post ({data}) {
 // 返回用户可以访问到的所有的路由参数
 export async function getStaticPaths () {
   return {
+    // 返回固定格式的路由参数
     paths: [{params: {id: "1"}}, {params: {id: "2"}}],
+    // 当用户访问的路由参数没有在当前函数中返回时，是否显示404页面 false： 显示 true： 不显示
     fallback: true
   }
 }
@@ -40,3 +43,8 @@ export async function getStaticProps ({params}) {
     }
   }
 }
+
+// 注: getStaticPaths 和 getStaticProps 只运⾏在服务器
+// 端, 永远不会运⾏在客户端, 甚⾄不会被打包到客户端
+// JavaScript 中, 意味着这⾥可以随意写服务器端代码, 
+// ⽐如查询数据库.

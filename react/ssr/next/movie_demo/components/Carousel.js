@@ -1,3 +1,4 @@
+// 轮播图组件
 import { Carousel } from "react-responsive-carousel";
 import { Heading, Box, Text, Button } from "@chakra-ui/core";
 import Head from "next/head";
@@ -52,7 +53,7 @@ export default function Swiper({ data }) {
       <Carousel
         css={swiperContainer}
         showArrows={false}
-        showIndicators={false}
+        showIndicators={true}
         showStatus={false}
       >
         {data.map(swiper => (

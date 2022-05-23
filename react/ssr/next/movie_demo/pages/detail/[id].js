@@ -34,6 +34,7 @@ export default function VideoDetail({ post }) {
   );
 }
 
+// 获取到用户能够访问到的所有的路由参数
 export async function getStaticPaths() {
   let { data } = await axios.get("/videos", {baseURL: baseURL});
   let paths = data.map(id => ({ params: { id } }));
@@ -43,10 +44,12 @@ export async function getStaticPaths() {
   };
 }
 
+// 根据参数获取其对应数据
 export async function getStaticProps({ params }) {
   const id = params.id;
   let { data: post } = await axios.get(`/detail?id=${id}`, {baseURL: baseURL});
   return {
+    // 将post返回给post
     props: {
       post
     }

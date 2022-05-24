@@ -1,0 +1,26 @@
+[
+    {
+        "title":"晨光钢制铅笔",
+        "price":5,
+        "id":"1",
+        "url":"./images/1.jpg"
+    },
+    {
+        "title":"橡皮擦",
+        "price":3,
+        "id":"2",
+        "url":"./images/2.jpg"
+    },
+    {
+        "title":"尺子",
+        "price":2,
+        "id":"3",
+        "url":"./images/3.jpg"
+    },
+    {
+        "title":"橡皮泥",
+        "price":10,
+        "id":"4",
+        "url":"./images/4.jpg"
+    }
+]

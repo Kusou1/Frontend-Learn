@@ -60,6 +60,7 @@ function onCreateNode({ node, actions }) {
   const { createNodeField } = actions
   if (node.internal.type === "MarkdownRemark") {
     // 获取文件名
+    console.log(node);
     const slug = path.basename(node.fileAbsolutePath, ".md")
     console.log(slug)
     // 将文件名添加上节点，方便文章详情页使用

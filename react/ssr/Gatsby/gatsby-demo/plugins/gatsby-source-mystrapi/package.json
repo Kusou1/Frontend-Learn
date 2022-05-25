@@ -1,0 +1,17 @@
+{
+  "name": "gatsby-source-mystrapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gatsby-node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "gatsby-node-helpers": "^0.3.0",
+    "pluralize": "^8.0.0"
+  }
+}

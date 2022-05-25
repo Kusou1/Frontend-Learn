@@ -47,5 +47,12 @@ module.exports = {
         }
       },
     },
+    // {
+    //   resolve: "gatsby-source-mystrapi",
+    //   options: {
+    //     apiUrl: "localhost:1337",
+    //     contentType:["Post","Product"]
+    //   }
+    // }
   ],
 }

@@ -2,13 +2,15 @@ const axios = require("axios")
 const pluralize = require("pluralize")
 const createNodeHelpers = require("gatsby-node-helpers").default
 
+
+// 实现数据源插件的方法
 async function sourceNodes({ actions }, configOptions) {
   const { createNode } = actions
   const { apiUrl, contentTypes } = configOptions
   // Post => posts
   const types = contentTypes
-    .map(type => type.toLowerCase())
-    .map(type => pluralize(type))
+    .map(type => type.toLowerCase()) // 转小写
+    .map(type => pluralize(type)) // 转复数
 
   let final = await getContents(types, apiUrl)
 
@@ -23,6 +25,7 @@ async function sourceNodes({ actions }, configOptions) {
   }
 }
 
+// 从外部数据源中获取数据
 async function getContents(types, apiUrl) {
   const size = types.length
   let index = 0

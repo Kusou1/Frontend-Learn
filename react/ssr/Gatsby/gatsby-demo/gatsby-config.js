@@ -56,6 +56,8 @@ module.exports = {
     // }
     /* 优化seo插件 */
     "gatsby-transformer-xml",
-    "gatsby-plugin-react-helmet"
+    "gatsby-plugin-react-helmet",
+    /* 支持less */
+    "gatsby-plugin-less"
   ],
 }

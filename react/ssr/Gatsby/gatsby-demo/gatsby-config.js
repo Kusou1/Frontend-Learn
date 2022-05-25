@@ -54,5 +54,8 @@ module.exports = {
     //     contentType:["Post","Product"]
     //   }
     // }
+    /* 优化seo插件 */
+    "gatsby-transformer-xml",
+    "gatsby-plugin-react-helmet"
   ],
 }

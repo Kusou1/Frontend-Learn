@@ -27,7 +27,7 @@ export default function Card() {
           <Badge variant="solid" colorScheme="teal" borderRadius="full" px="2">
             Chakra-UI
           </Badge>
-          <Text color={textColor}>拉钩出品 必属精品</Text>
+          <Text color={textColor}>我店出品 必属精品</Text>
         </Stack>
         <Text
           fontSize="xl"

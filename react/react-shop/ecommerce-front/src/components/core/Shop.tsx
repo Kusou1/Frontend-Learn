@@ -73,7 +73,7 @@ const Shop = () => {
   }
 
   return (
-    <Layout title="拉勾商城" subTitle="挑选你喜欢的商品吧">
+    <Layout title="商城" subTitle="挑选你喜欢的商品吧">
       <Row>
         <Col span="4">{filterDOM()}</Col>
         <Col span="20">

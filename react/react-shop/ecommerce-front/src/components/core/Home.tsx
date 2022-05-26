@@ -23,7 +23,7 @@ const Home = () => {
   }, [])
 
   return (
-    <Layout title="拉勾电商" subTitle="欢迎来到拉勾电商, 尽情享受吧">
+    <Layout title="电商" subTitle="欢迎来到电商, 尽情享受吧">
       <Search />
       <Title level={5}>最新上架</Title>
       <Row gutter={[16, 16]}>

@@ -15,6 +15,7 @@ import Cart from "./components/core/Cart"
 import Success from "./components/core/Success"
 import Orders from "./components/admin/Orders"
 
+// 路由组件
 const Routes = () => {
   return (
     <HashRouter>

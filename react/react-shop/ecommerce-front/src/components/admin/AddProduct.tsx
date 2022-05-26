@@ -11,6 +11,8 @@ import axios from "axios"
 import { API } from "../../config"
 import { isAuth } from "../../helpers/auth"
 import { Jwt } from "../../store/models/auth"
+import { Link } from "react-router-dom"
+
 
 const AddProduct = () => {
   const dispatch = useDispatch()
@@ -100,12 +102,16 @@ const AddProduct = () => {
           </Button>
         </Form.Item>
       </Form>
+      
     )
   }
 
   return (
     <Layout title="添加商品" subTitle="">
       {addProductForm()}
+      <Button>
+        <Link to="/admin/dashboard">返回 Dashboard</Link>
+      </Button>
     </Layout>
   )
 }

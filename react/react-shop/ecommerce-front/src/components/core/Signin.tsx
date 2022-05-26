@@ -66,7 +66,7 @@ const Signin = () => {
   )
   // 4. 处理导航链接 已登录 隐藏 [登录, 注册] 显示 [dashboard]
   return (
-    <Layout title="登录" subTitle="嘿, 小伙伴, 立即登录到拉钩电商系统吧">
+    <Layout title="登录" subTitle="嘿, 小伙伴, 立即登录到电商系统吧">
       {showError()}
       {redirectToDashboard()}
       {signinForm()}

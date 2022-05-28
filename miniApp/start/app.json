@@ -1,0 +1,40 @@
+{
+  "pages":[
+    "pages/qweather/index",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/test/test",
+    "pages/test/camera"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#00b38a",
+    "navigationBarTitleText": "拉勾教育",
+    "navigationBarTextStyle":"white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "尝试获取你的位置信息"
+    }
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/qweather/index",
+      "iconPath": "static/images/featured.png",
+      "selectedIconPath": "static/images/featured-actived.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/test/test",
+      "iconPath": "static/images/search.png",
+      "selectedIconPath": "static/images/search-actived.png",
+      "text": "测试"
+    },{
+      "pagePath": "pages/index/index",
+      "iconPath": "static/images/profile.png",
+      "selectedIconPath": "static/images/profile-actived.png",
+      "text": "用户"
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,13 @@
+<!--pages/test/camera.wxml-->
+<view class="swiper-view">
+  <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 200px;"></camera>
+  <button type="default" bindtap="takePhoto" style="margin: 20px 0; width: 100%;">拍照</button>
+  <view style="margin: 20rpx; ">
+    <image mode="widthFix" src="{{src}}" style="width: 100%; border-radius: 60rpx;"></image>
+  </view>
+</view>
+
+
+<!-- 引入页脚 -->
+<import src="../../tpl/footer.wxml"></import>
+<template is="my-footer" data=""></template>

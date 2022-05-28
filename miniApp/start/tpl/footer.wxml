@@ -1,0 +1,8 @@
+<template name="my-footer">
+  <view class="weui-footer">
+    <view class="weui-footer__links">
+      <a class="weui-footer__link">感谢和风天气</a>
+    </view>
+    <view class="weui-footer__text">技术支持：拉勾教育</view>
+  </view>
+</template>

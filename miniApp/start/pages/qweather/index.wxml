@@ -1,0 +1,46 @@
+<!--pages/qweather/index.wxml-->
+<map
+  longitude="{{longitude}}" 
+  latitude="{{latitude}}" 
+  markers="{{markers}}" 
+  scale="14"
+  style="width: 100%; height: 160px;"
+  name="" >
+</map>
+<view class="page__bd">
+  <!-- 未来三天的天气预报 -->
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__hd">未来三天的天气预报</view>
+    <view class="weui-panel__bd">
+      <a class="weui-media-box weui-media-box_appmsg" wx:for="{{threedays}}" wx:key="uk">
+        <view class="weui-media-box__hd">
+          <image class="weui-media-box__thumb" src="../../static/WeatherIcon-master/weather-icon-S1/color-64/{{item.iconDay}}.png" alt></image>
+        </view>
+        <view class="weui-media-box__bd">
+          <h4 class="weui-media-box__title">{{item.fxDate}}</h4>
+          <view class="weui-media-box__desc">温度：{{item.tempMin}} - {{item.tempMax}}</view>
+          <view class="weui-media-box__desc">风向：{{item.windDirDay}}； 风力：{{item.windScaleDay}} 级</view>
+        </view>
+      </a>
+    </view>
+  </view>
+
+  <!-- 生活指数 -->
+  <view class="weui-panel weui-panel_access">
+			<view class="weui-panel__hd">生活指数</view>
+			<view class="weui-panel__bd">
+
+        <view class="weui-media-box weui-media-box_text" wx:for="{{indices}}" wx:key="unique">
+					<h4 class="weui-media-box__title">{{item.name}} ：{{item.category}}</h4>
+          <view class="weui-media-box__desc">{{item.text}}</view>
+					<view class="weui-media-box__info">
+						<view class="weui-media-box__info__meta">时间：{{item.date}}</view>
+					</view>
+				</view>
+			</view>
+    </view>
+</view> 
+
+<!-- 引入页脚 -->
+<import src="../../tpl/footer.wxml"></import>
+<template is="my-footer"></template>

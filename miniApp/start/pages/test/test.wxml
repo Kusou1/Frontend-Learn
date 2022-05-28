@@ -1,0 +1,25 @@
+<!--pages/test/test.wxml-->
+<view class="swiper-view">
+  <swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <!-- 列表渲染 -->
+    <block wx:for="{{imgUrls}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <button type="primary" bindtap="goCamera" style="margin: 20px 0; width: 100%;">去拍照</button>
+
+  <button type="warn" bindtap="bindScan" style="margin: 20px 0; width: 100%;">扫一扫</button>
+  <view>扫描结果：{{scanResult}}</view>
+
+  <button type="warn" bindtap="goUser" style="margin: 20px 0; width: 100%;">跳到用户页面</button>
+
+  <text bindtap="goIndex">跳转到 index</text>
+</view>
+
+<!-- 引入页脚 -->
+<import src="../../tpl/footer.wxml"></import>
+<template is="my-footer" data=""></template>

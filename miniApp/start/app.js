@@ -1,5 +1,6 @@
 //app.js
 App({
+  //  小程序启动（全局只调用一次）
   onLaunch: function () {
     console.log("onLaunch - 小程序加载")
     // 展示本地存储能力
@@ -36,9 +37,12 @@ App({
     })
   },
 
+  // 初始化完成，从后台切换到前台
   onShow: function() {
     console.log("onShow - 小程序显示")
   },
+
+  // 从前台切换到后台
   onHide: function() {
     console.log("onHide - 小程序隐藏")
   },

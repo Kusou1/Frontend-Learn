@@ -28,6 +28,6 @@ export class HoverDirective implements AfterViewInit {
   }
 	// 为元素添加鼠标移出事件
   @HostListener("mouseleave") leave() {
-    this.element.style.backgroundColor = "skyblue"
+    this.element.style.backgroundColor = this.appHover.bgColor || "skyblue"
   }
 }

@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
     { id: 2, name: "李四", age: 30 }
   ]
   
+  date = new Date()
+  
 
   title ="一套框架 多种平台 移动端 & 桌面端"
   isActive=true
@@ -42,5 +44,7 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+
+  money="12.00"
 
 }

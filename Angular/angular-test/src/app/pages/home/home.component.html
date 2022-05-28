@@ -28,5 +28,6 @@
             </li>
         </ul>
     </ng-template>
-    <div [appHover]="{ bgColor: 'skyblue' }">Hello Angular</div>
+    <div [appHover]="{ bgColor: 'yellow' }">{{date | date: "yyyy-MM-dd"}}</div>
+    <div>{{money | currency: "$"}}</div>
 </div>

@@ -1,17 +1,25 @@
 <nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" routerLink="/">路由动画演示</a>
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/">路由动画演示</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a routerLink="/">首页</a></li>
+                <li><a routerLink="/about">关于我们</a></li>
+                <li><a routerLink="/news">新闻</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a routerLink="/">首页</a></li>
-        <li><a routerLink="/about">关于我们</a></li>
-        <li><a routerLink="/news">新闻</a></li>
-      </ul>
-    </div>
-  </div>
 </nav>
 <div [@routerAnimation]="prepare(outlet)" class="routerContainer">
-  <router-outlet #outlet="outlet"></router-outlet>
+    <!-- <input type="text" [(ngModel)]="name" />
+    <button (click)="change()">在组件类中更改 username</button>
+    <div>username: {{ name }}</div> -->
+    <router-outlet #outlet="outlet"></router-outlet>
 </div>
+
+<app-demo>
+  <ng-container class="a">a</ng-container>
+  <div class="b">b</div>
+</app-demo>

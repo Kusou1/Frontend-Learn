@@ -1,20 +1,32 @@
 <div class="container">
-  <div class="jumbotron">
-    <h1>一套框架 多种平台 移动端 & 桌面端</h1>
-    <p>
-      学会用 Angular
-      构建应用，然后把这些代码和能力复用在多种多种不同平台的应用上 ——
-      Web、移动 Web、移动应用、原生应用和桌面原生应用。
-    </p>
-    <p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-  </div>
-  <ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
+    <div class="jumbotron">
+        <h1>{{ title }}</h1>
+        <p #paragraph>学会用 Angular 构建应用，然后把这些代码和能力复用在多种多种不同平台的应用上 —— Web、移动 Web、移动应用、原生应用和桌面原生应用。</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <button class="btn btn-primary" [class.active]="isActive" [style.marginLeft]="'16px'" (click)="onClick($event)">按钮</button>
+            <!-- <div [ngStyle]="{'backgroundColor':'red'}"></div> -->
+            <!-- <div [ngClass]="{active:true,error:true}"></div> -->
+            <input type="text" (keyup.enter)="onKeyUp(username.value)" #username />
+        </p>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" #items>Cras justo odio</li>
+        <li class="list-group-item" #items>Dapibus ac facilisis in</li>
+        <li class="list-group-item" #items>Morbi leo risus</li>
+        <li class="list-group-item" #items>Porta ac consectetur ac</li>
+        <li class="list-group-item" #items>Vestibulum at eros</li>
+    </ul>
+    <div *ngIf="list.length === 0; then noData; else listData"></div>
+    <ng-template #noData><div>没有更多数据</div></ng-template>
+    <ng-template #listData>
+        <ul>
+            <li *ngFor="let item of list; let i = index; let isEven = even; let isOdd = odd; let isFirst = first; let isLast = last">
+                {{ item.id }}
+                {{ item.name }}
+                {{ item.age }}
+            </li>
+        </ul>
+    </ng-template>
+    <div [appHover]="{ bgColor: 'skyblue' }">Hello Angular</div>
 </div>

@@ -43,6 +43,7 @@ Page({
 
   // 跳转到用户页面
   goUser: () => {
+    // reLaunch重新加载新的页面
     wx.reLaunch({
       url: '/pages/index/index'
     })

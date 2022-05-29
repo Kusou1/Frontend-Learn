@@ -17,6 +17,7 @@
 
   <button type="warn" bindtap="goUser" style="margin: 20px 0; width: 100%;">跳到用户页面</button>
 
+  <!-- bindtap绑定点击事件 -->
   <text bindtap="goIndex">跳转到 index</text>
 </view>
 

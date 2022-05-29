@@ -3,7 +3,7 @@ App({
   //  小程序启动（全局只调用一次）
   onLaunch: function () {
     console.log("onLaunch - 小程序加载")
-    // 展示本地存储能力
+    // 展示本地存储能力 以同步的方式获取本地的缓存数据  云api
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
@@ -17,6 +17,7 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
+        // 判断是否授权，授权后才能去拿用户头像
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({

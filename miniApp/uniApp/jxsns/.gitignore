@@ -1,0 +1,5 @@
+# Output directory
+unpackage/
+
+# Dependency directories
+node_modules/

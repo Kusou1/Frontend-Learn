@@ -1,0 +1,91 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app",
+				"enablePullDownRefresh": true
+			}
+		}, {
+			"path": "pages/404/404",
+			"style": {
+				"navigationBarTitleText": "页面未找到",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/list/list",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/me/me",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/finder/finder",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
+	"subPackages": [{
+		"root": "subpages",
+		"pages": [{
+			"path": "news/news",
+			"style": {
+				"navigationBarTitleText": "新闻中心",
+				"enablePullDownRefresh": false
+			}
+		}    ,{
+                    "path" : "chat/chat",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "知心姐姐聊天",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+	}],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/tabbar-icons/wx.png",
+			"selectedIconPath": "static/tabbar-icons/wx_s.png",
+			"text": "微信"
+		}, {
+			"pagePath": "pages/list/list",
+			"iconPath": "static/tabbar-icons/list.png",
+			"selectedIconPath": "static/tabbar-icons/list_s.png",
+			"text": "通讯录"
+		}, {
+			"pagePath": "pages/finder/finder",
+			"iconPath": "static/tabbar-icons/find.png",
+			"selectedIconPath": "static/tabbar-icons/find_s.png",
+			"text": "发现"
+		}, {
+			"pagePath": "pages/me/me",
+			"iconPath": "static/tabbar-icons/me.png",
+			"selectedIconPath": "static/tabbar-icons/me_s.png",
+			"text": "我"
+		}]
+	}
+}

@@ -36,7 +36,8 @@
 
 		}
 	],
-	"subPackages": [{
+	"subPackages": [//分包页面配置
+		{ 
 		"root": "subpages",
 		"pages": [{
 			"path": "news/news",

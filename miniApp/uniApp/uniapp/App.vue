@@ -1,5 +1,6 @@
 <script>
 	export default {
+		// 应用生命周期
 		onLaunch: function() {
 			console.log('App Launch')
 		},

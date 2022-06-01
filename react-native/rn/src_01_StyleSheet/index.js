@@ -17,6 +17,7 @@ export default class index extends Component {
   }
 }
 
+// rn中的样式
 const styles = StyleSheet.create({
   h1: {
     fontSize: 40,

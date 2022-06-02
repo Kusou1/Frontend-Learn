@@ -31,12 +31,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#00b38a',
-    width: Dimensions.get('window').width/3,
+    width: Dimensions.get('window').width/4, // 获取当前窗口维度
     height: 90,
     borderWidth: 1,
     borderColor: 'yellow',
   },
   h3: {
-    fontSize: 24
+    fontSize: 24 // rn中的样式没有继承性
   }
 })

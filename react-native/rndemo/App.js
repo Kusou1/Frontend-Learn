@@ -26,10 +26,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 // import Index from './src_01_StyleSheet'
-import Index from './src_02_Flexbox/FlexDirection'
+// import Index from './src_02_Flexbox/FlexDirection'
 // import Index from './src_02_Flexbox/JustifyContent'
 // import Index from './src_02_Flexbox/AlignItems'
 // import Index from './src_02_Flexbox/Flex'
+import Index from './src_03_Dimensions'
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';

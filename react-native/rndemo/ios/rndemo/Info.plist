@@ -56,5 +56,11 @@
 	<!-- optionally, if you want to record audio: -->
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to your Microphone.</string>
+
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>${PRODUCT_NAME} PhotoLibrary Usage</string>
+
+	<key>NSVideoSubscriberAccountUsageDescription</key>
+	<string>${PRODUCT_NAME} Video Subscribe Usage</string>
 </dict>
 </plist>

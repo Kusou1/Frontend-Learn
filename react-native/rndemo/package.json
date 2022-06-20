@@ -16,6 +16,7 @@
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-camera": "^4.2.1",
+    "react-native-image-picker": "^4.8.4",
     "react-native-swiper": "^1.6.0",
     "react-native-vision-camera": "^2.13.5",
     "react-native-webview": "^11.21.1"

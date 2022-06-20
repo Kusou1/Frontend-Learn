@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, View, ActivityIndicator, Platform } from 'react-native'
 
 export default function index() {
+  // ActivityIndicator是一个等待的组件
+  // Platform判断当前平台
   if (Platform.OS === 'android') {
     alert('当前是安卓应用')
   } else if (Platform.OS === 'ios') {

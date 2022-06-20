@@ -20,7 +20,7 @@ export default class index extends Component {
           onValueChange={(itemValue, itemIndex) =>
             this.setState({color: itemValue})
           }>
-          <Picker.Item label="白色" value="white" />
+          <Picker.Item label="白色色" value="white" />
           <Picker.Item label="红色" value="red" />
         </Picker>
       </View>

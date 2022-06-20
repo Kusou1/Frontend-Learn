@@ -84,11 +84,11 @@ export default class index extends Component {
         <FlatList
           data={this.state.list}
           renderItem={this.renderItem}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id} // 唯一索引，减少不必要的性能消耗 
           horizontal={false} // 水平布局模式
           initialScrollIndex={0} // 初始滚动索引
-          initialNumToRender={4} // 指定初始渲染数据的数量，一般数量要填满一屏幕
-          numColumns={1} // 指定列数，数据项必须登高 - 无法支持瀑布流
+          initialNumToRender={4} // 指定初始渲染数据的数量，一般数量要填满一屏幕，第一屏加载
+          numColumns={1} // 指定每一列的个数，数据项必须登高 - 无法支持瀑布流
           inverted={false} // 列表反转
           extraData={this.state.selectedId}
 

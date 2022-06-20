@@ -10,6 +10,7 @@ export default class index extends Component {
       await AsyncStorage.setItem('mytest', value)
     } catch (e) {
       // saving error
+      console.log(e);
     }
   }
 

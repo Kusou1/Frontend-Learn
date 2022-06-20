@@ -4,6 +4,7 @@ import Swiper from 'react-native-swiper'
 
 export default class index extends Component {
   render() {
+    // 一定要放在scrollView当中
     return (
       <ScrollView>
         <Swiper 

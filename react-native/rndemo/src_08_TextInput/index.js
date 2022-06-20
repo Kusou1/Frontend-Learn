@@ -33,7 +33,7 @@ export default class index extends Component {
           style={[styles.input]}
           placeholder="请输入密码"
           value={this.state.password}
-          secureTextEntry={true}
+          secureTextEntry={true} //密码框
           onChangeText={(val) => {
             this.setState({
               password: val
@@ -45,7 +45,7 @@ export default class index extends Component {
           style={[styles.input]}
           placeholder="手机号"
           keyboardType="number-pad"
-          // value={this.state.password}
+          // value={this.state.password}  ios模拟输入框shift+command+k弹出
           // onChangeText={(val) => {
           //   this.setState({
           //     password: val
@@ -57,7 +57,7 @@ export default class index extends Component {
           style={[styles.input]}
           placeholder="请输入自我介绍"
           multiline={true}
-          numberOfLines={5}
+          numberOfLines={5} // 仅适用于安卓
           textAlignVertical="top"
         />
 

@@ -13,7 +13,7 @@ class App extends Component {
     Animated.timing(this.state.fadeAnim, {
       toValue: 1, // 目标值
       duration: 5000, // 动画执行时间
-      useNativeDriver: true // 启动原生方式，渲染动画（执行效率更高）
+      useNativeDriver: true // 启动原生方式，渲染动画（执行效率更高，减少js线程和不必要的开销）
     }).start(() => {
       // 动画执行结束后的回调函数
       alert('我显示出来了')
@@ -45,6 +45,7 @@ class App extends Component {
       duration: 2000,
       useNativeDriver: true
     }).start(() => {
+      // 执行结束后再次调用
       this.scanMove()
     })
   }

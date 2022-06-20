@@ -19,10 +19,22 @@ const DATA = [
   {
     title: "吴国",
     data: ["孙权", "周瑜", "黄盖"]
+  },
+  {
+    title: "魏国",
+    data: ["曹操", "司马懿", "张辽"]
+  },
+  {
+    title: "蜀国",
+    data: ["刘备", "关羽", "张飞"]
+  },
+  {
+    title: "吴国",
+    data: ["孙权", "周瑜", "黄盖"]
   }
 ];
 
-Item = ({ title }) => (
+const Item = ({ title }) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
   </View>
@@ -77,6 +89,7 @@ class App extends Component {
 
           // 上拉刷新
           onEndReachedThreshold={0.1} // 声明触底的比率，0.1表示距离底部还有10%
+          // 当拉到最底下时候
           onEndReached={() => {
             alert('到底了')
           }}

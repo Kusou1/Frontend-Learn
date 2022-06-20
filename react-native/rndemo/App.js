@@ -31,7 +31,7 @@ import {
 // import Index from './src_02_Flexbox/AlignItems'
 // import Index from './src_02_Flexbox/Flex'
 // import Index from './src_03_Dimensions'
-import Index from './src_04_Alert_Button'
+// import Index from './src_04_Alert_Button'
 // import Index from './src_05_Switch_StatusBar'
 // import Index from './src_06_ActivityIndicator'
 // import Index from './src_07_Image'
@@ -47,7 +47,7 @@ import Index from './src_04_Alert_Button'
 // import Index from './src_16_Swiper'
 // import Index from './src_17_AsyncStorage'
 // import Index from './src_18_Geolocation'
-// import Index from './src_19_Camera'
+import Index from './src_19_Camera'
 // import Index from './src_20_ImagePicker'
 // import Index from './src_21_Loading'
 // import Index from './src_22_StackNavigator'
@@ -87,19 +87,22 @@ const App: () => Node = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-            <Index />
-        </View>
-      </ScrollView>
+    // <SafeAreaView style={backgroundStyle}>
+    //   <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    //   <ScrollView
+    //     contentInsetAdjustmentBehavior="automatic"
+    //     style={backgroundStyle}>
+    //     <Header />
+    //     <View
+    //       style={{
+    //         backgroundColor: isDarkMode ? Colors.black : Colors.white,
+    //       }}>
+    //         <Index />
+    //     </View>
+    //   </ScrollView>
+    // </SafeAreaView>
+    <SafeAreaView> 
+      <Index />
     </SafeAreaView>
   );
 };

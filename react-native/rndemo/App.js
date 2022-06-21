@@ -5,7 +5,7 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React from 'react';
 import type {Node} from 'react';
 import {
@@ -17,7 +17,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
 import {
   Colors,
   DebugInstructions,
@@ -48,9 +47,9 @@ import {
 // import Index from './src_17_AsyncStorage'
 // import Index from './src_18_Geolocation'
 // import Index from './src_19_Camera'
-import Index from './src_20_ImagePicker'
+// import Index from './src_20_ImagePicker'
 // import Index from './src_21_Loading'
-// import Index from './src_22_StackNavigator'
+import Index from './src_22_StackNavigator'
 // import Index from './src_23_BottomTab'
 
 const Section = ({children, title}): Node => {
@@ -101,9 +100,9 @@ const App: () => Node = () => {
     //     </View>
     //   </ScrollView>
     // </SafeAreaView>
-    <SafeAreaView> 
+    // <SafeAreaView> 
       <Index />
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 };
 

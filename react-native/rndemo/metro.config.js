@@ -4,8 +4,8 @@
  *
  * @format
  */
-const { getDefaultConfig } = require("metro-config");
-const { resolver: defaultResolver } = getDefaultConfig.getDefaultValues();
+const {getDefaultConfig} = require('metro-config');
+const {resolver: defaultResolver} = getDefaultConfig.getDefaultValues();
 
 module.exports = {
   transformer: {
@@ -21,6 +21,7 @@ module.exports = {
     sourceExts: [
       process.env.RN_SRC_EXT && process.env.RN_SRC_EXT.split(','),
       ...defaultResolver.sourceExts,
-    ],
+      'cjs'
+    ]
   },
 };

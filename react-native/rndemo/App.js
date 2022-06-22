@@ -49,8 +49,14 @@ import {
 // import Index from './src_19_Camera'
 // import Index from './src_20_ImagePicker'
 // import Index from './src_21_Loading'
-import Index from './src_22_StackNavigator'
+// import Index from './src_22_StackNavigator'
 // import Index from './src_23_BottomTab'
+import Index from './src_24_DrawerNavigator'
+// import Index from './src_25_MaterailTopTabNavigator'
+// import Index from './src_26_NestingNavigation'
+// import Index from './src_27_PassingParameters'
+// import Index from './src_28_API'
+// import Index from './src_29_project'
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';

@@ -27,7 +27,7 @@ const Drawer = createDrawerNavigator();
 export default function Index() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator useLegacyImplementation={true} initialRouteName="Home">
+      <Drawer.Navigator useLegacyImplementation={true} initialRouteName="Home" >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       </Drawer.Navigator>

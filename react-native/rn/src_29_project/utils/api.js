@@ -11,7 +11,7 @@
  */
 export const getNewsList = async (type) => {
   const key = "6d7ee8d88bd4fb137f5d20ce7066a700"
-  const url = `http://v.juhe.cn/toutiao/index?key=${key}&type=${type}`
+  const url = `http://v.juhe.cn/toutiao/index?type=${type}&key=${key}`
 
   try {
     const response = await (await fetch(url)).json()

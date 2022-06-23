@@ -156,10 +156,6 @@ const Register = ({navigation}) => {
               </TouchableOpacity>
             </View>
           </ScrollView>
-
-          <Text style={{textAlign: 'center', paddingVertical: 35}}>
-            &copy;2020 版权所有 lagou.com
-          </Text>
         </Animatable.View>
       </ImageBackground>
     </View>

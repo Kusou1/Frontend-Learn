@@ -20,31 +20,31 @@ export class index extends Component {
   }
 
   componentDidMount() {
-    // Geolocation.getCurrentPosition(
-    //   info => {
-    //     console.log(info)
-    //     // 获取地理位置成功后，将其保存下来
+    Geolocation.getCurrentPosition(
+      info => {
+        console.log(info)
+        // 获取地理位置成功后，将其保存下来
         
-    //     // 获取位置成功后，调用天气接口
-    //     this.getData(info.coords)
-    //   },
-    //   error => Alert.alert('报错', JSON.stringify(error)),
-    //   {
-    //     timeout: 20000
-    //   }
-    // );
+        // 获取位置成功后，调用天气接口
+        this.getData(info.coords)
+      },
+      error => Alert.alert('报错', JSON.stringify(error)),
+      {
+        timeout: 20000
+      }
+    );
 
     /**
      * 模拟地理位置 
      * - 避免因网络问题，获取不到位置信息而影响开发进度
      * - 代码上线之前，需要将该代码注释，打开上面的代码
      */
-    const coords = {
-      longitude: 112.333,
-      latitude: 39.444
-    }
+    // const coords = {
+    //   longitude: 112.333,
+    //   latitude: 39.444
+    // }
 
-    this.getData(coords)
+    // this.getData(coords)
   }
 
   getData = (coords) => {

@@ -10,8 +10,8 @@
  * 详情参考：https://www.juhe.cn/docs/api/id/235
  */
 export const getNewsList = async (type) => {
-  const key = "c92f7020ead5fc854ba12b3c201432bf"
-  const url = `http://v.juhe.cn/toutiao/index?type=top&key=c92f7020ead5fc854ba12b3c201432bf`
+  const key = "6d7ee8d88bd4fb137f5d20ce7066a700"
+  const url = `http://v.juhe.cn/toutiao/index?key=${key}&type=${type}`
 
   try {
     const response = await (await fetch(url)).json()

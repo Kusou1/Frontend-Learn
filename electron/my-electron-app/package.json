@@ -5,9 +5,13 @@
     "author": "Kusou1",
     "license": "MIT",
     "scripts": {
-        "start": "electron ."
+        "start": "nodemon --watch main.js --exec npm run build",
+        "build": "electron ."
     },
     "devDependencies": {
         "electron": "^19.0.6"
+    },
+    "dependencies": {
+        "@electron/remote": "^2.0.8"
     }
 }

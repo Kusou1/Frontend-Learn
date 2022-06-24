@@ -4,11 +4,17 @@
         <meta charset="UTF-8" />
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" />
-        <title>Hello World!</title>
+        <title>Kusou1 Demo</title>
     </head>
     <body>
         <h1>Hello World!</h1>
         We are using Node.js <span id="node-version"></span>, Chromium <span id="chrome-version"></span>, and Electron <span id="electron-version"></span>.
+        <button id="btn">点击打开新窗口</button>
+        <div class="isClose">
+            <h3>是否关闭当前应用？</h3>
+            <p class="close_btn"><span>是</span><span>否</span></p>
+        </div>
     </body>
 </html>
+<script src="./index.js"></script>
 <script src="./renderer.js"></script>

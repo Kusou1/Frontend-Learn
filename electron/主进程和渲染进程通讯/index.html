@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <link href="./styles.css" rel="stylesheet">
+    <title>主进程和渲染进程通信</title>
+  </head>
+  <body>
+    <h1>主进程和渲染进程通信</h1>
+    <button>渲染主异步操作</button>
+    <button>渲染主同步操作</button>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./index.js"></script>
+  </body>
+</html>

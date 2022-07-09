@@ -55,12 +55,12 @@ import store from './src_29_project/redux/store'
 // import Index from './src_22_StackNavigator'
 // import Index from './src_23_BottomTab'
 // import Index from './src_24_DrawerNavigator'
-// import Index from './src_24_Drawer'
+import Index from './src_24_Drawer'
 // import Index from './src_25_MaterailTopTabNavigator'
 // import Index from './src_26_NestingNavigation'
 // import Index from './src_27_PassingParameters'
 // import Index from './src_28_API'
-import Index from './src_29_project';
+// import Index from './src_29_project';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -111,13 +111,13 @@ const App: () => Node = () => {
     //   </ScrollView>
     // </SafeAreaView>
     // <SafeAreaView>
-    // <Index />
+    <Index />
     // </SafeAreaView>
-    <StoreProvider store={store}>
-      <NavigationContainer>
-        <Index />
-      </NavigationContainer>
-    </StoreProvider>
+    // <StoreProvider store={store}>
+    //   <NavigationContainer>
+    //     <Index />
+    //   </NavigationContainer>
+    // </StoreProvider>
   );
 };
 

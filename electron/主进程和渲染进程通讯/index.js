@@ -1,12 +1,14 @@
+const { log } = require('console')
 const electron = require('electron')
 let path = require('path')
-const {ipcRenderer,shell} = electron
+const {ipcRenderer,shell,clipboard,nativeImage} = electron
 const electronRemote = process.type === 'browser' ? electron : require('@electron/remote')
 window.onload = function () {
     // 获取元素
     let aBtn = document.getElementsByTagName('button')
+    let aInput = document.getElementsByTagName('input')
     let bBtn = document.getElementById('openurl')
-
+    let rct = null
     console.log(aBtn)
 
     bBtn.addEventListener('click',(ev)=>{
@@ -75,6 +77,35 @@ window.onload = function () {
         }
 
     })
+
+    aBtn[7].addEventListener('click',(ev)=>{
+        // 复制内容
+        rct =  clipboard.writeText(aInput[0].value)
+    })
+
+    aBtn[8].addEventListener('click',(ev)=>{
+        // 粘贴内容
+        aInput[1].value = clipboard.readText(rct)
+    })
+
+    aBtn[8].addEventListener('click',(ev)=>{
+        // 粘贴内容
+        aInput[1].value = clipboard.readText(rct)
+    })
+
+    aBtn[9].addEventListener('click',(ev)=>{
+        // 将图片放置于剪切板当中的时候要求图片类型属于 nativeImage 实例
+        let oImage = nativeImage.createFromPath('./racism.png')
+        clipboard.writeImage(oImage)
+
+        // 将剪切板中的图片作为dom元素显示在界面上
+        let iImage = clipboard.readImage()
+        console.log(iImage)
+        let oImgDom = new Image()
+        oImgDom.src = iImage.toDataURL()
+        document.body.appendChild(oImgDom)
+    })
+
 
 
 

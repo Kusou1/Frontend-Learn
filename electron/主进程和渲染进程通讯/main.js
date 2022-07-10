@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
 const electron = require('electron')
 const electronRemote = process.type === 'browser' ? electron : require('@electron/remote')
-const { app, ipcMain, Menu } = require('electron')
+const { app, ipcMain, Menu, globalShortcut } = require('electron')
 const BrowserWindow = electronRemote.BrowserWindow
 
 const { initialize, enable } = require('@electron/remote/main')
@@ -56,11 +56,29 @@ function createWindow() {
 app.whenReady().then(() => {
     createWindow()
 
+    // global 快捷键
+    let ret=globalShortcut.register('ctrl + q',()=>{
+        console.log('快捷键注册成功');
+    })
+
+    if(!ret){
+        console.log('注册失败');
+    }
+
+    console.log(globalShortcut.isRegistered('ctrl + q'));
+
+    console.log(ret, '~~~');
+
     app.on('activate', function () {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+})
+
+app.on('will-quit',()=>{
+    globalShortcut.unregister('ctrl + q')
+    globalShortcut.unregisterAll()
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common

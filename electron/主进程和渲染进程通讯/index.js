@@ -1,11 +1,21 @@
 const electron = require('electron')
-const {ipcRenderer} = electron
+let path = require('path')
+const {ipcRenderer,shell} = electron
 const electronRemote = process.type === 'browser' ? electron : require('@electron/remote')
 window.onload = function () {
     // 获取元素
     let aBtn = document.getElementsByTagName('button')
+    let bBtn = document.getElementById('openurl')
+
     console.log(aBtn)
 
+    bBtn.addEventListener('click',(ev)=>{
+        ev.preventDefault()
+
+        let urlPath= bBtn.getAttribute('href')
+
+        shell.openExternal(urlPath)
+    })
     // 01 采用异步的 API 在渲染进程中给主进程发送消息
     aBtn[0].addEventListener('click',() => {
         ipcRenderer.send('msg1', '当前是来自于渲染进程的一题哦异步消息')
@@ -45,6 +55,28 @@ window.onload = function () {
         // 显示错误对话框
         electronRemote.dialog.showErrorBox('自定义错误标题','当前错误内容')
     })
+
+    aBtn[5].addEventListener('click',(ev)=>{
+        shell.showItemInFolder(path.resolve(__dirname)) // 打开目录
+    })
+
+    aBtn[6].addEventListener('click',(ev)=>{
+        let option = {
+            title: '标题',
+            body:'内容内容',
+            icon:'./racism.png'
+        }
+
+        // 触发通知
+        let myNotification = new window.Notification(option.title,option) 
+
+        myNotification.onclick = function(){
+            console.log('点击了消息页卡')
+        }
+
+    })
+
+
 
     // 当前区域是接收消息
     ipcRenderer.on('msg1Re',(ev,data)=>{

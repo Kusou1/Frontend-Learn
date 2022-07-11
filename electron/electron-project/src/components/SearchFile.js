@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 
 // 自定义搜索区域的div
 let SearchDiv = styled.div.attrs({
@@ -10,15 +13,15 @@ let SearchDiv = styled.div.attrs({
         color: #fff;
         padding: 0 10px;
         font: normal 16px/40px '微软雅黑';
-        &.btn{
-            cursor:pointer;
+        &.btn {
+            cursor: pointer;
         }
     }
     input {
         margin-left: 10px;
         border: none;
         border-radius: 4px;
-        width:calc(100% - 80px);
+        width: calc(100% - 70px);
     }
 `
 
@@ -28,32 +31,32 @@ const SearchFile = ({ title, onSearch }) => {
 
     const oInput = useRef(null)
 
-    const closeSearch = () =>{
+    const closeSearch = () => {
         setSearchActive(false)
         setValue('')
     }
-    useEffect(()=>{
-        const searchHandle = (ev)=>{
-            const {keyCode} =ev
-            if(keyCode ===13 && searchActive){
+    useEffect(() => {
+        const searchHandle = (ev) => {
+            const { keyCode } = ev
+            if (keyCode === 13 && searchActive) {
                 onSearch(value)
             }
 
-            if(keyCode ===27 && searchActive){
+            if (keyCode === 27 && searchActive) {
                 closeSearch()
             }
         }
-        document.addEventListener('keyup',searchHandle)
-        return ()=>{
-            document.removeEventListener('keyup',searchHandle)
+        document.addEventListener('keyup', searchHandle)
+        return () => {
+            document.removeEventListener('keyup', searchHandle)
         }
     })
 
-    useEffect(()=>{
-        if(searchActive){
+    useEffect(() => {
+        if (searchActive) {
             oInput.current.focus()
         }
-    },[searchActive])
+    }, [searchActive])
 
     return (
         <>
@@ -65,9 +68,9 @@ const SearchFile = ({ title, onSearch }) => {
                             onClick={() => {
                                 setSearchActive(true)
                             }}
-                            className='btn'
+                            className="btn"
                         >
-                            搜索
+                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
                         </span>
                     </SearchDiv>
                 </>
@@ -75,22 +78,30 @@ const SearchFile = ({ title, onSearch }) => {
             {searchActive && (
                 <>
                     <SearchDiv>
-                        <input 
+                        <input
                             value={value}
-                            onChange={(e)=>{ setValue(e.target.value)}}
+                            onChange={(e) => {
+                                setValue(e.target.value)
+                            }}
                             ref={oInput}
                         />
-                        <span
-                            onClick={closeSearch}
-                            className='btn'
-                        >
-                            关闭
+                        <span onClick={closeSearch} className="btn">
+                            <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>
                         </span>
                     </SearchDiv>
                 </>
             )}
         </>
     )
+}
+
+SearchFile.propTypes={
+    title: PropTypes.string,
+    onSearch: PropTypes.func.isRequired
+}
+
+SearchFile.defaultProps={
+    title:'文档列表'
 }
 
 export default SearchFile

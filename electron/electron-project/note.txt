@@ -6,3 +6,12 @@ cross-dev: 跨平台的环境变量设置
 
 bootstrap UI组件
 styled-components 自定义样式
+
+fontawesome
+
+@fortawesome/fontawesome-svg-core
+@fortawesome/free-regular-svg-icons
+@fortawesome/free-solid-svg-icons
+@fortawesome/react-fontawesome@latest
+
+prop-types

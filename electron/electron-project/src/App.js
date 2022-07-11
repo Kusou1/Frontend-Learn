@@ -5,14 +5,37 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import SearchFile from './components/SearchFile'
 import FileList from './components/FileList'
+import ButtonItem from './components/ButtonItem'
+import TabList from './components/TabList'
+
+
 import initFiles from './utils/initFiles'
+import { faFileImport, faPlus, faFileAlt, faEdit, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 // 自定义左侧容器
 let LeftDiv = styled.div.attrs({
     className: 'col-3 left-panel'
 })`
-    background-color: #6ab04c;
+    background-color: #22a6b3;
     min-height: 100vh;
+    position: relative;
+    .btn_list {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        p {
+            width: 50%;
+            color: #fff;
+            margin-bottom: 0 !important;
+        }
+        p:nth-of-type(1){
+          background-color: #ff7979;
+        }
+        p:nth-of-type(2){
+          background-color: #ffbe76;
+        }
+    }
 `
 // 自定义右侧容器
 let RightDiv = styled.div.attrs({
@@ -43,8 +66,15 @@ function App() {
                             console.log(id, value)
                         }}
                     ></FileList>
+
+                    <div className="btn_list">
+                        <ButtonItem title={'新建'} icon={faPlus}/>
+                        <ButtonItem title={'导入'} icon={faFileImport}/>
+                    </div>
                 </LeftDiv>
-                <RightDiv>右侧</RightDiv>
+                <RightDiv>
+                  <TabList files={initFiles} activeItem={'1'} clickItem={(id)=>{console.log(id)}}></TabList>
+                </RightDiv>
             </div>
         </div>
     )

@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt, faEdit, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
+import useKeyHandler from '../hooks/useKeyHandler'
+
 
 // ul 标签
 let GroupUl = styled.ul.attrs({
@@ -25,21 +27,17 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
     }
 
     // 键盘事件操作
-    useEffect(() => {
-        const keyboardHandle = (ev) => {
-            let { keyCode } = ev
-            if (keyCode === 13 && editItem) {
-                saveFile(editItem, value)
-            }
-            if (keyCode === 27 && editItem) {
-                closeFn()
-            }
-        }
-        document.addEventListener('keyup', keyboardHandle)
-        return () => {
-            document.removeEventListener('keyup', keyboardHandle)
-        }
-    })
+    const enterPress = useKeyHandler(13)
+    const escPress = useKeyHandler(27)
+
+    if(enterPress && editItem){
+        saveFile(editItem,value)
+        closeFn()
+    }
+
+    if(escPress && editItem){
+        closeFn()
+    }
 
     return (
         <GroupUl>
@@ -96,6 +94,13 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
             })}
         </GroupUl>
     )
+}
+
+FileList.propTypes={
+    files: PropTypes.array,
+    editFile: PropTypes.func.isRequired,
+    saveFile: PropTypes.func.isRequired,
+    deleteFile: PropTypes.func.isRequired,
 }
 
 export default FileList

@@ -8,9 +8,10 @@ import FileList from './components/FileList'
 import ButtonItem from './components/ButtonItem'
 import TabList from './components/TabList'
 
-
 import initFiles from './utils/initFiles'
 import { faFileImport, faPlus, faFileAlt, faEdit, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
+import SimpleMDE from 'react-simplemde-editor'
+import 'easymde/dist/easymde.min.css'
 
 // 自定义左侧容器
 let LeftDiv = styled.div.attrs({
@@ -29,11 +30,11 @@ let LeftDiv = styled.div.attrs({
             color: #fff;
             margin-bottom: 0 !important;
         }
-        p:nth-of-type(1){
-          background-color: #ff7979;
+        p:nth-of-type(1) {
+            background-color: #ff7979;
         }
-        p:nth-of-type(2){
-          background-color: #ffbe76;
+        p:nth-of-type(2) {
+            background-color: #ffbe76;
         }
     }
 `
@@ -43,6 +44,7 @@ let RightDiv = styled.div.attrs({
 })`
     background-color: #c7ecee;
 `
+
 function App() {
     return (
         <div className="App contain-fluid px-0">
@@ -68,12 +70,23 @@ function App() {
                     ></FileList>
 
                     <div className="btn_list">
-                        <ButtonItem title={'新建'} icon={faPlus}/>
-                        <ButtonItem title={'导入'} icon={faFileImport}/>
+                        <ButtonItem title={'新建'} icon={faPlus} />
+                        <ButtonItem title={'导入'} icon={faFileImport} />
                     </div>
                 </LeftDiv>
                 <RightDiv>
-                  <TabList files={initFiles} activeItem={'1'} clickItem={(id)=>{console.log(id)}}></TabList>
+                    <TabList
+                        files={initFiles}
+                        activeItem={'1'}
+                        unSaveItems={['1', '2']}
+                        clickItem={(id) => {
+                            console.log(id)
+                        }}
+                        closeItem={(id) => {
+                            console.log('close', id)
+                        }}
+                    ></TabList>
+                    <SimpleMDE options={{ autofocus: true, spellChecker: false,minHeight:"575px" }} value={initFiles[0].body} />
                 </RightDiv>
             </div>
         </div>

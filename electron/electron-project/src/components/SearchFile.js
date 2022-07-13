@@ -36,18 +36,25 @@ const SearchFile = ({ title, onSearch }) => {
     const closeSearch = () => {
         setSearchActive(false)
         setValue('')
+
+        // 当我们关闭搜索功能的时候，可以给他提供一个空字符
+        // 这样就没有满足条件的搜索结果
+        // 就能将原来的列表数据重新展示
+        onSearch('')
     }
 
     const enterPress = useKeyHandler(13)
     const escPress = useKeyHandler(27)
 
-    if(enterPress && searchActive){
-        onSearch(value)
-    }
-
-    if(escPress && searchActive){
-        closeSearch()
-    }
+    useEffect(()=>{
+        if(enterPress && searchActive){
+            onSearch(value)
+        }
+    
+        if(escPress && searchActive){
+            closeSearch()
+        }
+    })
 
     useEffect(() => {
         if (searchActive) {

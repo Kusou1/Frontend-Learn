@@ -5,7 +5,6 @@ import { faFileAlt, faEdit, faTrashAlt, faTimes } from '@fortawesome/free-solid-
 import PropTypes from 'prop-types'
 import useKeyHandler from '../hooks/useKeyHandler'
 
-
 // ul 标签
 let GroupUl = styled.ul.attrs({
     className: 'list-group list-group-flush'
@@ -30,14 +29,16 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
     const enterPress = useKeyHandler(13)
     const escPress = useKeyHandler(27)
 
-    if(enterPress && editItem){
-        saveFile(editItem,value)
-        closeFn()
-    }
+    useEffect(() => {
+        if (enterPress && editItem) {
+            saveFile(editItem, value)
+            closeFn()
+        }
 
-    if(escPress && editItem){
-        closeFn()
-    }
+        if (escPress && editItem) {
+            closeFn()
+        }
+    })
 
     return (
         <GroupUl>
@@ -96,11 +97,11 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
     )
 }
 
-FileList.propTypes={
+FileList.propTypes = {
     files: PropTypes.array,
     editFile: PropTypes.func.isRequired,
     saveFile: PropTypes.func.isRequired,
-    deleteFile: PropTypes.func.isRequired,
+    deleteFile: PropTypes.func.isRequired
 }
 
 export default FileList

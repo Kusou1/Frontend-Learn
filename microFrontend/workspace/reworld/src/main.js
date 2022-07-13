@@ -1,10 +1,22 @@
 import { h, createApp } from "vue";
 import singleSpaVue from "single-spa-vue";
+import { createRouter, createWebHistory } from "vue-router";
 
 import App from "./App.vue";
 
+const Foo = { template: "<div>Foo</div>" };
+const Bar = { template: "<div>Bar</div>" };
+
+const routes = [
+  { path: "/reworld/foo", component: Foo },
+  { path: "/bar", component: Bar },
+];
+
+const router = createRouter({ history: createWebHistory("/reworld"), routes });
+
 const vueLifecycles = singleSpaVue({
   createApp,
+  router,
   appOptions: {
     render() {
       return h(App, {
@@ -17,8 +29,11 @@ const vueLifecycles = singleSpaVue({
       });
     },
   },
+  handleInstance: (app) => {
+    app.use(router);
+  },
 });
 
 export const bootstrap = vueLifecycles.bootstrap;
-export const mount = vueLifecycles.mount;
+export const mount = (props) => vueLifecycles.mount(props);
 export const unmount = vueLifecycles.unmount;

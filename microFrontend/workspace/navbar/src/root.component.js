@@ -8,7 +8,7 @@ export default function Root(props) {
         <Link to="/">@single-spa/welcome</Link>{" "}
         <Link to="/lagou">@study/lagou</Link>{" "}
         <Link to="/todos">@study/todos</Link>{" "}
-        <Link to="/realworld">@study/realworld</Link>
+        <Link to="/reworld">@study/reworld</Link>
       </div>
     </BrowserRouter>
   );

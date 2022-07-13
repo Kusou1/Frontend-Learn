@@ -13,7 +13,7 @@
     "html-webpack-plugin": "^5.5.0",
     "single-spa-vue": "^2.1.0",
     "vue": "^2.6.11",
-    "webpack": "^5.73.0"
+    "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -24,7 +24,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "vue-cli-plugin-single-spa": "^2.1.1",
     "vue-loader": "^17.0.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^5.73.0"
   },
   "eslintConfig": {
     "root": true,

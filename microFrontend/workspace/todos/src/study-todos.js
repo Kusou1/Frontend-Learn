@@ -14,4 +14,5 @@ const lifecycles = singleSpaReact({
   domElementGetter: () => document.getElementById("root"),
 });
 
+// 导出single-spa所需的生命周期函数
 export const { bootstrap, mount, unmount } = lifecycles;

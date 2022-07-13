@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 function useToolsModule() {
   const [toolsModule, setToolsModule] = useState();
   useEffect(() => {
+    // import方法返回的是一个promise
     System.import("@study/tools").then(setToolsModule);
   }, []);
   return toolsModule;

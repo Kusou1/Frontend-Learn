@@ -4,6 +4,7 @@
   <HelloWorld msg="Welcome to Your Vue.js App" />
   <router-link to="/foo">foo</router-link>
   <router-link to="/bar">bar</router-link>
+  <button @click="handleClick">button</button>
   <router-view name="foo" />
 </template>
 
@@ -29,6 +30,16 @@ export default {
       parcelConfig: window.System.import("@study/navbar"),
       mountParcel: mountRootParcel,
     };
+  },
+  methods: {
+    async handleClick() {
+      const toolsModule = await window.System.import("@study/tools");
+      toolsModule.sayHello("@study/realworld");
+    },
+  },
+  async mounted() {
+    const toolsModule = await window.System.import("@study/tools");
+    toolsModule.sharedSubject.subscribe(console.log);
   },
 };
 </script>

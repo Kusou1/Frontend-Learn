@@ -87,9 +87,11 @@
     <% } %>
   </head>
   <body>
+    <!-- 允许使用组件的方式声明顶层路由，并且提供了更加便捷的路由API用来注册应用。 -->
+    <!-- 构建路由 -->
     <template id="single-spa-layout">
       <single-spa-router>
-        <application name="@study/navbar""></application>
+        <application name="@study/navbar"></application>
         <route default>
           <application name="@single-spa/welcome"></application>
         </route>

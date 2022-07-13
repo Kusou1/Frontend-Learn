@@ -1,6 +1,8 @@
 import { registerApplication, start } from "single-spa";
 import { constructApplications, constructRoutes } from "single-spa-layout";
 
+// 获取路由信息 && 注册应用
+
 // 获取路由配置对象
 const routes = constructRoutes(document.querySelector("#single-spa-layout"));
 // 获取路由信息数组

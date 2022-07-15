@@ -15,7 +15,7 @@ module.exports = {
       },
       shared: {
         faker: {
-          singleton: true,
+          singleton: true, // 解决共享模块版本冲突，冲突时会去使用版本高的
         },
       },
     }),

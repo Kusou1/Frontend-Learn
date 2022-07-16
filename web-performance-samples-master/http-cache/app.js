@@ -14,7 +14,7 @@ http
     } else if (pathname === "/img/01.jpg") {
       const data = fs.readFileSync("./img/01.jpg");
       res.writeHead(200, {
-        Expires: new Date("2021-4-30 12:19:57").toUTCString(),
+        Expires: new Date("2021-4-30 12:19:57").toUTCString(), // 设置过期时间，如果没有过期，则一直都是从缓存中拿
       });
       res.end(data);
     } else if (pathname === "/img/02.jpg") {

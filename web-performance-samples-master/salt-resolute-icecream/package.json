@@ -31,8 +31,5 @@
     "file-loader": "^1.1.11",
     "nodemon": "^1.17.5",
     "webpack-cli": "^3.0.2"
-  },
-  "engines": {
-    "node": "8.x"
   }
 }

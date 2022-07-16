@@ -1,37 +1,37 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   devtool: false,
   context: __dirname,
-  entry: './src/index.jsx',
+  entry: "./src/index.jsx",
   output: {
     path: `${__dirname}/build`,
     filename: `bundle.js`,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         include: /src/,
         exclude: /node_modules/,
         query: {
-          presets: ['react'],
+          presets: ["react"],
         },
       },
       {
         test: /\.(jpg|png)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: './imgs/[name].png',
+              name: "./imgs/[name].png",
             },
           },
         ],
@@ -40,10 +40,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'template.html',
+      template: "template.html",
     }),
-    new CopyWebpackPlugin([
-      { from: './libs/*', },
-    ]),
+    new CopyWebpackPlugin([{ from: "./libs/*" }]),
   ],
 };

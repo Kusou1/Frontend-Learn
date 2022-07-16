@@ -6,9 +6,9 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./Header.jsx";
 import Pages from "./Pages.jsx";
-import Card from "./Card.jsx";
+// import Card from "./Card.jsx";
 import Home from "./Home.jsx";
-import model from "./model.js";
+// import model from "./model.js";
 
 const primary = "#9b5d30";
 
@@ -28,7 +28,7 @@ const theme = createMuiTheme({
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.mineBitcoin(1500);
+    // this.mineBitcoin(1500);
   }
   mineBitcoin(duration) {
     const start = new Date().getTime();

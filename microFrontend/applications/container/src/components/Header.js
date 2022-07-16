@@ -73,7 +73,7 @@ export default function Header({ status, setStatus }) {
             component={RouterLink}
             to="/"
           >
-            拉勾教育
+            Lorem Ipsum
           </Typography>
           <Button
             color="primary"

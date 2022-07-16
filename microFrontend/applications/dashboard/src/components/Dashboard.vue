@@ -90,7 +90,7 @@ import InputText from "primevue/inputtext";
 import Button from "primevue/button";
 import Column from "primevue/column";
 import DataTable from "primevue/datatable";
-import Chart from "primevue/chart";
+import Chart from "chart.js";
 import ProgressBar from "primevue/progressbar";
 
 export default {

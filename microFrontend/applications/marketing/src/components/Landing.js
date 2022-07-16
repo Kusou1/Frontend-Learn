@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -40,7 +41,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              拉勾教育
+              Lorem Ipsum
             </Typography>
             <Typography
               variant="h5"
@@ -48,23 +49,31 @@ export default function Album() {
               color="textSecondary"
               paragraph
             >
-              拉勾教育是拉勾旗下的互联网人职场专业能力提升平台,
-              拉勾教育邀请到国内外互联网名企资深工作者提纲挈领分享宝贵经验.
-              拉勾教育致力于帮助互联网技术人在短周期内对技术深度进行突破,
-              成为更专业的工作者, 是一所真正的互联网人实战大学.
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting,remaining essentially unchanged. It was
+              popularised in the 1960s with the release of Letraset sheets
+              containing Lorem Ipsum passages, and more recently with desktop
+              publishing software like Aldus PageMaker including versions of
+              Lorem Ipsum.
             </Typography>
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
+              <Grid container spacing={4} justify="center">
                 <Grid item>
                   <Link to="/pricing">
                     <Button variant="contained" color="primary">
-                      价格
+                      Price
                     </Button>
-                    <Link to="/dashboard">
-                      <Button variant="contained" color="primary">
-                        Dashboard
-                      </Button>
-                    </Link>
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link to="/dashboard">
+                    <Button variant="contained" color="primary">
+                      Dashboard
+                    </Button>
                   </Link>
                 </Grid>
               </Grid>
@@ -74,7 +83,7 @@ export default function Album() {
       </main>
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          拉勾教育
+          The Notorious B.I.G.
         </Typography>
         <Typography
           variant="subtitle1"
@@ -82,7 +91,7 @@ export default function Album() {
           color="textSecondary"
           component="p"
         >
-          拉勾旗下专为互联网人打造的实战大学
+          SkyLimit
         </Typography>
       </footer>
     </React.Fragment>

@@ -29,6 +29,7 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "container",
+      // 模块引用列表
       remotes: {
         marketing: "marketing@http://localhost:8081/remoteEntry.js",
         auth: "auth@http://localhost:8082/remoteEntry.js",

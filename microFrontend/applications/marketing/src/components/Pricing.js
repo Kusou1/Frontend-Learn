@@ -74,7 +74,7 @@ export default function Pricing() {
           color="textSecondary"
           component="p"
         >
-          拉勾旗下专为互联网人打造的实战大学
+          take money
         </Typography>
       </Container>
 

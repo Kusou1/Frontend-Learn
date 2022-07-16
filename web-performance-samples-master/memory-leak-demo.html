@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>内存泄漏分析示例</title>
+  </head>
+
+  <body>
+    <h1>内存泄漏分析示例</h1>
+    <div id="app">
+      <button id="run">运行</button>
+      <button id="stop">停止</button>
+    </div>
+    <script>
+      const arr = [];
+
+      for (let i = 0; i < 200000; i++) {
+        arr.push(i);
+      }
+
+      let newArr = [];
+
+      function run() {
+        newArr = newArr.concat(arr);
+      }
+
+      let clearRun;
+
+      document.querySelector("#run").onclick = function () {
+        clearRun = setInterval(() => {
+          run();
+        }, 1000);
+      };
+
+      document.querySelector("#stop").onclick = function () {
+        clearInterval(clearRun);
+      };
+    </script>
+  </body>
+</html>

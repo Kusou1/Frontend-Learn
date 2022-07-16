@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <!-- <link href="style.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="main.css"> -->
+
+    <!-- 阻塞渲染 -->
+    <!-- <link href="style.css" rel="stylesheet"> -->
+
+    <!-- 非阻塞的加载 CSS -->
+    <!-- <link href="print.css" rel="stylesheet" media="print"> -->
+
+    <!-- 拆分媒体查询相关 CSS 资源：可变阻塞加载 -->
+    <!-- <link href="other.css" rel="stylesheet" media="(min-width: 40em)"> -->
+
+    <!-- <link href="portrait.css" rel="stylesheet" media="orientation:portrait"> -->
+    <title>Critical Path</title>
+    <!-- <style></style> -->
+    <!-- <script>
+    document.addEventListener('DOMContentLoaded', () => alert("DOM ready after defer!"));
+  </script> -->
+    <!-- <script defer src="index.js"></script>
+  <script defer src="index2.js"></script> -->
+
+    <!-- <script async src="index.js"></script>
+  <script async src="index2.js"></script> -->
+
+    <!-- 利用空闲时间预加载指定的资源 -->
+    <!-- <link rel="preload" href="index.js">
+  <link rel="preload" href="index2.js"> -->
+
+    <!-- 预加载将来可能要用到的资源 -->
+    <link rel="prefetch" href="index.js" />
+    <link rel="prefetch" href="index2.js" />
+  </head>
+
+  <body>
+    <p>Hello <span>web performance</span> students!</p>
+    <!-- <div><img src="awesome-photo.jpg"></div> -->
+    <script src="index.js"></script>
+    <script src="index2.js"></script>
+  </body>
+</html>

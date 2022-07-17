@@ -1,0 +1,83 @@
+{
+  "version": "2.0",
+  "envId": "test-2gmsdnvd04b10a9f",
+  "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+  "functionRoot": "cloudfunctions",
+  "framework": {
+    "name": "vue",
+    "plugins": {
+      "client": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "buildCommand": "npm run build",
+          "outputPath": "dist",
+          "cloudPath": "/vue",
+          "envVariables": {
+            "VUE_APP_ENV_ID": "{{env.ENV_ID}}"
+          }
+        }
+      },
+      "server": {
+        "use": "@cloudbase/framework-plugin-function",
+        "inputs": {
+          "functionRootPath": "cloudfunctions",
+          "functions": [
+            {
+              "name": "gettodo",
+              "timeout": 5,
+              "envVariables": {},
+              "runtime": "Nodejs10.15",
+              "memory": 128,
+              "aclRule": {
+                "invoke": true
+              }
+            },
+            {
+              "name": "addtodo",
+              "timeout": 5,
+              "envVariables": {},
+              "runtime": "Nodejs10.15",
+              "memory": 128,
+              "aclRule": {
+                "invoke": true
+              }
+            },
+            {
+              "name": "puttodo",
+              "timeout": 5,
+              "envVariables": {},
+              "runtime": "Nodejs10.15",
+              "memory": 128,
+              "aclRule": {
+                "invoke": true
+              }
+            },
+            {
+              "name": "deltodo",
+              "timeout": 5,
+              "envVariables": {},
+              "runtime": "Nodejs10.15",
+              "memory": 128,
+              "aclRule": {
+                "invoke": true
+              }
+            }
+          ]
+        }
+      },
+      "auth": {
+        "use": "@cloudbase/framework-plugin-auth",
+        "inputs": {
+          "configs": [
+            {
+              "platform": "NONLOGIN",
+              "status": "ENABLE"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "functions": [],
+  "region": "ap-guangzhou"
+}

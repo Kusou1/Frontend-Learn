@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Worker</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Worker</title>
-</head>
+  <body>
+    <input type="number" id="num1" value="1" />+
+    <input type="number" id="num2" value="2" />
+    <button id="btn">=</button>
+    <strong id="result">0</strong>
+    <script>
+      // DOM限制：Worker无法读取主线程所处理网页的DOM对象，也就无法使用document、window和parent等对象，只能访问navigator和location对象
+      // 文件读取限制：Worker子线程无法访问本地文件系统，这就要求所加载的脚本来自网络。
+      // 通信限制： 主线程和Worker 子线程不在同一个上下午内，所以它们无法直接进行通信，只能通过消息来完成。
+      // 脚本执行限制：虽然Worker 可以通过XMLHTtPRequest 对象发起ajax请求，但不能使用alert()方法和confirm()方法在页面弹出提示。
+      // 同源限制：Worker子线程执行的代码文件需要与主线程的代码文件同源。
 
-<body>
-  <input type="number" id="num1" value="1">+
-  <input type="number" id="num2" value="2">
-  <button id="btn">=</button>
-  <strong id="result">0</strong>
-  <script>
-    const worker = new Worker('worker.js')
+      // new一个worker子线程
+      const worker = new Worker("worker.js");
 
-    const num1 = document.querySelector('#num1')
-    const num2 = document.querySelector('#num2')
-    const result = document.querySelector('#result')
-    const btn = document.querySelector('#btn')
+      const num1 = document.querySelector("#num1");
+      const num2 = document.querySelector("#num2");
+      const result = document.querySelector("#result");
+      const btn = document.querySelector("#btn");
 
-    btn.addEventListener('click', () => {
-      worker.postMessage({
-        type: 'add',
-        data: {
-          num1: num1.value - 0,
-          num2: num2.value - 0
+      btn.addEventListener("click", () => {
+        worker.postMessage({
+          type: "add",
+          data: {
+            num1: num1.value - 0,
+            num2: num2.value - 0,
+          },
+        });
+      });
+
+      // 监听来自子线程的消息事件
+      worker.addEventListener("message", (e) => {
+        const { type, data } = e.data;
+        if (type === "add") {
+          result.textContent = data;
         }
-      })
-    })
-
-    // 监听来自子线程的消息事件
-    worker.addEventListener('message', e => {
-      const { type, data } = e.data
-      if (type === 'add') {
-        result.textContent = data
-      }
-    })
-
-  </script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>

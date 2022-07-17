@@ -16,13 +16,18 @@
 
     <!-- <link href="portrait.css" rel="stylesheet" media="orientation:portrait"> -->
     <title>Critical Path</title>
+    <!-- 关键的样式可以直接用内联样式，就会更快，但不要太多 -->
     <!-- <style></style> -->
     <!-- <script>
-    document.addEventListener('DOMContentLoaded', () => alert("DOM ready after defer!"));
-  </script> -->
+             document.addEventListener('DOMContentLoaded', () => alert("DOM ready after defer!"));
+             </script> -->
+    <!-- defer告诉浏览器不用等待脚本，浏览器将继续处理HTML，构建DOM。脚本会“在后台”下载，然后等DOM创建完成后，脚本才会执行  -->
+    <!-- defer可以异步延迟加载，并保持顺序 -->
+    <!-- 但是两个defer脚本的话，比较快的不会先输出，还是会按顺序输出 -->
     <!-- <script defer src="index.js"></script>
+      
   <script defer src="index2.js"></script> -->
-
+    <!-- async也可以异步延迟加载，但不能保持顺序，谁先加载好谁先输出，适合给第三方使用  -->
     <!-- <script async src="index.js"></script>
   <script async src="index2.js"></script> -->
 
@@ -30,7 +35,7 @@
     <!-- <link rel="preload" href="index.js">
   <link rel="preload" href="index2.js"> -->
 
-    <!-- 预加载将来可能要用到的资源 -->
+    <!-- 预加载将来可能要用到的资源，用的时候要慎重 -->
     <link rel="prefetch" href="index.js" />
     <link rel="prefetch" href="index2.js" />
   </head>
@@ -38,6 +43,7 @@
   <body>
     <p>Hello <span>web performance</span> students!</p>
     <!-- <div><img src="awesome-photo.jpg"></div> -->
+    <!-- 放在后面不会阻塞html和css -->
     <script src="index.js"></script>
     <script src="index2.js"></script>
   </body>

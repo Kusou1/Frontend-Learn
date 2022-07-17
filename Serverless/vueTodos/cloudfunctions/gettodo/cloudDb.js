@@ -1,9 +1,9 @@
 const cloud = require("@cloudbase/node-sdk");
-
+require('dotenv').config()
 const cloudDb = cloud.init({
-    env: 'test-2gmsdnvd04b10a9f',
-    secretId: 'AKIDtc9RUK1gWCeEfsxrb8VowqZ5OUP7ey4z',
-    secretKey: 'mKfokSyION9TbVCerqa6MOBj26wYcS3P',
+    env: process.env.ENV_ID,
+    secretId: process.env.SECRET_ID,
+    secretKey: process.env.SECRET_KEY,
     region: 'ap-guangzhou'
 })
 

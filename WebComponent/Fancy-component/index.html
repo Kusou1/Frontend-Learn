@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin:0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            display: grid;
+            place-items: center;
+            /* background-color:aquamarine; */
+        }
+        fc-3d-btn{
+            --color: #6e50a6;
+            --shadow-color:rgba(255,255,255,.4)
+            /* --inset-shadow-color:#315; */
+            /* --inset-shadow-color-active: rgba(49,23,75,.9) */
+            /* --cover-color: rgba(0,0,0,.4) */
+        }
+    </style>
+</head>
+<body>
+    <fc-input placeholder="Username"></fc-input>
+    <fc-btn>btn</fc-btn>
+    <fc-3d-btn>3d-btn</fc-3d-btn>
+    <fc-pixel-btn></fc-pixel-btn>
+    
+    <fc-bubbles click><fc-arrow-btn></fc-arrow-btn></fc-bubbles>
+    <fc-bubbles click>☝🏻</fc-bubbles>
+    <fc-china></fc-china>
+
+
+    <script type="module">
+        import { FcTypingInput,FcDblWarpBtn,Fc3DBtn,FcPixelBtn,FcArrowBtn,FcBubbles,FcChina } from 'http://unpkg.zhimg.com/fancy-components'
+        new FcTypingInput('fc-input') // 自定义元素必须以短横线'-'进行连接
+        new FcDblWarpBtn('fc-btn')
+        new Fc3DBtn('fc-3d-btn')
+        new FcPixelBtn()
+        new FcArrowBtn()
+        new FcBubbles()
+        new FcChina()
+    </script>
+</body>
+</html>

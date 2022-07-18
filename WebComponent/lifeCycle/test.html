@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            class Girlfriend {
+                #age
+                constructor(isBeautiful, age) {
+                    if (age < 14) {
+                        throw new Error('call 110!')
+                    }
+                    this.isBeautiful = isBeautiful
+                    this.age = age
+                }
+
+                get age() {
+                    return this.#age
+                }
+                set age(value) {
+                    if (value < 14) {
+                        throw new Error('call 110!')
+                    }
+                    this.#age = value
+                }
+            }
+            const angularBaby = new Girlfriend(true, 18)
+        </script>
+    </body>
+</html>

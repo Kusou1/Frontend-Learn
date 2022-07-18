@@ -7,31 +7,45 @@
         <title>Document</title>
     </head>
     <body>
-        <life-cycle></life-cycle>
+        <life-cycle color="purple"></life-cycle>
         <script>
-            customElements.define('life-cycle', class extends HTMLElement {
-                constructor(){
-                    super()
-                    // 相当去Vue的setup
+            customElements.define(
+                'life-cycle',
+                class extends HTMLElement {
+                    get color() {
+                        return this.getAttribute('color')
+                    }
+                    set color(value) {
+                        this.setAttribute('color', value)
+                    }
+                    // 被观察的Attributes，相当于vue的data
+                    static observedAttributes = ['color']
+                    constructor() {
+                        super()
+                        // 相当去Vue的setup
+                        this.innerHTML = '<h1>组件</h1>'
+                    }
+                    connectedCallback() {
+                        // 相当于Vue的mounted
+                    }
+                    disconnectedCallback() {
+                        // 相当于Vue的unMounted
+                    }
+                    // 被收养(剪切)的回调
+                    adoptedCallback() {}
+                    attributeChangedCallback(name, oldValue, newValue) {
+                        // attribute
+                        // property
+                        // 相当于vue的watch，但是oldValue === newValue时也会触发
+                        if (name === 'color') {
+                            if (newValue !== oldValue) {
+                                this.style.color = newValue
+                            }
+                        }
+                    }
                 }
-                connectedCallback(){
-                    // 相当于Vue的mounted
-                    console.log('connectedCallback')
-                }
-                disconnectedCallback(){
-                    // 相当于Vue的unMounted
-                    console.log('disconnectedCallback')
-                }
-                // 被收养(剪切)的回调
-                adoptedCallback(){
-                    console.log('adoptedCallback')
-                }
-                attributeChangeCallback(){
-                    // attribute 
-                    // property 
-                    console.log('attributeChangeCallback');
-                }
-            })
+            )
+            dom = document.querySelector('life-cycle')
         </script>
     </body>
 </html>

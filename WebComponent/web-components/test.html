@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="import" href="my-span.html" />
+        <link rel="import" href="hello.html" />
+    </head>
+    <body>
+        <my-span>
+            <h1>1</h1>
+            <h2 slot="h2">2</h2>
+        </my-span>
+        <template id="my-span">
+            <span>
+                <slot>默认内容1</slot>
+                <slot name="h2">默认内容2</slot>
+            </span>
+            <style>
+                span {
+                    color: purple;
+                }
+            </style>
+        </template>
+
+        <script>
+            const dom = document.currentScript.ownerDocument.querySelector('#my-span').content
+            console.log(dom)
+
+            window.customElements.define(
+                'my-span',
+                class extends HTMLElement {
+                    constructor() {
+                        super()
+                        this.attachShadow({ mode: 'open' }).appendChild(dom)
+                    }
+                }
+            )
+        </script>
+    </body>
+</html>

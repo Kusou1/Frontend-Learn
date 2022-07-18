@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                display: grid;
+                place-items: center;
+            }
+            /* 匹配所以的自定义element */
+            :defined {
+                color: wheat;
+            }
+            :not(:defined) {
+                width: 100px;
+                height: 60px;
+                background: gray linear-gradient(60deg, transparent, transparent 20%,white 40%,transparent 60%) 0 / 300%;
+                border-radius: 15px;
+                animation:  loading 2s infinite;
+                text-align: center;
+                line-height: 60px;
+            }
+            @keyframes loading {
+                to {background-position: 300% 0 ;}
+            }
+        </style>
+    </head>
+    <body>
+        <long-time-no-see>loading</long-time-no-see>
+        <!-- <my-bubbles click>xixi</my-bubbles> -->
+        <script type="module">
+            import { FcBubbles } from 'http://unpkg.zhimg.com/fancy-components'
+
+            new FcBubbles()
+            customElements
+                .whenDefined('long-time-no-see')
+                .then(() => document.querySelector('long-time-no-see').innerHTML='好久不见')
+                .catch((err) => console.log(err))
+            // 定义customElements
+            setTimeout(
+                () =>
+                    customElements.define(
+                        'long-time-no-see',
+                        class extends HTMLElement {
+                            constructor() {
+                                super()
+
+                                this.innerHTML = '<h1>好久不见</h1>'
+                                this.onclick = () => {
+                                    alert('你好')
+                                }
+                            }
+                        }
+                    ),
+                3000
+            )
+            customElements.define(
+                'my-bubbles',
+                class extends customElements.get('fc-bubbles') {
+                    constructor() {
+                        super()
+
+                        this.onclick = () => {
+                            console.log('我自己的bubbles')
+                        }
+                    }
+                }
+            )
+        </script>
+    </body>
+</html>

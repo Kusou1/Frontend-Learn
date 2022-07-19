@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 标签 -->
+    <div id="div"></div>
+    <svg id="svg"></svg>
+    <script>
+        // 元素
+        const div = document.getElementById('div')
+        const svg = document.getElementById('svg')
+
+        //                Element 是所有元素的父类  
+        //    SVGElement            HTMLElement
+        //               HTMLDivElement   HTMLInputElement  HTMLAnchorElement HTMLParagraphElement HTMLUListElement 
+        // console.log(div instanceof Element)
+        // document.createElement('button').constructor 获取构造类
+        // document.createElementNS('http://www.w3.org/2000/svg','circle').constructor
+        class Element {}
+        class SVGElement extends Element {}
+        class HTMLElement extends Element {}
+        // Object.getPrototypeOf(HTMLElement) === Element   true
+        // Object.getPrototypeOf(B) === A
+
+    </script>
+</body>
+</html>

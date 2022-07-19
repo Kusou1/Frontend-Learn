@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 继承自什么就要用什么标签，通过is来告诉是那个自定义元素,因为有的标签是固定搭配，比如ul>li select>option -->
+        <input placeholder="请输入内容" is="my-input"></input>
+        <script>
+            customElements.define(
+                'my-input',
+                class extends HTMLInputElement {
+                    // get placeholder() {
+                    //     return this.querySelector('input').placeholder
+                    // }
+                    // set placeholder(value) {}
+                    // static observedAttributes = ['placeholder']
+
+                    constructor() {
+                        super()
+                        this.innerHTML = 'input'
+                        this.disabled=true
+                        this.placeholder='my input'
+                    }
+                    attributeChangedCallback(name, oldValue, newValue) {
+                        // if (name === 'placeholder') {
+                        //     if (newValue !== oldValue) {
+                        //         this.querySelector('input').placeholder = newValue
+                        //     }
+                        // }
+                    }
+                },
+                { extends: 'input' }
+            )
+        </script>
+    </body>
+</html>

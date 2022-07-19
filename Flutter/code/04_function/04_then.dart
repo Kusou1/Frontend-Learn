@@ -1,4 +1,4 @@
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http; // 引入dart包
 import 'dart:convert';
 
 // https://httpbin.org/ip 返回 IP 地址
@@ -13,7 +13,5 @@ Future getIPAddress() {
 
 void main() {
   // 调用 getIPAddress
-  getIPAddress()
-    .then((ip) => print(ip))
-    .catchError((error) => print(error));
+  getIPAddress().then((ip) => print(ip)).catchError((error) => print(error));
 }

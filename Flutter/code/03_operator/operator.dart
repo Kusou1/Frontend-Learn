@@ -1,8 +1,8 @@
 void main() {
-  // 地板除
+  // 地板除 触发结果向下取整
   print(7 ~/ 4);
 
-  // 类型判断运算符
+  // 类型判断运算符  is 和 instansof差不多
   List list = [];
   if (list is List) {
     print('list is List');
@@ -16,9 +16,9 @@ void main() {
     print('是列表');
   }
 
-  // 避空运算符
+  // 避空运算符   避免为空
   print(1 ?? 3); // 返回 1
-  print(null ?? 12); // 返回 12
+  print(null ?? 12); // 第一个null为空，返回 12 
 
   var foo;
   // foo = 6;
@@ -37,7 +37,7 @@ void main() {
   var m = new Map();
   print(m.length);
   var obj;
-  // print(obj.length); // The getter 'length' was called on null.
+  // print(obj.length); // The getter 'length' was called on null. 条件属性访问
   print(obj?.length);
 
   // 级联运算符

@@ -1,3 +1,7 @@
+// getter获取器是通过get关键字修饰的方法
+// 函数没有小括号，访问时也没有小括号，像访问属性一样
+// setter 修改器是通过set关键字修饰的方法
+// 访问时，像设置属性一样给函数传参
 class Circle {
   final double PI = 3.1415;
   num r;
@@ -26,5 +30,5 @@ void main() {
   // 通过 Setter 修改属性
   c.setR = 20;
 
-  print(c.area);
+  print(c.area); // 使用getter方法像访问属性一样
 }

@@ -1,3 +1,7 @@
+// 初始化列表  在构造函数中初始化值
+// 在构造函数体执行之前执行
+// 使用逗号分隔初始化表达式
+// 常用设置final常量的值
 class Rect {
   int height;
   int width;
@@ -16,8 +20,10 @@ class Rect {
   //   print('${this.height} -- ${this.width}');
   // }
 
-  // 初始化列表
-  Rect() : height = 4, width = 20 {
+  // 初始化列表 设置默认值并给到this上的属性
+  Rect()
+      : height = 4,
+        width = 20 {
     print('${this.height} -- ${this.width}');
   }
 }
@@ -35,7 +41,7 @@ void main() {
   var r = new Rect();
 
   // 实例化点
-  var p = new Point(1,2,3);
+  var p = new Point(1, 2, 3);
   print(p.z);
 
   var p2 = new Point.twoD(4, 5);

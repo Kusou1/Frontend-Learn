@@ -1,4 +1,6 @@
 // 声明类
+// 类是对象的抽象，对象是类的具体实现
+// Dart 是面向对象编程（OOP）
 class Person {
   // 类的属性
   String name = '张三';

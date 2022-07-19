@@ -12,7 +12,7 @@ class Son extends Father {
 
   @override
   say() {
-    super.say();
+    super.say(); //父类中的say方法
     print('我是 刘禅, 我爹是 ${super.name}，他的工作${super.job}');
   }
 }

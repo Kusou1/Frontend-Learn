@@ -1,3 +1,5 @@
+// 工厂构造函数
+// 通过factory 声明，工厂函数不会自动生成实例，而是通过代码来决定返回的实例
 class Person {
   String name;
 
@@ -22,10 +24,10 @@ class Person {
 void main() {
   // 实例化操作
   Person p1 = new Person('关羽');
-  print(p1.name);
+  print(p1.name); // 关羽
 
   Person p2 = new Person('张飞');
-  print(p2.name);
+  print(p2.name); // 关羽
 
-  print(p1 == p2);
+  print(p1 == p2); // true
 }

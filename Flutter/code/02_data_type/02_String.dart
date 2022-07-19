@@ -10,7 +10,7 @@ void main() {
   String str2 = "你好，世界"; // 双引号
   print(str2);
 
-  // 通过三个引号声明字符串
+  // 通过三个引号声明字符串 包含换行符的字符串
   String str3 = '''Hello
   World
   ''';
@@ -24,7 +24,7 @@ void main() {
   // 字符串的分隔
   print(str1.split(''));
 
-  // 字符串的裁切
+  // 字符串的裁切  去掉前后多余空格
   print('  abc   '.trim());
 
   // 判断字符串是否为空

@@ -1,4 +1,8 @@
 void main() {
+  // 变量是一个引用，Dart万物皆为对象，变量存储的是对象的引用
+  // 变量名是大小写敏感的
+  // 变量的默认值是null
+  // Dart变量的值不会进行隐式转换
   // 声明变量
   var age = '18';
   print(age);
@@ -26,4 +30,7 @@ void main() {
 
   final n2 = 2;
   print(n2);
+
+  // const time = DateTime.now(); // 报错 - 无法将运行时的值分配给const变量
+  // final time = DateTime.now(); // 成功 - 可以将运行时的值分配给final变量
 }

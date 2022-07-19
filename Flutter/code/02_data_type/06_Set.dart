@@ -1,5 +1,5 @@
 void main() {
-  // 字面量
+  // 字面量声明Set
   var nums = <int>{1, 2, 3};
   print(nums);
 

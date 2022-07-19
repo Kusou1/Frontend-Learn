@@ -20,12 +20,12 @@ void main() {
   print(3.1415926.toStringAsFixed(4));
 
   // 返回余数
-  print(10.remainder(4));
+  print(10.remainder(4)); // 2
 
   // 数字比较: 0: 相同，1：大于，-1：小于
   print(10.compareTo(12));
   // 返回最大公约数
-  print(12.gcd(18));
+  print(12.gcd(18)); // 6
 
   // 科学计数法
   print(1000.toStringAsExponential(1));

@@ -1,12 +1,12 @@
 void main() {
-  // 字面量
+  // 字面量 声明Map
   var person = {
     'name': '张三', 
     'age': 20
   };
   print(person);
 
-  // 构造函数
+  // 构造函数 声明Map
   var p = Map();
   p['name'] = '李四';
   p['age'] = 22;
@@ -22,9 +22,9 @@ void main() {
   // 赋值
   // 如果 key 不存在，我们才赋值（如果key已经存在，则不赋值）
   p.putIfAbsent('gender', () => '男');
-  print(p);
+  print(p);   // 男
   p.putIfAbsent('gender', () => '女');
-  print(p);
+  print(p);   // 还是男
 
   // 获取 Map 中所有的 key
   print(p.keys);
@@ -33,5 +33,5 @@ void main() {
 
   // 根据条件进行删除
   p.removeWhere((key, value) => key == 'gender');
-  print(p);
+  print(p); // 把性别删掉了
 }

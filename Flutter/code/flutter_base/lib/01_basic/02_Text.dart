@@ -4,17 +4,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Text"),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: TextDemo()
-    );
+        appBar: AppBar(
+          title: Text("Text"),
+          leading: Icon(Icons.menu),
+          actions: [Icon(Icons.settings)],
+          elevation: 0.0,
+          centerTitle: true,
+        ),
+        body: TextDemo());
   }
 }
 
@@ -33,37 +30,31 @@ class TextDemo extends StatelessWidget {
             fontStyle: FontStyle.italic,
             decoration: TextDecoration.lineThrough,
             decorationColor: Colors.blue,
-            // fontFamily: 'SourceSansPro',
+            fontFamily: 'SourceSansPro',
           ),
           textAlign: TextAlign.left,
           maxLines: 3,
-          overflow: TextOverflow.ellipsis,
+          overflow: TextOverflow.ellipsis, // 文本溢出
           textScaleFactor: 1.5,
         ),
         RichText(
           text: TextSpan(
-            text: "Hello",
-            style: TextStyle(
-              fontSize: 40,
-              color: Color.fromARGB(255, 0, 0, 255)
-            ),
-            children: [
-              TextSpan(
-                text: "Flutter",
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Color.fromRGBO(255, 0, 0, 0.5)
+              text: "Hello",
+              style: TextStyle(
+                  fontSize: 40, color: Color.fromARGB(255, 0, 0, 255)),
+              children: [
+                TextSpan(
+                  text: "Flutter",
+                  style: TextStyle(
+                      fontSize: 40, color: Color.fromRGBO(255, 0, 0, 0.5)),
                 ),
-              ),
-              TextSpan(
-                text: "你好世界",
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Color.fromARGB(0xFF, 0x00, 0xFF, 0x00)
-                ),
-              )
-            ]
-          ),
+                TextSpan(
+                  text: "你好世界",
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Color.fromARGB(0xFF, 0x00, 0xFF, 0x00)),
+                )
+              ]),
         )
       ],
     );

@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 
+// 流式布局 （解决内容溢出的问题）自动换行
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Wrap"),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: WrapDemo()
-    );
+        appBar: AppBar(
+          title: Text("Wrap"),
+          leading: Icon(Icons.menu),
+          actions: [Icon(Icons.settings)],
+          elevation: 0.0,
+          centerTitle: true,
+        ),
+        body: WrapDemo());
   }
 }
 
 class WrapDemo extends StatelessWidget {
-  List<String> _list = [
-    '曹操', '司马懿', '曹仁', '曹洪', '张辽', '许褚'
-  ];
+  // 当前库私有
+  List<String> _list = ['曹操', '司马懿', '曹仁', '曹洪', '张辽', '许褚'];
 
+  // 由组件组成的List
   List<Widget> _weiGuo() {
-    return _list.map((item) => Chip(
-      avatar: CircleAvatar(
-        backgroundColor: Colors.pink,
-        child: Text('魏'),
-      ),
-      label: Text(item),
-    )).toList();
+    return _list
+        .map((item) => Chip(
+              avatar: CircleAvatar(
+                backgroundColor: Colors.pink,
+                child: Text('魏'),
+              ),
+              label: Text(item),
+            ))
+        .toList();
   }
 
   @override
@@ -45,7 +45,6 @@ class WrapDemo extends StatelessWidget {
           runSpacing: 100, // 垂直方向的间距
           // runAlignment: WrapAlignment.spaceAround, // 交叉轴方向i的对齐方式
         ),
-
         Wrap(
           children: [
             Chip(

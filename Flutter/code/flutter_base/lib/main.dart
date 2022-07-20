@@ -8,7 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 // import '02_layout/03_Flex.dart';
 // import '02_layout/04_Wrap.dart';
 // import '02_layout/05_Stack.dart';
-// import '02_layout/06_Card.dart';
+import '02_layout/06_Card.dart';
 // import '03_button/01_Button.dart';
 // import '04_image/01_image.dart';
 // import '05_list/01_SingleChildScrollView.dart';
@@ -33,7 +33,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 // import '09_navigation/07_Tab.dart';
 // import '10_form/01_Switch.dart';
 // import '10_form/02_Checkbox.dart';
-import '10_form/03_Radio.dart';
+// import '10_form/03_Radio.dart';
 // import '10_form/04_TextField.dart';
 // import '10_form/05_Calendar.dart';
 // import '10_form/06_Form.dart';
@@ -122,6 +122,7 @@ class MyApp extends StatelessWidget {
       theme: CustomTheme.lightTheme,
       darkTheme: CustomTheme.darkTheme,
 
+      // 关闭调试banner
       debugShowCheckedModeBanner: false,
       // 国际化
       localizationsDelegates: [
@@ -140,8 +141,8 @@ class MyApp extends StatelessWidget {
         print('languageCode: ${locale.languageCode}');
         print('countryCode: ${locale.countryCode}');
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode 
-          && supportedLocale.countryCode == locale.countryCode) {
+          if (supportedLocale.languageCode == locale.languageCode &&
+              supportedLocale.countryCode == locale.countryCode) {
             return supportedLocale;
           }
         }
@@ -151,4 +152,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

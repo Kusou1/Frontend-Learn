@@ -23,7 +23,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 // import '08_state/02_DataTable.dart';
 // import '08_state/03_InheritedWidget.dart';
 // import '08_state/04_lifecycle.dart';
-import '08_state/05_provider.dart';
+// import '08_state/05_provider.dart';
 // import '09_navigation/01_anonymous.dart';
 // import '09_navigation/02_namedRoute.dart';
 // import '09_navigation/03_onGenerateRoute.dart';
@@ -42,7 +42,7 @@ import '08_state/05_provider.dart';
 // import '11_other/02_StaggerAnimation.dart';
 // import '11_other/03_HeroAnimation.dart';
 // import '11_other/04_TextI18n.dart';
-// import '11_other/05_theme.dart';
+import '11_other/05_theme.dart';
 
 import '11_other/CustomLocalizations.dart';
 import '11_other/CustomTheme.dart';
@@ -64,9 +64,8 @@ class MyApp extends StatelessWidget {
       //   'productDetail': (context) => ProductDetail(),
       // },
       // initialRoute: 'home',
-      // onUnknownRoute: (RouteSettings setting) => MaterialPageRoute(
-      //   builder: (context) => UnknowPage()
-      // ),
+      // onUnknownRoute: (RouteSettings setting) =>
+      //     MaterialPageRoute(builder: (context) => UnknowPage()),
       // onGenerateRoute: (RouteSettings setting) {
       //   // 匹配首页 /
       //   print('当前路径：'+setting.name);
@@ -119,7 +118,7 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData.light(),
       // darkTheme: ThemeData.dark(),
 
-      theme: CustomTheme.lightTheme,
+      theme: CustomTheme.darkTheme,
       darkTheme: CustomTheme.darkTheme,
 
       // 关闭调试banner
@@ -132,6 +131,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
+      // 指定支持那些语言
       supportedLocales: [
         const Locale('en', 'US'), // 美国英语
         const Locale('zh', 'CN'), // 简体中文

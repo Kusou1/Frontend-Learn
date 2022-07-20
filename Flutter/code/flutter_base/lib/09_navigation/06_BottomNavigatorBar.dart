@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    // TODO: implement initState 设置默认状态
     super.initState();
     currentIndex = 0;
   }
@@ -61,21 +61,18 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("底部导航"),
         leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
+        actions: [Icon(Icons.settings)],
         elevation: 0.0,
         centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: bottomNavItems,
-        currentIndex: currentIndex,
-        type: BottomNavigationBarType.fixed,
-        // type: BottomNavigationBarType.shifting,
-        onTap: (index) {
-          _changePage(index);
-        }
-      ),
+          items: bottomNavItems,
+          currentIndex: currentIndex,
+          type: BottomNavigationBarType.fixed,
+          // type: BottomNavigationBarType.shifting,
+          onTap: (index) {
+            _changePage(index);
+          }),
       body: pages[currentIndex],
     );
   }

@@ -18,14 +18,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: _tabs.length, 
+      length: _tabs.length,
       child: Scaffold(
         appBar: AppBar(
           title: Text("Tab"),
           leading: Icon(Icons.menu),
-          actions: [
-            Icon(Icons.settings)
-          ],
+          actions: [Icon(Icons.settings)],
           elevation: 0.0,
           centerTitle: true,
           bottom: TabBar(
@@ -34,12 +32,10 @@ class Home extends StatelessWidget {
             unselectedLabelColor: Colors.black45,
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorColor: Colors.yellow,
-            indicatorWeight: 10,
+            indicatorWeight: 4,
           ),
         ),
-        body: TabBarView(
-          children: _tabViews
-        ),
+        body: TabBarView(children: _tabViews),
         bottomNavigationBar: TabBar(
           tabs: _tabs,
           labelColor: Colors.blue,

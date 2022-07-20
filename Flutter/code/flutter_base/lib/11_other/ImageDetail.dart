@@ -7,23 +7,16 @@ class ImageDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            // 调回去
-            Navigator.pop(context);
-          },
-          child: Hero(
-            tag: imageURL, 
-            child: Image.network(
-              imageURL,
-              width: double.infinity,
-              fit: BoxFit.cover
-            )
-          )
-        )
-      )
-    );
+        backgroundColor: Colors.black,
+        body: Center(
+            child: GestureDetector(
+                onTap: () {
+                  // 调回去
+                  Navigator.pop(context);
+                },
+                child: Hero(
+                    tag: imageURL, // 共享组件的tag要是一样的
+                    child: Image.network(imageURL,
+                        width: double.infinity, fit: BoxFit.cover)))));
   }
 }

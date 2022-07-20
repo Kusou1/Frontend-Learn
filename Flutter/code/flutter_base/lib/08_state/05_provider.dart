@@ -8,17 +8,14 @@ class Home extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (BuildContext context) => new LikesModel(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Provider"),
-          leading: Icon(Icons.menu),
-          actions: [
-            Icon(Icons.settings)
-          ],
-          elevation: 0.0,
-          centerTitle: true,
-        ),
-        body: MyHomePage()
-      ),
+          appBar: AppBar(
+            title: Text("Provider"),
+            leading: Icon(Icons.menu),
+            actions: [Icon(Icons.settings)],
+            elevation: 0.0,
+            centerTitle: true,
+          ),
+          body: MyHomePage()),
     );
   }
 }
@@ -49,14 +46,11 @@ class MyHomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // 3. 在子组件中使用数据模型
-          Text(
-            '${context.watch<LikesModel>().counter}'
-          ),
+          Text('${context.watch<LikesModel>().counter}'),
           TextButton(
-            // 3. 在子组件中使用数据模型
-            onPressed: Provider.of<LikesModel>(context).incrementCounter, 
-            child: Icon(Icons.thumb_up)
-          )
+              // 3. 在子组件中使用数据模型
+              onPressed: Provider.of<LikesModel>(context).incrementCounter,
+              child: Icon(Icons.thumb_up))
         ],
       ),
     );

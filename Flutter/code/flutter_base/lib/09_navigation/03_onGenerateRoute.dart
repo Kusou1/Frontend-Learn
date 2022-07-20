@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// 动态路由 通过onGenerateRoute对传过来的路由进行匹配
+// 动态路由与声明式路由是互斥的
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -7,9 +9,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text("首页"),
         leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
+        actions: [Icon(Icons.settings)],
         elevation: 0.0,
         centerTitle: true,
       ),
@@ -17,19 +17,19 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/product'), 
+              onPressed: () => Navigator.pushNamed(context, '/product'),
               child: Text('跳转'),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/product/1'), 
+              onPressed: () => Navigator.pushNamed(context, '/product/1'),
               child: Text('商品1'),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, '/product/2'), 
+              onPressed: () => Navigator.pushNamed(context, '/product/2'),
               child: Text('商品2'),
             ),
             ElevatedButton(
-              onPressed: () => Navigator.pushNamed(context, 'user'), 
+              onPressed: () => Navigator.pushNamed(context, 'user'),
               child: Text('未知路由'),
             ),
           ],
@@ -48,9 +48,7 @@ class Product extends StatelessWidget {
       appBar: AppBar(
         title: Text("商品页"),
         leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
+        actions: [Icon(Icons.settings)],
         elevation: 0.0,
         centerTitle: true,
       ),
@@ -58,7 +56,7 @@ class Product extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () => Navigator.pop(context), 
+              onPressed: () => Navigator.pop(context),
               child: Text('返回'),
             )
           ],
@@ -80,18 +78,16 @@ class ProductDetail extends StatelessWidget {
       appBar: AppBar(
         title: Text("商品详情页"),
         leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
+        actions: [Icon(Icons.settings)],
         elevation: 0.0,
         centerTitle: true,
       ),
       body: Center(
         child: Column(
           children: [
-            Text('当前商品的id是：'+this.id),
+            Text('当前商品的id是：' + this.id),
             ElevatedButton(
-              onPressed: () => Navigator.pop(context), 
+              onPressed: () => Navigator.pop(context),
               child: Text('返回'),
             )
           ],
@@ -110,9 +106,7 @@ class UnknowPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("404"),
         leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
+        actions: [Icon(Icons.settings)],
         elevation: 0.0,
         centerTitle: true,
       ),
@@ -120,7 +114,7 @@ class UnknowPage extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () => Navigator.pop(context), 
+              onPressed: () => Navigator.pop(context),
               child: Text('返回'),
             )
           ],

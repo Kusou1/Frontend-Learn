@@ -1,0 +1,17 @@
+{
+  "name": "MyToast",
+  "version": "1.0.0",
+  "description": "This is my first Cordova Plugin",
+  "cordova": {
+    "id": "me.cliu.mytoast",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "whoicliu",
+  "license": "ISC"
+}

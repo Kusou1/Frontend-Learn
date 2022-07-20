@@ -1,0 +1,44 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-geolocation": {
+      "GPS_REQUIRED": "true",
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-qrscanner": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "me.cliu.hellocordova"
+    }
+  },
+  "dependent_plugins": {}
+}

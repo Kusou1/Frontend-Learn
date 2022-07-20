@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <% if (process.env.NODE_ENV === 'production') { %>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com http://v.juhe.cn https://devapi.qweather.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' cdn.bootcdn.net; media-src *; img-src 'self' data: content: https://dfzximg02.dftoutiao.com; font-src 'self' cdn.bootcdn.net data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <% } else { %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <% } %>
+
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <% if (process.env.NODE_ENV === 'production') { %>
+    <script src="cordova.js"></script>
+    <% } %>
+  </body>
+</html>

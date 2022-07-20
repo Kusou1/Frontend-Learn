@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget 
+    id="me.cliu.hellocordova" 
+    version="1.0.0" 
+    xmlns="http://www.w3.org/ns/widgets" 
+    xmlns:cdv="http://cordova.apache.org/ns/1.0"
+>
+    <name>CordovaApp</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <!-- <content src="http://10.78.1.84:8081" /> -->
+    <!-- <content src="https://m.lagou.com" /> -->
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <!-- <allow-navigation href="*" /> -->
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="LoadUrlTimeoutValue" value="70000"/>
+
+        <splash src="res/screen/android/splash.png" density="ldpi" />
+        <splash src="res/screen/android/splash.png" density="mdpi" />
+        <splash src="res/screen/android/splash.png" density="hdpi" />
+        <splash src="res/screen/android/splash.png" density="xhdpi" />
+        <splash src="res/screen/android/splash.png" density="xxhdpi" />
+        <splash src="res/screen/android/splash.png" density="xxxhdpi" />
+
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+
+    <!-- 状态栏背景色 -->
+    <preference name="StatusBarBackgroundColor" value="#0000ff" />
+
+    <!-- 状态栏样式，可用选项：default, lightcontent, blacktranslucent, blackopaque -->
+    <preference name="StatusBarStyle" value="lightcontent" />
+</widget>

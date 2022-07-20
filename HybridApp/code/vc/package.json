@@ -1,0 +1,67 @@
+{
+  "name": "vc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "clean": "vue-cli-service clean",
+    "develop": "vue-cli-service develop"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cordova-lib": "^10.0.0",
+    "cordova-plugin-geolocation": "^4.1.0",
+    "core-js": "^3.6.5",
+    "vant": "^3.0.12",
+    "vue": "^3.0.0",
+    "vue-i18n": "^9.1.4",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "cordova-android": "^9.0.0",
+    "cordova-plugin-battery-status": "^2.0.3",
+    "cordova-plugin-camera": "^5.0.1",
+    "cordova-plugin-globalization": "^1.11.0",
+    "cordova-plugin-inappbrowser": "^5.0.0",
+    "cordova-plugin-network-information": "^2.0.2",
+    "cordova-plugin-qrscanner": "^3.0.1",
+    "cordova-plugin-splashscreen": "^6.0.0",
+    "cordova-plugin-statusbar": "^2.4.3",
+    "cordova-plugin-whitelist": "^1.3.4",
+    "less": "^4.1.1",
+    "less-loader": "^7.3.0"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-geolocation": {
+        "GPS_REQUIRED": "true"
+      },
+      "cordova-plugin-camera": {
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
+      },
+      "cordova-plugin-qrscanner": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-globalization": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-battery-status": {},
+      "cordova-plugin-statusbar": {}
+    }
+  },
+  "vuePlugins": {
+    "service": [
+      "cdva.js"
+    ]
+  }
+}

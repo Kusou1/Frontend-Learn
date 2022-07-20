@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{f820:function(n,t,c){"use strict";c.r(t);var e=c("7a23"),o={class:"about"},u=Object(e["j"])("h1",null,"这里是关于页面 666",-1);function a(n,t){return Object(e["z"])(),Object(e["g"])("div",o,[u])}const s={};s.render=a;t["default"]=s}}]);
+//# sourceMappingURL=about.f321f756.js.map

@@ -4,17 +4,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Image"),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: ImageDemo()
-    );
+        appBar: AppBar(
+          title: Text("Image"),
+          leading: Icon(Icons.menu),
+          actions: [Icon(Icons.settings)],
+          elevation: 0.0,
+          centerTitle: true,
+        ),
+        body: ImageDemo());
   }
 }
 
@@ -34,7 +31,7 @@ class ImageDemo extends StatelessWidget {
         Image.network(
           'http://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a260090e0e08770b0bd865845a4b4ab.jpg',
           repeat: ImageRepeat.repeat,
-          colorBlendMode: BlendMode.colorDodge,
+          colorBlendMode: BlendMode.colorDodge, // 和图片背景进行混合
           color: Colors.green,
         ),
       ],

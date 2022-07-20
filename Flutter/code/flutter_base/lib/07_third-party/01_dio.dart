@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
+// dio类似于flutter版的axios，可以发送http请求
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Dio"),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: DioDemo()
-    );
+        appBar: AppBar(
+          title: Text("Dio"),
+          leading: Icon(Icons.menu),
+          actions: [Icon(Icons.settings)],
+          elevation: 0.0,
+          centerTitle: true,
+        ),
+        body: DioDemo());
   }
 }
 
@@ -24,12 +22,11 @@ class DioDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        child: Text('点击发送请求'),
-        onPressed: () {
-          // 调用 HTTP 请求
-          getIpAddress();
-        }
-      ),
+          child: Text('点击发送请求'),
+          onPressed: () {
+            // 调用 HTTP 请求
+            getIpAddress();
+          }),
     );
   }
 

@@ -4,17 +4,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("GridView"),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: GridViewBuilderDemo()
-    );
+        appBar: AppBar(
+          title: Text("GridView"),
+          leading: Icon(Icons.menu),
+          actions: [Icon(Icons.settings)],
+          elevation: 0.0,
+          centerTitle: true,
+        ),
+        body: GridViewBuilderDemo());
   }
 }
 
@@ -23,9 +20,8 @@ class GridViewCountDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: GridView.count(
-        children: List.generate(10, (index) => 
-          Image.asset('images/flutter.jpg')
-        ),
+        children:
+            List.generate(10, (index) => Image.asset('images/flutter.jpg')),
         crossAxisCount: 2,
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
@@ -41,9 +37,8 @@ class GridViewExtendDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: GridView.extent(
-        children: List.generate(10, (index) => 
-          Image.asset('images/flutter.jpg')
-        ),
+        children:
+            List.generate(10, (index) => Image.asset('images/flutter.jpg')),
         maxCrossAxisExtent: 100, // 子组件的宽度
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
@@ -75,11 +70,10 @@ class GridViewBuilderDemo extends StatelessWidget {
       child: GridView.builder(
         padding: EdgeInsets.symmetric(horizontal: 40),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
-          childAspectRatio: 1.0
-        ),
+            crossAxisCount: 2,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
+            childAspectRatio: 1.0),
         itemCount: _tiles.length,
         itemBuilder: (context, index) {
           return _tiles[index];

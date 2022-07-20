@@ -4,17 +4,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Life Cycle"),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: MyState()
-    );
+        appBar: AppBar(
+          title: Text("Life Cycle"),
+          leading: Icon(Icons.menu),
+          actions: [Icon(Icons.settings)],
+          elevation: 0.0,
+          centerTitle: true,
+        ),
+        body: MyState());
   }
 }
 
@@ -33,7 +30,7 @@ class _MyStateState extends State<MyState> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
+    super.initState(); // 初始化状态
     print('init state');
     _num = 1;
   }
@@ -84,22 +81,12 @@ class _MyStateState extends State<MyState> {
   Widget build(BuildContext context) {
     print('build');
     return Center(
-      child: Column(
-        children: [
-          ElevatedButton(
-            onPressed: _decrement, 
-            child: Text('-')
-          ),
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Text('$_num')
-          ),
-          ElevatedButton(
-            onPressed: _increment, 
-            child: Icon(Icons.add)
-          )
-        ],
-      )
-    );
+        child: Column(
+      children: [
+        ElevatedButton(onPressed: _decrement, child: Text('-')),
+        Padding(padding: EdgeInsets.all(20), child: Text('$_num')),
+        ElevatedButton(onPressed: _increment, child: Icon(Icons.add))
+      ],
+    ));
   }
 }

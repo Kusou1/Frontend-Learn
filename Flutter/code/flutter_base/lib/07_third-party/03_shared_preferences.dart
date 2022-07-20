@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// 类似web端的localStorage,rn中的asyncStorage，本地数据缓存库
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("shared_preferences"),
-        leading: Icon(Icons.menu),
-        actions: [
-          Icon(Icons.settings)
-        ],
-        elevation: 0.0,
-        centerTitle: true,
-      ),
-      body: SharedPreferencesDemo()
-    );
+        appBar: AppBar(
+          title: Text("shared_preferences"),
+          leading: Icon(Icons.menu),
+          actions: [Icon(Icons.settings)],
+          elevation: 0.0,
+          centerTitle: true,
+        ),
+        body: SharedPreferencesDemo());
   }
 }
 
@@ -23,38 +21,19 @@ class SharedPreferencesDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: _incrementCounter, 
-            child: Text('递增')
-          ),
-          ElevatedButton(
-            onPressed: _decrementCounter, 
-            child: Text('递减')
-          ),
-          ElevatedButton(
-            onPressed: _removeCounter, 
-            child: Text('删除')
-          ),
-          ElevatedButton(
-            onPressed: _addMyContent, 
-            child: Text('设置字符串')
-          ),
-          ElevatedButton(
-            onPressed: _getMyContent, 
-            child: Text('获取字符串')
-          ),
-          ElevatedButton(
-            onPressed: _clearContent, 
-            child: Text('清空')
-          ),
-        ],
-      )
-    );
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ElevatedButton(onPressed: _incrementCounter, child: Text('递增')),
+            ElevatedButton(onPressed: _decrementCounter, child: Text('递减')),
+            ElevatedButton(onPressed: _removeCounter, child: Text('删除')),
+            ElevatedButton(onPressed: _addMyContent, child: Text('设置字符串')),
+            ElevatedButton(onPressed: _getMyContent, child: Text('获取字符串')),
+            ElevatedButton(onPressed: _clearContent, child: Text('清空')),
+          ],
+        ));
   }
 
   _incrementCounter() async {

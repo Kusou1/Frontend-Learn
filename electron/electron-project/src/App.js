@@ -13,7 +13,7 @@ import { faFileImport, faPlus, faFileAlt, faEdit, faTrashAlt, faTimes } from '@f
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
 import { v4 } from 'uuid'
-import { objToArr, mapArr, readFile, writeFile, renameFile, deleteFile,getParentNode } from './utils/helper'
+import { objToArr, mapArr, readFile, writeFile, renameFile, deleteFile, getParentNode } from './utils/helper'
 import useContextMenu from './hooks/useContextMenu'
 const path = window.require('path')
 const { ipcRenderer } = window.require('electron')
@@ -123,7 +123,6 @@ function App() {
             readFile(currentFile.path).then((data) => {
                 const newFile = { ...currentFile, body: data, isLoaded: true }
                 setFiles({ ...files, [id]: newFile })
-                saveInfoToStore({ ...files, [id]: newFile })
             })
         }
 
@@ -297,10 +296,17 @@ function App() {
                 }
             })
     }
+
+    // 实现主进程于渲染进程通信
     useEffect(() => {
         ipcRenderer.on('execute-save-file', saveCurrentFile)
+        ipcRenderer.on('execute-create-file', createFile)
+        ipcRenderer.on('execute-import-file', importFile)
+
         return () => {
             ipcRenderer.removeListener('execute-save-file', saveCurrentFile)
+            ipcRenderer.removeListener('execute-create-file', createFile)
+            ipcRenderer.removeListener('execute-import-file', importFile)
         }
     })
 
@@ -310,7 +316,7 @@ function App() {
                 <LeftDiv>
                     <SearchFile title="我的文档" onSearch={searchFile}></SearchFile>
                     <FileList files={fileList} editFile={openItem} deleteFile={deleteItem} saveFile={saveData}></FileList>
-                    <div className='no-file-data-area'></div>
+                    <div className="no-file-data-area"></div>
                     <div className="btn_list">
                         <ButtonItem title={'新建'} icon={faPlus} btnClick={createFile} />
                         <ButtonItem title={'导入'} icon={faFileImport} btnClick={importFile} />

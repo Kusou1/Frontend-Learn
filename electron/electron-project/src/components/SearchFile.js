@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faSearch } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 import useKeyHandler from '../hooks/useKeyHandler'
-
+const { ipcRenderer } = window.require('electron')
 
 // 自定义搜索区域的div
 let SearchDiv = styled.div.attrs({
@@ -46,16 +46,25 @@ const SearchFile = ({ title, onSearch }) => {
     const enterPress = useKeyHandler(13)
     const escPress = useKeyHandler(27)
 
-    useEffect(()=>{
-        if(enterPress && searchActive){
+    useEffect(() => {
+        if (enterPress && searchActive) {
             onSearch(value)
         }
-    
-        if(escPress && searchActive){
+
+        if (escPress && searchActive) {
             closeSearch()
         }
     })
 
+    useEffect(() => {
+        let openSearch = () => {
+            setSearchActive(!searchActive)
+        }
+        ipcRenderer.on('execute-search-file', openSearch)
+        return () => {
+            ipcRenderer.removeListener('execute-search-file', openSearch)
+        }
+    })
     useEffect(() => {
         if (searchActive) {
             oInput.current.focus()
@@ -99,13 +108,13 @@ const SearchFile = ({ title, onSearch }) => {
     )
 }
 
-SearchFile.propTypes={
+SearchFile.propTypes = {
     title: PropTypes.string,
     onSearch: PropTypes.func.isRequired
 }
 
-SearchFile.defaultProps={
-    title:'文档列表'
+SearchFile.defaultProps = {
+    title: '文档列表'
 }
 
 export default SearchFile

@@ -23,11 +23,6 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
     const closeFn = () => {
         setEditItem(false)
         setValue('')
-
-        const currentFile = files.find(file => file.id === editItem)
-        if(currentFile && currentFile.isNew){
-            deleteFile(currentFile.id)
-        }
     }
 
     // 键盘事件操作
@@ -36,7 +31,8 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
 
     useEffect(() => {
         if (enterPress && editItem && value.trim() !== '') {
-            saveFile(editItem, value)
+            const file = files.find((file) => file.id === editItem)
+            saveFile(editItem, value, file.isNew)
             closeFn()
         }
 
@@ -47,21 +43,21 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
 
     useEffect(() => {
         const newFile = files.find((file) => file.isNew)
-        if(newFile){
+        if (newFile) {
             setEditItem(newFile.id)
             setValue(newFile.title)
         }
-    },[files])
+    }, [files])
 
     useEffect(() => {
         const newFile = files.find((file) => file.isNew)
-        if(newFile && editItem !== newFile.id){
+        if (newFile && editItem !== newFile.id) {
             deleteFile(newFile.id)
         }
-        if(editItem){
-            setValue(files.find(file=>file.id == editItem).title)
+        if (editItem) {
+            setValue(files.find((file) => file.id == editItem).title)
         }
-    },[editItem])
+    }, [editItem])
 
     return (
         <GroupUl>
@@ -76,7 +72,7 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
                                 <span
                                     className="col-8"
                                     onClick={() => {
-                                        editFile(file.id);
+                                        editFile(file.id)
                                         closeFn()
                                     }}
                                 >

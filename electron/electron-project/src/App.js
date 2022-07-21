@@ -12,6 +12,7 @@ import initFiles from './utils/initFiles'
 import { faFileImport, faPlus, faFileAlt, faEdit, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
+import { v4 } from 'uuid'
 
 // 自定义左侧容器
 let LeftDiv = styled.div.attrs({
@@ -89,8 +90,10 @@ function App() {
         let retOpen = openIds.filter((openId) => openId !== id)
         setOpenIds(retOpen)
 
-        if (retOpen.length > 0) {
+        if (retOpen.length > 0 && (activeId === id)) {
             setActiveId(retOpen[0])
+        } else if (retOpen.length > 0 && (activeId !== id)){
+            setActiveId(activeId)
         } else {
             setActiveId('')
         }
@@ -133,10 +136,27 @@ function App() {
         const newFiles = files.map((file) => {
             if (file.id === id) {
                 file.title = newTitle
+                file.isNew = false
             }
             return file
         })
         setFiles(newFiles)
+    }
+
+    // 新建文件
+    const createFile = () => {
+        const newId = v4()
+        const newFile = {
+            id: newId,
+            title: '',
+            isNew: true,
+            body: '## 初始化内容',
+            createTime: new Date().getTime()
+        }
+        let flag = files.find((file) => file.isNew)
+        if (!flag) {
+            setFiles([...files, newFile])
+        }
     }
 
     return (
@@ -144,15 +164,10 @@ function App() {
             <div className="row g-0">
                 <LeftDiv>
                     <SearchFile title="我的文档" onSearch={searchFile}></SearchFile>
-                    <FileList
-                        files={fileList}
-                        editFile={openItem}
-                        deleteFile={deleteItem}
-                        saveFile={reName}
-                    ></FileList>
+                    <FileList files={fileList} editFile={openItem} deleteFile={deleteItem} saveFile={reName}></FileList>
 
                     <div className="btn_list">
-                        <ButtonItem title={'新建'} icon={faPlus} />
+                        <ButtonItem title={'新建'} icon={faPlus} btnClick={createFile} />
                         <ButtonItem title={'导入'} icon={faFileImport} />
                     </div>
                 </LeftDiv>

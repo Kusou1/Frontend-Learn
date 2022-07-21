@@ -23,6 +23,11 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
     const closeFn = () => {
         setEditItem(false)
         setValue('')
+
+        const currentFile = files.find(file => file.id === editItem)
+        if(currentFile && currentFile.isNew){
+            deleteFile(currentFile.id)
+        }
     }
 
     // 键盘事件操作
@@ -30,7 +35,7 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
     const escPress = useKeyHandler(27)
 
     useEffect(() => {
-        if (enterPress && editItem) {
+        if (enterPress && editItem && value.trim() !== '') {
             saveFile(editItem, value)
             closeFn()
         }
@@ -40,12 +45,30 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
         }
     })
 
+    useEffect(() => {
+        const newFile = files.find((file) => file.isNew)
+        if(newFile){
+            setEditItem(newFile.id)
+            setValue(newFile.title)
+        }
+    },[files])
+
+    useEffect(() => {
+        const newFile = files.find((file) => file.isNew)
+        if(newFile && editItem !== newFile.id){
+            deleteFile(newFile.id)
+        }
+        if(editItem){
+            setValue(files.find(file=>file.id == editItem).title)
+        }
+    },[editItem])
+
     return (
         <GroupUl>
             {files.map((file) => {
                 return (
                     <li className="list-group-item d-flex align-items-center" key={file.id}>
-                        {file.id !== editItem && (
+                        {file.id !== editItem && !file.isNew && (
                             <>
                                 <span className="col-1 mr-2">
                                     <FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon>
@@ -53,7 +76,8 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
                                 <span
                                     className="col-8"
                                     onClick={() => {
-                                        editFile(file.id)
+                                        editFile(file.id);
+                                        closeFn()
                                     }}
                                 >
                                     {file.title}
@@ -76,7 +100,7 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
                                 </span>
                             </>
                         )}
-                        {file.id === editItem && (
+                        {(file.id === editItem || file.isNew) && (
                             <>
                                 <input
                                     className="col-9"

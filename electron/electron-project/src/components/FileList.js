@@ -4,14 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFileAlt, faEdit, faTrashAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 import useKeyHandler from '../hooks/useKeyHandler'
+import useContextMenu from '../hooks/useContextMenu'
+import { getParentNode } from '../utils/helper'
+import classnames from 'classnames'
 
 // ul 标签
 let GroupUl = styled.ul.attrs({
-    className: 'list-group list-group-flush'
+    className: 'list-group list-group-flush menu-box'
 })`
     li {
         color: #fff;
         background: none;
+        cursor: pointer;
     }
 `
 
@@ -24,6 +28,26 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
         setEditItem(false)
         setValue('')
     }
+
+    // 定制一个菜单的选项
+    const contextMenuTmp = [
+        {
+            label: '重命名',
+            click() {
+                let retNode = getParentNode(currentEle.current, 'menu-item')
+                setEditItem(retNode.dataset.id)
+            }
+        },
+        {
+            label: '删除',
+            click() {
+                let retNode = getParentNode(currentEle.current, 'menu-item')
+                deleteFile(retNode.dataset.id)
+            }
+        }
+    ]
+
+    const currentEle = useContextMenu(contextMenuTmp, 'menu-box', 'menu-item-edit')
 
     // 键盘事件操作
     const enterPress = useKeyHandler(13)
@@ -62,8 +86,15 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
     return (
         <GroupUl>
             {files.map((file) => {
+                let finalClass = classnames({
+                    'menu-item': file.id !== editItem && !file.isNew,
+                    'menu-item-edit': file.id === editItem || file.isNew,
+                    'list-group-item': true,
+                    'd-flex': true,
+                    'align-items-center': true
+                })
                 return (
-                    <li className="list-group-item d-flex align-items-center" key={file.id}>
+                    <li className={finalClass} key={file.id} data-id={file.id} data-title={file.title}>
                         {file.id !== editItem && !file.isNew && (
                             <>
                                 <span className="col-1 mr-2">
@@ -78,7 +109,7 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
                                 >
                                     {file.title}
                                 </span>
-                                <span
+                                {/* <span
                                     className="col-2 "
                                     onClick={() => {
                                         setEditItem(file.id)
@@ -93,7 +124,7 @@ const FileList = ({ files, editFile, saveFile, deleteFile }) => {
                                     }}
                                 >
                                     <FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon>
-                                </span>
+                                </span> */}
                             </>
                         )}
                         {(file.id === editItem || file.isNew) && (

@@ -10,13 +10,16 @@ let TabUl = styled.ul.attrs({
     className: 'nav nav-pills'
 })`
     border-bottom: 1px solid #fff;
-    height:43px;
+    height:42px;
     li a {
         border-radius: 0px !important;
         height:100%;
     }
     li a.active {
-        background: #ff7979 !important;
+        background: #333 !important;
+    }
+    .nav-link{
+        color:#666
     }
     .nav-link.unSaveMark .rounded-circle {
         

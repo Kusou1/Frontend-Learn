@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import styled from 'styled-components'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -13,9 +13,10 @@ import { faFileImport, faPlus, faFileAlt, faEdit, faTrashAlt, faTimes } from '@f
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
 import { v4 } from 'uuid'
-import { objToArr, mapArr, readFile, writeFile, renameFile, deleteFile } from './utils/helper'
-
+import { objToArr, mapArr, readFile, writeFile, renameFile, deleteFile,getParentNode } from './utils/helper'
+import useContextMenu from './hooks/useContextMenu'
 const path = window.require('path')
+const { ipcRenderer } = window.require('electron')
 const { app, dialog } = window.require('@electron/remote')
 const Store = window.require('electron-store')
 
@@ -40,24 +41,28 @@ const saveInfoToStore = (files) => {
 let LeftDiv = styled.div.attrs({
     className: 'col-3 left-panel'
 })`
-    background-color: #22a6b3;
+    background-color: #333;
     min-height: 100vh;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    .no-file-data-area{
+        flex:1
+    }
     .btn_list {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        margin-top:autp
         width: 100%;
         p {
             width: 50%;
             color: #fff;
+
             margin-bottom: 0 !important;
         }
         p:nth-of-type(1) {
-            background-color: #ff7979;
+            background-color: #cc0000;
         }
         p:nth-of-type(2) {
-            background-color: #ffbe76;
+            background-color: #006600;
         }
     }
 `
@@ -65,11 +70,15 @@ let LeftDiv = styled.div.attrs({
 let RightDiv = styled.div.attrs({
     className: 'col-9 right-panel'
 })`
-    background-color: #c7ecee;
+    background-color: #efefef;
     .init-page {
         color: #888;
         text-align: center;
-        font: normal 28px/300px '微软雅黑';
+        font: normal 28px '微软雅黑';
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `
 
@@ -90,6 +99,19 @@ function App() {
     // 正在编辑的文件信息
     const activeFile = files[activeId]
 
+    // 定制一个菜单的选项
+    const contextMenuTmp = [
+        {
+            label: '新建',
+            click() {
+                let retNode = getParentNode(currentEle.current, 'no-file-data-area')
+                createFile(retNode.dataset.id)
+            }
+        }
+    ]
+
+    const currentEle = useContextMenu(contextMenuTmp, 'no-file-data-area')
+
     // 点击左侧文件显示编辑页
     const openItem = (id) => {
         // 将当前id设置成active
@@ -101,6 +123,7 @@ function App() {
             readFile(currentFile.path).then((data) => {
                 const newFile = { ...currentFile, body: data, isLoaded: true }
                 setFiles({ ...files, [id]: newFile })
+                saveInfoToStore({ ...files, [id]: newFile })
             })
         }
 
@@ -147,7 +170,7 @@ function App() {
     const deleteItem = (id) => {
         const file = files[id]
         if (!file.isNew) {
-            deleteFile(path.join(savedPath, `${files[id].title}.md`)).then(() => {
+            deleteFile(file.path).then(() => {
                 delete files[id]
                 setFiles(files)
                 saveInfoToStore(files)
@@ -175,7 +198,7 @@ function App() {
         if (item) {
             newTitle += '_copy'
         }
-        let newPath = path.join(savedPath, `${newTitle}.md`)
+        let newPath = isNew ? path.join(savedPath, `${newTitle}.md`) : path.join(path.dirname(files[id].path), `${newTitle}.md`)
         const newFile = { ...files[id], title: newTitle, isNew: false, path: newPath }
         const newFiles = { ...files, [id]: newFile }
         if (isNew) {
@@ -186,9 +209,10 @@ function App() {
             })
         } else {
             // 执行更新
-            const oldPath = path.join(savedPath, `${files[id].title}.md`)
+            const oldPath = files[id].path
             renameFile(oldPath, newPath).then(() => {
                 setFiles(newFiles)
+                saveInfoToStore(newFiles)
             })
         }
     }
@@ -211,9 +235,11 @@ function App() {
 
     // 保存正在编辑的文件
     const saveCurrentFile = () => {
-        writeFile(path.join(savedPath, `${activeFile.title}.md`), activeFile.body).then(() => {
-            setUnSaveIds(unSaveIds.filter((id) => id !== activeFile.id))
-        })
+        if (activeFile && unSaveIds.includes(activeFile.id)) {
+            writeFile(activeFile.path, activeFile.body).then(() => {
+                setUnSaveIds(unSaveIds.filter((id) => id !== activeFile.id))
+            })
+        }
     }
 
     // 外部markdown文件的导入
@@ -259,18 +285,24 @@ function App() {
                     // 弹窗提示成功导入
                     if (packageData.length) {
                         dialog.showMessageBox({
-                            type:'info',
-                            message:'导入markdown成功咯🎊',
-                            detail:"恭喜恭喜",
-                            icon:'./src/assets/good-luck.png'
+                            type: 'info',
+                            message: '导入markdown成功咯🎊',
+                            detail: '恭喜恭喜',
+                            icon: './src/assets/good-luck.png'
                         })
                     }
-                    // saveInfoToStore(newFiles)
+                    saveInfoToStore(newFiles)
                 } else {
                     console.log('未选择文件导入')
                 }
             })
     }
+    useEffect(() => {
+        ipcRenderer.on('saveFile', saveCurrentFile)
+        return () => {
+            ipcRenderer.removeListener('saveFile', saveCurrentFile)
+        }
+    })
 
     return (
         <div className="App contain-fluid px-0">
@@ -278,14 +310,13 @@ function App() {
                 <LeftDiv>
                     <SearchFile title="我的文档" onSearch={searchFile}></SearchFile>
                     <FileList files={fileList} editFile={openItem} deleteFile={deleteItem} saveFile={saveData}></FileList>
-
+                    <div className='no-file-data-area'></div>
                     <div className="btn_list">
                         <ButtonItem title={'新建'} icon={faPlus} btnClick={createFile} />
                         <ButtonItem title={'导入'} icon={faFileImport} btnClick={importFile} />
                     </div>
                 </LeftDiv>
                 <RightDiv>
-                    <button onClick={saveCurrentFile}>保存</button>
                     {activeId ? (
                         <>
                             <TabList files={openFiles} activeItem={activeId} unSaveItems={unSaveIds} clickItem={changeActiveItem} closeItem={closeItem}></TabList>

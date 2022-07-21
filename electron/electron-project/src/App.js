@@ -314,10 +314,10 @@ function App() {
                     <SearchFile title="我的文档" onSearch={searchFile}></SearchFile>
                     <FileList files={fileList} editFile={openItem} deleteFile={deleteItem} saveFile={saveData}></FileList>
                     <div className="no-file-data-area"></div>
-                    <div className="btn_list">
+                    {/* <div className="btn_list">
                         <ButtonItem title={'新建'} icon={faPlus} btnClick={createFile} />
                         <ButtonItem title={'导入'} icon={faFileImport} btnClick={importFile} />
-                    </div>
+                    </div> */}
                 </LeftDiv>
                 <RightDiv>
                     {activeId ? (

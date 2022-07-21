@@ -1,3 +1,4 @@
+import useIpcRenderer from '../hooks/useIpcRenderer'
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -56,15 +57,12 @@ const SearchFile = ({ title, onSearch }) => {
         }
     })
 
-    useEffect(() => {
-        let openSearch = () => {
+    useIpcRenderer({
+        'execute-search-file': () => {
             setSearchActive(!searchActive)
         }
-        ipcRenderer.on('execute-search-file', openSearch)
-        return () => {
-            ipcRenderer.removeListener('execute-search-file', openSearch)
-        }
     })
+
     useEffect(() => {
         if (searchActive) {
             oInput.current.focus()

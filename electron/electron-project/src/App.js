@@ -15,6 +15,7 @@ import 'easymde/dist/easymde.min.css'
 import { v4 } from 'uuid'
 import { objToArr, mapArr, readFile, writeFile, renameFile, deleteFile, getParentNode } from './utils/helper'
 import useContextMenu from './hooks/useContextMenu'
+import useIpcRenderer from './hooks/useIpcRenderer'
 const path = window.require('path')
 const { ipcRenderer } = window.require('electron')
 const { app, dialog } = window.require('@electron/remote')
@@ -156,13 +157,15 @@ function App() {
 
     // 当文件内容更新时
     const changeFile = (id, newValue) => {
-        if (!unSaveIds.includes(id)) {
-            setUnSaveIds([...unSaveIds, id])
-        }
+        if (newValue !== files[id].body) {
+            if (!unSaveIds.includes(id)) {
+                setUnSaveIds([...unSaveIds, id])
+            }
 
-        // 某个内容更新之后我们需要生成新的files
-        const newFile = { ...files[id], body: newValue }
-        setFiles({ ...files, [id]: newFile })
+            // 某个内容更新之后我们需要生成新的files
+            const newFile = { ...files[id], body: newValue }
+            setFiles({ ...files, [id]: newFile })
+        }
     }
 
     // 删除文件项
@@ -298,16 +301,10 @@ function App() {
     }
 
     // 实现主进程于渲染进程通信
-    useEffect(() => {
-        ipcRenderer.on('execute-save-file', saveCurrentFile)
-        ipcRenderer.on('execute-create-file', createFile)
-        ipcRenderer.on('execute-import-file', importFile)
-
-        return () => {
-            ipcRenderer.removeListener('execute-save-file', saveCurrentFile)
-            ipcRenderer.removeListener('execute-create-file', createFile)
-            ipcRenderer.removeListener('execute-import-file', importFile)
-        }
+    useIpcRenderer({
+        'execute-save-file': saveCurrentFile,
+        'execute-create-file': createFile,
+        'execute-import-file': importFile
     })
 
     return (
@@ -336,7 +333,7 @@ function App() {
                             />
                         </>
                     ) : (
-                        <div className="init-page">新建或导入具体的文档</div>
+                        <div className="init-page">新建或导入您的Markdown文档</div>
                     )}
                 </RightDiv>
             </div>

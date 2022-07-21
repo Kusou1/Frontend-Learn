@@ -10,13 +10,15 @@ initialize()
 const Store = require('electron-store')
 
 Store.initRenderer()
+const menuTemp = require('./src/temp/menuTemp')
+
 
 let mainWindow
 
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 1024,
-        height: 900,
+        height: 800,
         minWidth: 600,
         webPreferences: {
             nodeIntegration: true,
@@ -29,9 +31,10 @@ app.on('ready', () => {
     const urlLocation = isDev ? 'http://localhost:3000' : 'myUrl'
 
     mainWindow.loadURL(urlLocation)
-    globalShortcut.register('CommandOrControl+S', () => {
-        mainWindow.send('saveFile')
-    })
+
+    // 添加自定义的原生菜单
+    const menu = Menu.buildFromTemplate(menuTemp)
+    Menu.setApplicationMenu(menu)
 })
 
 

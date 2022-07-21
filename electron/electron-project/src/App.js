@@ -298,9 +298,9 @@ function App() {
             })
     }
     useEffect(() => {
-        ipcRenderer.on('saveFile', saveCurrentFile)
+        ipcRenderer.on('execute-save-file', saveCurrentFile)
         return () => {
-            ipcRenderer.removeListener('saveFile', saveCurrentFile)
+            ipcRenderer.removeListener('execute-save-file', saveCurrentFile)
         }
     })
 
@@ -325,7 +325,7 @@ function App() {
                                 onChange={(value) => {
                                     changeFile(activeFile.id, value)
                                 }}
-                                options={{ autofocus: true, spellChecker: false, minHeight: '525px' }}
+                                options={{ autofocus: true, spellChecker: false, minHeight: '625px' }}
                                 value={activeFile?.body}
                             />
                         </>

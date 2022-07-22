@@ -37,8 +37,8 @@
       this.x = Math.random() * (this.wd - (this.r * 2)) + this.r
       this.y = Math.random() * (this.ht - (this.r * 2)) + this.r
       this.color = '#' + parseInt(Math.random() * 0xFFFFFF).toString(16)
-      this.xSpeed = Math.random() * 4 + 6
-      this.ySpeed = Math.random() * 6 + 4
+      this.xSpeed = Math.random() * 4 
+      this.ySpeed = Math.random() * 6 
       this.init()
     }
 
@@ -67,8 +67,9 @@
     }
   }
 
+  // 球数组
   let ballArr = []
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 50; i++) {
     let ball = new Ball(canvas)
     ballArr.push(ball)
   }

@@ -104,7 +104,9 @@
   ctx.beginPath()
   for (var i = 1; i < Math.floor(wd * 1.5 / step); i++) {
     const height = Math.random() * 300 + 50
+    // 随机颜色
     ctx.fillStyle = '#' + parseInt(Math.random() * 0xFFFFFF).toString(16)
+    // x,y,宽，高
     ctx.fillRect((i * step), ht * 1.5 - bottomPad - height, 40, height)
   }
   ctx.closePath()

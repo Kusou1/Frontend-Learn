@@ -83,6 +83,7 @@
   ctx.beginPath()
   ctx.lineWidth = 2
   ctx.strokeStyle = 'orange'
+  // x,y,r（半径）,起始角度，Math.PI / 4表示绘制四分之一圆，表示绘制到的地方，true表示逆时针绘制（默认false顺时针绘制）
   ctx.arc(400, 300, 200, 0, Math.PI / 4, true)
   ctx.stroke()
   ctx.closePath()

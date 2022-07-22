@@ -1,7 +1,7 @@
 let Cirque = function (percent) {
 
   const ctx = this.ctx
-  const circleConfig = this.defaultParam
+  const circleConfig = this.circleConfig
 
   // 绘制打底圆环
   ctx.beginPath()

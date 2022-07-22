@@ -57,12 +57,13 @@ class MyCharts {
         let circleConfig = {
           x: this.defaultParam.wd / 2,
           y: this.defaultParam.ht / 2,
-          radius: 200,
-          startAngle: 0,
-          endAngle: 2 * Math.PI,
-          arcWidth: 18,
-          target: 90
+          radius: 200, // 半径
+          startAngle: 0, // 开始角度
+          endAngle: 2 * Math.PI, // 结束角度
+          arcWidth: 18, // 圆环宽度
+          target: 90 // 目标值
         }
+        // 合并配置
         this.circleConfig = utils.extendsObj(this.defaultConfig, circleConfig)
         myAnimation.call(this, {
           percent: this.circleConfig.target,

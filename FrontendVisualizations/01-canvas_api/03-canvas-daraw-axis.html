@@ -22,12 +22,13 @@
   const canvas = document.getElementById('canvas')
   const ctx = canvas.getContext('2d')
 
+  // 图形高清操作
   canvas.style.width = canvas.width + 'px'
   canvas.style.height = canvas.height + 'px'
   canvas.width = canvas.width * 1.5
   canvas.height = canvas.height * 1.5
 
-  // 提前设置相关属性
+  // 提前设置坐标系相关属性
   const ht = canvas.clientHeight
   const wd = canvas.clientWidth
   const pad = 20

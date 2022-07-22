@@ -1,2 +1,2 @@
-# lagou-Learn
-前端学习笔记
+# Frontend-Learn
+前端学习的内容整理

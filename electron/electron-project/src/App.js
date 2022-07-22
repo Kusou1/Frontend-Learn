@@ -47,6 +47,7 @@ let LeftDiv = styled.div.attrs({
     position: relative;
     display: flex;
     flex-direction: column;
+    border-right:1px solid #fff;
     .no-file-data-area{
         flex:1
     }
@@ -325,11 +326,11 @@ function App() {
                             <TabList files={openFiles} activeItem={activeId} unSaveItems={unSaveIds} clickItem={changeActiveItem} closeItem={closeItem}></TabList>
                             <SimpleMDE
                                 key={activeFile?.id}
+                                value={activeFile?.body}
                                 onChange={(value) => {
                                     changeFile(activeFile.id, value)
                                 }}
                                 options={{ autofocus: true, spellChecker: false, minHeight: '625px' }}
-                                value={activeFile?.body}
                             />
                         </>
                     ) : (

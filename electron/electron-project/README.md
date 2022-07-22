@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+### 说明
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+一个基于 Electron + React 开发的Markdown编辑器。
 
-## Available Scripts
+所用技术栈：
 
-In the project directory, you can run:
+- Electron 19
+- React
 
-### `npm start`
+已支持的平台：
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Windows 7 及以上
+- Mac OS
+- Linux
+#### 数据存储路径
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+默认情况下，Markdown的数据存储在：
 
-### `npm test`
+- Windows：`%APPDATA%/`
+- Linux：`$XDG_CONFIG_HOME/` 或 `~/.config/`
+- macOS：`~/Library/Application Support/`。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### UI界面
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![ui-1](/src/assets/ui-1.jpg)
+![ui-2](/src/assets/ui-2.jpg)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 快捷键
 
-### `npm run eject`
+CmdOrCtrl 指 win为Ctrl，mac为Cmd
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+|快捷键|作用|
+|:---|:---|
+|CmdOrCtrl + X|剪切|
+|CmdOrCtrl + C|复制|
+|CmdOrCtrl + V|复制|
+|CmdOrCtrl + Z|撤销|
+|CmdOrCtrl + A|全选|
+|Shift + CmdOrCtrl + Z|重做|
+|Shift + CmdOrCtrl + R|刷新|
+|Ctrl+Command+F或F11|切换全屏|
+|Option + CmdOrCtrl + I或Ctrl+Shift+I|打开开发者工具|
+|CmdOrCtrl + M|缩小|
+|CmdOrCtrl + W|关闭|
+|CtrlOrCommend + N|新建Markdown文件|
+|CtrlOrCommend + S|保存当前编辑文件|
+|CtrlOrCommend + F|搜索文件|
+|CtrlOrCommend + O|导入Markdown文件|
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## How To Use
 
-## Learn More
+To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer. From your command line:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+``` bash
+# Clone this repository
+git clone https://github.com/Kusou1/Electron-Markdown-Editor.git
+# Go into the repository
+cd Electron-Markdown-Editor
+# Install dependencies and run the app
+yarn && yarn dev
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### [Download Released App](https://github.com/Kusou1/Electron-Markdown-Editor)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### License [MIT](LICENSE.md)

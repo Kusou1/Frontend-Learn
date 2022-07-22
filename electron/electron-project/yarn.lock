@@ -2052,10 +2052,10 @@
   resolved "https://registry.npmmirror.com/@types/marked/-/marked-2.0.5.tgz#453e27f1e97199d45bb25297b0dd2b9bbc1e05ea"
   integrity sha512-shRZ7XnYFD/8n8zSjKvFdto1QNSf4tONZIlNEZGrJe8GsOE8DL/hG1Hbl8gZlfLnjS7+f5tZGIaTgfpyW38h4w==
 
-"@types/marked@^4.0.1":
-  version "4.0.3"
-  resolved "https://registry.npmmirror.com/@types/marked/-/marked-4.0.3.tgz#2098f4a77adaba9ce881c9e0b6baf29116e5acc4"
-  integrity sha512-HnMWQkLJEf/PnxZIfbm0yGJRRZYYMhb++O9M36UCTA9z53uPvVoSlAwJr3XOpDEryb7Hwl1qAx/MV6YIW1RXxg==
+"@types/marked@^3.0.1":
+  version "3.0.3"
+  resolved "https://registry.npmmirror.com/@types/marked/-/marked-3.0.3.tgz#37878f405d5f0cff0e6128cea330bd0aa8df8cb3"
+  integrity sha512-ZgAr847Wl68W+B0sWH7F4fDPxTzerLnRuUXjUpp1n4NjGSs8hgPAjAp7NQIXblG34MXTrf5wWkAK8PVJ2LIlVg==
 
 "@types/mime@^1":
   version "1.3.2"
@@ -4030,16 +4030,16 @@ duplexer@^0.1.2:
   resolved "https://registry.npmmirror.com/duplexer/-/duplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"
   integrity sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
 
-easymde@^2.16.1:
-  version "2.16.1"
-  resolved "https://registry.npmmirror.com/easymde/-/easymde-2.16.1.tgz#f4c2380312615cb33826f1a1fecfaa4022ff551a"
-  integrity sha512-FihYgjRsKfhGNk89SHSqxKLC4aJ1kfybPWW6iAmtb5GnXu+tnFPSzSaGBmk1RRlCuhFSjhF0SnIMGVPjEzkr6g==
+easymde@2.16.0:
+  version "2.16.0"
+  resolved "https://registry.npmmirror.com/easymde/-/easymde-2.16.0.tgz#631608e51565430c469be56c6aef1c0ead748495"
+  integrity sha512-RNeb+JGCBfbhlyuwGfBqImt3lWeb8sy/3AH7O7IRk0N6YMwVXIKAam5Ph2H4cbjHl1mkAJ/ssxqbytLQvZsISA==
   dependencies:
     "@types/codemirror" "^5.60.4"
-    "@types/marked" "^4.0.1"
+    "@types/marked" "^3.0.1"
     codemirror "^5.63.1"
     codemirror-spell-checker "1.1.2"
-    marked "^4.0.10"
+    marked "^3.0.4"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -6465,10 +6465,10 @@ makeerror@1.0.12:
   dependencies:
     tmpl "1.0.5"
 
-marked@^4.0.10:
-  version "4.0.17"
-  resolved "https://registry.npmmirror.com/marked/-/marked-4.0.17.tgz#1186193d85bb7882159cdcfc57d1dfccaffb3fe9"
-  integrity sha512-Wfk0ATOK5iPxM4ptrORkFemqroz0ZDxp5MWfYA7H/F+wO17NRWV5Ypxi6p3g2Xmw2bKeiYOl6oVnLHKxBA0VhA==
+marked@^3.0.4:
+  version "3.0.8"
+  resolved "https://registry.npmmirror.com/marked/-/marked-3.0.8.tgz#2785f0dc79cbdc6034be4bb4f0f0a396bd3f8aeb"
+  integrity sha512-0gVrAjo5m0VZSJb4rpL59K1unJAMb/hm8HRXqasD8VeC8m91ytDPMritgFSlKonfdt+rRYYpP/JfLxgIX8yoSw==
 
 matcher@^3.0.0:
   version "3.0.0"

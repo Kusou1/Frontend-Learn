@@ -32,7 +32,6 @@ export const deleteFile = (path) => {
 export const getParentNode = (node, parentClassName) => {
     let currentEle = node
     while (currentEle !== null) {
-        console.log(currentEle.classList);
         if (currentEle.classList?.contains(parentClassName)) {
             return currentEle
         }

@@ -1,7 +1,11 @@
 /**
  * @param {ListNode} head
- * @return {ListNode}
+ * @return {ListNode} 起始节点
  */
+// 快慢指针相遇时的公式a+(b+nb+nc)=2(a+b)
+// 推出 a= (n-1)(b+c)+c
+// b+c为环的长度
+// 故a=c
 var detectCycle = function(head) {
     if (head === null || head.next === null) {
       return null

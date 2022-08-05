@@ -23,27 +23,27 @@
     res.push(root.val)
     // 前序遍历左子树
     preorder(root.left)
+    // res.push放在中间就为中序遍历
     // 前序遍历右子树
     preorder(root.right)
+    // res.push放在后面就为后序遍历
   }
   preorder(root)
   return res
 }; */
 
-const preorderTraversal = function(root) {
-  const res = []
-  const stk = []
-  while (root || stk.length) {
-    while (root) {
-      // 右子结点入栈
-      stk.push(root.right)
-      // 记录根节点
-      res.push(root.val)
-      // 下一步处理左子节点
-      root = root.left
+var preorderTraversal = function(root) {
+  // 初始化数据
+  const res =[];
+  const stack = [];
+  while (root || stack.length){
+    while(root){
+      res.push(root.val);
+      stack.push(root);
+      root = root.left;
     }
-    // 左子树处理完毕，将 stk 出栈，处理右子树
-    root = stk.pop()
+    root = stack.pop();
+    root = root.right;
   }
-  return res
-}
+  return res;
+};

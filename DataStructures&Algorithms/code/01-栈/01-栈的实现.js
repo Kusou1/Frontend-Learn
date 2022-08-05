@@ -1,7 +1,7 @@
 class Stack {
   constructor () {
     // 存储栈的数据
-    this.data = {}
+    this.data = []
     // 记录栈的数据个数（相当于数组的 length）
     this.count = 0
   }

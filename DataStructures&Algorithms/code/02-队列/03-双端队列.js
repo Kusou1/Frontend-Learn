@@ -49,6 +49,7 @@ class Deque {
     return this.size() === 0
   }
   size () {
+    // 首位两项差值
     return this.count - this.head
   }
 }

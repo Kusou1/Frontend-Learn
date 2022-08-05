@@ -21,11 +21,15 @@ class LinkedList {
     if (this.count === 0) {
       this.head = node
     } else {
-      // 找到链表尾部节点，将最后一个节点的 next 设置为 node
+      // 找到链表尾部节点
       let cur = this.head
       while (cur.next != null) {
+        // 如果 cur.next 为 null，说明当前节点是尾节点
+        // 如果 cur.next 不为 null，说明当前节点不是尾节点
+        // 将 cur 移动到下一个节点
         cur = cur.next
       }
+      // 将最后一个节点的 next 设置为 node
       cur.next = node
     }
     this.count++
@@ -66,7 +70,7 @@ class LinkedList {
     // 后面为正常区间处理
     const prev = this.get(index - 1)
     const next = prev.next
-
+    // 把当前节点添加到 prev 的后面，prev 的 next 指向当前节点，当前节点的 next 指向 next
     const node = new LinkedNode(value)
     prev.next = node
     node.next = next

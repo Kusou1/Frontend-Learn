@@ -2,6 +2,9 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// 在执行 `ng build --prod` 时, environment.prod.ts 文件会替换 environment.ts 文件
+// 该项配置可以在 angular.json 文件中找到, 
+// projects -> angular-test -> architect -> configurations -> production -> fileReplacements
 export const environment = {
   production: false,
 };

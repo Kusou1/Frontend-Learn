@@ -629,6 +629,8 @@ identify(index, item){
 
 #### 5.2 自定义指令
 
+命令行创建指令 ng g d directives/hover
+
 需求：为元素设置默认背景颜色，鼠标移入时的背景颜色以及移出时的背景颜色。
 
  ```html
@@ -4019,7 +4021,7 @@ custom：自定义状态，元素默认就在页面之中，从一个状态运�
    ```
 
    ```html
-<li @slide></li>
+   <li @slide></li>
    ```
    
    注意：入场动画中可以不指定元素的默认状态，Angular 会将 void 状态清空作为默认状态
@@ -4033,7 +4035,7 @@ custom：自定义状态，元素默认就在页面之中，从一个状态运�
      transition(":leave", [
     		animate(600, style({ opacity: 0, transform: "translateX(100%)" }))
      ])
-])
+   ])
    ```
    
    注意：要设置动画的运动参数，需要将 animate 方法的一个参数更改为字符串类型

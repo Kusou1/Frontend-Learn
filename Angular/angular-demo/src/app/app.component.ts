@@ -21,7 +21,14 @@ interface List {
     // 关联组件样式文件
     // styleUrls : ['组件样式文件路径']
     // styles : [`组件样式`]
-    styles: []
+    styles: [`
+      .even{
+        background-color:orange
+      }
+      .odd{
+        background-color:skyblue
+      }
+      `]
 })
 export class AppComponent implements AfterViewInit {
     title = 'angular-demo'

@@ -3,15 +3,44 @@
 <div [style.color]="isActive ? 'blue' : 'red'">{{ getInfo() }}</div>
 <button #btn (click)="onChange($event, btn)">切换颜色</button>
 <input type="text" (keyup)="onKeyUp($event)" />
-<div [innerHTML]="htmlString"></div>
-<div [attr.data-test]="title">{{ 'hello' }}</div>
+<div *ngIf="isActive" [innerHTML]="htmlString"></div>
+
+<div *ngIf="isActive; then tempA; else tempB"></div>
+<ng-template #tempA>TempA</ng-template>
+<ng-template #tempB>TempB</ng-template>
+
+<div *ngIf="list.length == 0;then noData;else dataList">没有更多内容</div>
+<ng-template #noData>没有更多内容</ng-template>
+<ng-template #dataList>
+  <li
+    *ngFor="
+      let item of list;
+      let i = index;
+      let isEven = even;
+      let isOdd = odd;
+      let isFirst = first;
+      let isLast = last;
+    "
+  >
+  {{i}},{{item.name}}</li>
+</ng-template>
+
+
+<div [hidden]="isActive" [attr.data-test]="title">{{ 'hello' }}</div>
 <div [ngStyle]="{ 'background-color': '#77a0a0', color: '#fff' }">{{ a == b ? '相等' : '不相等' }}</div>
 <img [src]="imgUrl" alt="" width="500" />
 
 <ul>
-  <li #items>a</li>
-  <li #items>b</li>
-  <li #items>c</li>
+    <li #items>a</li>
+    <li #items>b</li>
+    <li #items>c</li>
 </ul>
 <app-layout></app-layout>
 
+<input type="text" [(ngModel)]="username" />
+<button class="btn btn-primary" (click)="setData()">更改数据</button>
+<p>{{ username }}</p>
+<app-demo>
+    <div class="a">a</div>
+    <ng-container class="b">b</ng-container>
+</app-demo>

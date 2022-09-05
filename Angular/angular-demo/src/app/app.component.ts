@@ -1,5 +1,12 @@
 import { Component, ElementRef, ViewChild, ViewChildren, AfterViewInit, QueryList } from '@angular/core'
 
+interface List {
+    id: Number
+    name: String
+    age: Number
+}
+;[]
+
 @Component({
     // 指定组件的使用方式, 当前为标记形式
     // app-home   =>  <app-home></app-home>
@@ -32,6 +39,24 @@ export class AppComponent implements AfterViewInit {
     }
     getInfo() {
         return '我是getInfo方法中返回的内容'
+    }
+
+    list: List[] = [
+        {
+            id: 1,
+            name: '芜湖',
+            age: 13
+        },
+        {
+            id: 2,
+            name: '你好',
+            age: 16
+        }
+    ]
+    // 双向数据绑定
+    username = ''
+    setData() {
+        this.username = 'hello angular'
     }
     // 获取一个元素
     @ViewChild('paragraph') paragraph: ElementRef<HTMLParagraphElement> | undefined

@@ -691,6 +691,8 @@ export class HoverDirective implements AfterViewInit {
 
 #### 6.2 自定义管道
 
+命令行指令: ng g p pipes/summary
+
 需求：指定字符串不能超过规定的长度
 
 ```javascript
@@ -720,6 +722,8 @@ import { SummaryPipe } from './summary.pipe'
 ```
 
 ### 7. 组件通讯
+
+命令行命令：ng g c component/person
 
 #### 7.1 向组件内部传递数据
 
@@ -821,7 +825,7 @@ export class AppComponent {
    }
    ```
 
-3. ngAfterContentInit
+3. ngAfterContentInit 
 
    当内容投影初始渲染完成后调用。
 

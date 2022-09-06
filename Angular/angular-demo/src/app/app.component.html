@@ -1,3 +1,17 @@
+<app-child [person]="person">
+    <div #box>内容投影</div>
+</app-child>
+<button (click)="changeName()">改变</button>
+<app-person (sendData)="getData($event)" name="zhangsan" age=20></app-person>
+
+<div>{{date | date:"yyyy-mm-dd"}} </div>
+<div>{{money | currency: "¥"}}</div>
+<div>{{title | uppercase}}</div>
+<div>
+    <pre>{{list | json}}</pre>
+</div>
+<div>{{paragraphText | summary: 100}}</div>
+
 <p [class.active]="true" #paragraph>App Works</p>
 <div [ngClass]="{ active: true, error: true }">{{ message }}</div>
 <div [style.color]="isActive ? 'blue' : 'red'">{{ getInfo() }}</div>
@@ -12,7 +26,8 @@
 <div *ngIf="list.length == 0; then noData; else dataList">没有更多内容</div>
 <ng-template #noData>没有更多内容</ng-template>
 <ng-template #dataList>
-    <li *ngFor="let item of list; let i = index; let isEven = even; let isOdd = odd; let isFirst = first; let isLast = last" [ngClass]="{ even: isEven, odd: isOdd }">
+    <li *ngFor="let item of list; let i = index; let isEven = even; let isOdd = odd; let isFirst = first; let isLast = last"
+        [ngClass]="{ even: isEven, odd: isOdd }">
         {{ item.id }}
         {{ item.name }}
         {{ isFirst && '第一行' }}

@@ -1,0 +1,18 @@
+<form [formGroup]="contactForm" (submit)="onSubmit()">
+    <input type="text" formControlName="name" required minlength="2" maxlength="10" />
+    <div *ngIf="name.touched && name.invalid && name.errors">
+        <div *ngIf="name.errors['required']">请填写姓名</div>
+        <div *ngIf="name.errors['maxlength']">
+            姓名长度不能大于
+            {{ name.errors['maxlength'].requiredLength }} 实际填写长度为
+            {{ name.errors['maxlength'].actualLength }}
+        </div>
+        <div *ngIf="name.errors['cannotContainSpace']">姓名中不能包含空格</div>
+        <div *ngIf="name.touched && name.invalid && name.errors">
+            <div *ngIf="name.errors['shouldBeUnique']">用户名重复</div>
+        </div>
+        <div *ngIf="name.pending">正在检测姓名是否重复</div>
+    </div>
+    <!-- 表单整体未验证通过时禁用表单按钮 -->
+    <button [disabled]="contactForm.invalid">提交</button>
+</form>

@@ -1,3 +1,24 @@
+<app-form-builder></app-form-builder>
+<app-validators></app-validators>
+<app-form-array></app-form-array>
+
+<form [formGroup]="contactForm" (submit)="onSubmit()">
+    <input type="text" formControlName="name" />
+    <input type="text" formControlName="phone" />
+    <button>提交</button>
+</form>
+
+<!-- <form #f="ngForm" (submit)="onSubmit(f)">
+    <input type="text" #username="ngModel" name="username" ngModel required minlength="2" maxlength="10" />
+    <div *ngIf="username.touched && !username.valid && username.errors">
+        <div>{{username.errors | json}}</div>
+        <div *ngIf="username.errors['required']">请填写用户名</div>
+        <div *ngIf="username.errors['minlength']">用户最少两个字符</div>
+    </div>
+    <button type="submit">提交</button>
+</form> -->
+
+<app-demo1></app-demo1>
 <app-child [person]="person">
     <div #box>内容投影</div>
 </app-child>
@@ -47,7 +68,7 @@
 </ul>
 <app-layout></app-layout>
 
-<input type="text" [(ngModel)]="username" />
+<!-- <input type="text" [(ngModel)]="username" /> -->
 <button class="btn btn-primary" (click)="setData()">更改数据</button>
 <p>{{ username }}</p>
 <app-demo>

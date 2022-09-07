@@ -1096,6 +1096,8 @@ Angular 有自己的 DI 框架，它将实现依赖注入的过程隐藏了，�
 
 ### 10. 服务 Service
 
+命令行 ng g s test
+
 #### 10.1 创建服务
 
 ```javascript

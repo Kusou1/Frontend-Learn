@@ -1,4 +1,6 @@
 import { Component, ElementRef, ViewChild, ViewChildren, AfterViewInit, QueryList } from '@angular/core'
+import { FormControl, FormGroup, NgForm } from '@angular/forms'
+import { TestService } from './test.service'
 
 interface List {
     id: Number
@@ -28,22 +30,36 @@ interface List {
       .odd{
         background-color:skyblue
       }
+      input.ng-touched.ng-invalid {
+        border: 2px solid red;
+      }
       `]
 })
 export class AppComponent implements AfterViewInit {
+    constructor(private testService: TestService) {
+
+    }
+    contactForm: FormGroup = new FormGroup({
+        name: new FormControl(),
+        phone: new FormControl()
+    })
+    onSubmit() {
+        console.log(this.contactForm.value)
+        // console.log(form)
+    }
     person = {
         name: 'union',
-        age:20
+        age: 20
     }
-    changeName(){
+    changeName() {
         // this.person.name='李四'
         // this.person.age=30
-        this.person={
-            name:'kusou1',
-            age:30
+        this.person = {
+            name: 'kusou1',
+            age: 30
         }
     }
-    getData(event:string){
+    getData(event: string) {
         alert(event)
     }
     date = new Date()

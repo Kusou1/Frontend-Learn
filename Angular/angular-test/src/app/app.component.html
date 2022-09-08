@@ -6,8 +6,13 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a routerLink="/">首页</a></li>
-                <li><a routerLink="/about">关于我们</a></li>
-                <li><a routerLink="/news">新闻</a></li>
+                <li><a [routerLink]="['/about','aboutTitle']" [queryParams]="{ name: 'kitty' }">关于我们</a></li>
+                <li><a [routerLink]="['/news',{
+                    outlets: {
+                        industry: ['industry'],
+                        company: ['company']
+                    }
+                  }]">新闻</a></li>
             </ul>
         </div>
     </div>
@@ -20,6 +25,6 @@
 </div>
 
 <app-demo>
-  <ng-container class="a">a</ng-container>
-  <div class="b">b</div>
+    <ng-container class="a">a</ng-container>
+    <div class="b">b</div>
 </app-demo>

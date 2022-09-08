@@ -12,43 +12,22 @@ import { AppComponent } from "./app.component"
 import { HomeComponent } from "./pages/home/home.component"
 import { AboutComponent } from "./pages/about/about.component"
 import { NewsComponent } from "./pages/news/news.component"
-import { RouterModule, Routes } from "@angular/router";
 import { DemoComponent } from './pages/demo/demo.component';
-import { HoverDirective } from './directives/hover.directive'
+import { HoverDirective } from './directives/hover.directive';
+import { CompanyComponent } from './pages/company/company.component';
+import { IndustryComponent } from './pages/industry/industry.component'
+import { AppRoutingModule } from "./app-routing.module";
 
-const routes: Routes = [
-  {
-    path: "",
-    component: HomeComponent,
-    pathMatch: "full",
-    data: {
-      animation: "one"
-    }
-  },
-  {
-    path: "about",
-    component: AboutComponent,
-    data: {
-      animation: "two"
-    }
-  },
-  {
-    path: "news",
-    component: NewsComponent,
-    data: {
-      animation: "three"
-    }
-  }
-]
+
 
 // 调用 NgModule 装饰器, 告诉 Angular 当前类表示的是 Angular 模块
 @NgModule({
   // 声明当前模块拥有哪些组件
-  declarations: [AppComponent, HomeComponent, AboutComponent, NewsComponent, DemoComponent, HoverDirective],
+  declarations: [AppComponent, HomeComponent, AboutComponent, NewsComponent, DemoComponent, HoverDirective, CompanyComponent, IndustryComponent],
   // 声明当前模块依赖了哪些其他模块
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule
   ],

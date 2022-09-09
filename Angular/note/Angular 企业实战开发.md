@@ -3256,7 +3256,7 @@ fromEvent(search, "keyup")
     distinctUntilChanged(),
     switchMap(keyword =>
       from(
-        axios.get(`https://j1sonplaceholder.typicode.com/posts?q=${keyword}`)
+        axios.get(`https://jsonplaceholder.typicode.com/posts?q=${keyword}`)
       ).pipe(
         map(response => response.data),
         catchError(error => throwError(`发生了错误: ${error.message}`))

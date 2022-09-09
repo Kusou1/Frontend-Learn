@@ -8,20 +8,21 @@ import {
 } from "@angular/animations"
 import { Component } from "@angular/core"
 import { RouterOutlet } from "@angular/router"
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   // 指定组件的使用方式, 当前为标记形式
   // app-home   =>  <app-home></app-home>
-	// [app-home] =>  <div app-home></div>
+  // [app-home] =>  <div app-home></div>
   // .app-home  =>  <div class="app-home"></div>
   selector: "app-root",
   // 关联组件模板文件
   // templateUrl:'组件模板文件路径'
-	// template:`组件模板字符串`
+  // template:`组件模板字符串`
   templateUrl: "./app.component.html",
   // 关联组件样式文件
   // styleUrls : ['组件样式文件路径']
-	// styles : [`组件样式`]
+  // styles : [`组件样式`]
   styles: [],
   animations: [
     trigger("routerAnimation", [
@@ -74,6 +75,24 @@ export class AppComponent {
   // change(){
   //   this.name="change"
   // }
+  constructor(private http: HttpClient) {
+
+  }
+  ngOnInit() {
+    let params = new HttpParams(
+      {
+        // fromObject: { name: "张三", age: "21" }
+        fromString:"name=zhangsan&age=30"
+      }
+    )
+    params.append('sex',"male")
+    this.getUsers(params).subscribe(console.log)
+  }
+  getUsers(params: HttpParams) {
+    return this.http.get("https://jsonplaceholder.typicode.com/users", {
+      params: params
+    })
+  }
   prepare(outlet: RouterOutlet) {
     if (
       outlet &&

@@ -17,6 +17,7 @@ import { HoverDirective } from './directives/hover.directive';
 import { CompanyComponent } from './pages/company/company.component';
 import { IndustryComponent } from './pages/industry/industry.component'
 import { AppRoutingModule } from "./app-routing.module";
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -29,7 +30,8 @@ import { AppRoutingModule } from "./app-routing.module";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   // 声明服务的作用域, 数组中接收服务类, 表示该服务只能在当前模块的组件中使用
   providers: [],

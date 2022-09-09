@@ -17,7 +17,8 @@ import { HoverDirective } from './directives/hover.directive';
 import { CompanyComponent } from './pages/company/company.component';
 import { IndustryComponent } from './pages/industry/industry.component'
 import { AppRoutingModule } from "./app-routing.module";
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from "./auth.interceptor";
 
 
 
@@ -34,7 +35,13 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   // 声明服务的作用域, 数组中接收服务类, 表示该服务只能在当前模块的组件中使用
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi: true
+    }
+  ],
   // 可引导组件, Angular 会在引导过程中把它加载到 DOM 中
   bootstrap: [AppComponent]
 })
